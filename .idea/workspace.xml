@@ -8,6 +8,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/dist/q-rest-customer.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/q-rest-customer.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/q-rest-customer.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            <state relative-caret-position="1199">
+              <caret line="104" column="52" lean-forward="true" selection-start-line="104" selection-start-column="52" selection-end-line="104" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -30,11 +35,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/q-rest-customer.xml">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+            <state relative-caret-position="9768">
+              <caret line="692" lean-forward="true" selection-start-line="683" selection-start-column="5" selection-end-line="692" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#11707#11775#1" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,21 +59,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>reset-pass</find>
-      <find>sign</find>
-      <find>issueToken</find>
-      <find>getWe</find>
-      <find>match-</find>
-      <find>account-v</find>
-      <find>GET</find>
-      <find>customer</find>
-      <find>customer/</find>
-      <find>&quot;customer</find>
-      <find>&quot;customer&quot;</find>
-      <find>&quot;signup&quot;</find>
-      <find>login</find>
-      <find>login&quot;)</find>
-      <find>reset-</find>
       <find>syste</find>
       <find>signup</find>
       <find>this.veri</find>
@@ -80,6 +74,21 @@
       <find>&quot;vehi</find>
       <find>loginObject</find>
       <find>&quot;address&quot;</find>
+      <find>home!</find>
+      <find>jackson</find>
+      <find>basedir</find>
+      <find>init</find>
+      <find>compiler</find>
+      <find>compiler.args</find>
+      <find>encoding</find>
+      <find>utf</find>
+      <find>javac</find>
+      <find>sub</find>
+      <find>customer</find>
+      <find>validC</find>
+      <find>validCustomer</find>
+      <find>getWebAppFrom</find>
+      <find>getWebAppFromS</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -124,7 +133,6 @@
         <option value="$PROJECT_DIR$/src/q/rest/customer/filter/SecuredUser.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/filter/SecuredUserAgent.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/Customer.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/SignupRequestModel.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java" />
@@ -133,6 +141,8 @@
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
         <option value="$PROJECT_DIR$/q-rest-customer.xml" />
+        <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" />
       </list>
     </option>
   </component>
@@ -142,10 +152,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="798" />
+    <option name="height" value="797" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -159,23 +169,39 @@
               <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
               <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+              <item name="operation" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="q-rest-customer" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547674242123" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547734177760" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -292,12 +318,14 @@
       <workItem from="1547457157065" duration="1090000" />
       <workItem from="1547473595039" duration="473000" />
       <workItem from="1547650188426" duration="3340000" />
-      <workItem from="1547674153342" duration="89000" />
+      <workItem from="1547674153342" duration="4857000" />
+      <workItem from="1547734781716" duration="2332000" />
+      <workItem from="1548246300420" duration="2350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77290000" />
+    <option name="totallyTimeSpent" value="86740000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -309,11 +337,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="797" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="797" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4638298" visible="true" weight="0.29542202" />
-      <window_info id="Structure" order="1" sideWeight="0.5361702" side_tool="true" visible="true" weight="0.29542202" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4609929" visible="true" weight="0.29971388" />
+      <window_info id="Structure" order="1" sideWeight="0.53900707" side_tool="true" visible="true" weight="0.29971388" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" sideWeight="0.50070524" side_tool="true" weight="0.24964234" />
       <window_info id="Image Layers" order="4" />
@@ -783,10 +811,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/q-rest-customer.properties" />
+    <entry file="file://$PROJECT_DIR$/q-rest-customer.xml" />
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="62" column="36" lean-forward="true" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-214">
-          <caret line="527" column="25" selection-start-line="527" selection-start-column="25" selection-end-line="527" selection-end-column="25" />
+        <state relative-caret-position="9768">
+          <caret line="692" lean-forward="true" selection-start-line="683" selection-start-column="5" selection-end-line="692" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#11707#11775#1" />
@@ -796,25 +833,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        <state relative-caret-position="1199">
+          <caret line="104" column="52" lean-forward="true" selection-start-line="104" selection-start-column="52" selection-end-line="104" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/q-rest-customer.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="47" lean-forward="true" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/q-rest-customer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
         </state>
       </provider>
     </entry>

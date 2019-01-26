@@ -95,6 +95,32 @@ public class CustomerInternalApiV2 {
 
 
 
+    @SecuredCustomer
+    @Path("valid-customer/{customerId}")
+    @GET
+    public Response isValidCustomerOperation(@HeaderParam("Authorization") String header, @PathParam("customerId") long customerId) {
+        try{
+            Customer check = getCustomerFromAuthHeader(header);
+            if(check.getId() != customerId) {
+                return Response.status(401).build();
+            }
+            return Response.status(100).build(); }
+        catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
+    private Customer getCustomerFromAuthHeader(String authHeader) {
+        try {
+            String[] values = authHeader.split("&&");
+            String username = values[1].trim();
+            Customer c = dao.find(Customer.class, Long.parseLong(username));
+            return c;
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
 
     // retrieves app object from app secret
     private WebApp getWebAppFromSecret(String secret) throws NotAuthorizedException {

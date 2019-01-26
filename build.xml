@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
+<!-- Can be compoiled with wildfly version 15.0.1.Final only-->
 <project basedir="." default="war" name="q-rest-customer">
 
   <property name="debuglevel" value="source,lines,vars"/>
   <property name="compiler.args.q-rest-customer" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
-  
-  <path id="library.app.classpath">
-    <pathelement location="web/WEB-INF/lib/jackson-annotations-2.8.5.jar"/>	
-  </path>
 
   <path id="library.jboss.classpath">
     <pathelement location="/srv/wildfly/modules/system/layers/base/javax/annotation/api/main/jboss-annotations-api_1.3_spec-1.0.1.Final.jar"/>
