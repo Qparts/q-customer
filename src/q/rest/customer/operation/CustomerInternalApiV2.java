@@ -104,7 +104,7 @@ public class CustomerInternalApiV2 {
             if(check.getId() != customerId) {
                 return Response.status(401).build();
             }
-            return Response.status(100).build(); }
+            return Response.status(204).build(); }
         catch (Exception ex){
             return Response.status(500).build();
         }
