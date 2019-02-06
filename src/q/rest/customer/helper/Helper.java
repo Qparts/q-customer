@@ -17,6 +17,15 @@ public class Helper {
         return random.nextInt(max - min + 1) + min;
     }
 
+    public static long convertToLong(String query){
+        try{
+           return Long.parseLong(query);
+        }
+        catch(Exception ex){
+            return -1L;
+        }
+    }
+
     public static int getPoints(double amount) {
         return (int) (amount / 20);
     }

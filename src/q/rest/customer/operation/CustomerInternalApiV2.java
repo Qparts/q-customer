@@ -3,7 +3,7 @@ package q.rest.customer.operation;
 import q.rest.customer.dao.DAO;
 import q.rest.customer.filter.SecuredCustomer;
 import q.rest.customer.filter.SecuredUser;
-import q.rest.customer.filter.ValidApp;
+import q.rest.customer.helper.Helper;
 import q.rest.customer.model.entity.*;
 
 import javax.ejb.EJB;
@@ -22,10 +22,35 @@ public class CustomerInternalApiV2 {
     @EJB
     private DAO dao;
 
-    @Path("test")
+    @SecuredUser
     @GET
-    public String test(){
-        return "test internal";
+    @Path("newest")
+    public Response getNewestCustomers(){
+        try{
+            String sql = "select b from Customer b where id != :value0 order by created desc";
+            List<Customer> customers = dao.getJPQLParamsOffsetMax(Customer.class, sql, 0, 20, 0L);
+            return Response.status(200).entity(customers).build();
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
+
+    }
+
+    @SecuredUser
+    @GET
+    @Path("search/{query}")
+    public Response searchProduct(@PathParam(value = "query") String query){
+        try {
+            Long id = Helper.convertToLong(query);
+            String lowered = "%"+ query.trim().toLowerCase() + "%";
+            String sql = "select b from Customer b where b.id = :value0 and lower(b.email) like :value1 " +
+                    "or lowert(b.firstName) like :value1 or lower(b.lastName) like :value1 or b.id in (" +
+                    "select c.customerId from CustomerAddress where b.mobile like :value1)";
+            List<Customer> customers = dao.getJPQLParamsOffsetMax(Customer.class, sql, 0, 20, id, lowered);
+            return Response.status(200).entity(customers).build();
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
     }
 
     @Path("match-token")

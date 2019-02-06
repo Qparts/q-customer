@@ -2,11 +2,11 @@ package q.rest.customer.helper;
 
 public class AppConstants {
 
-    private final static String WEBSITE_BASE_URL = "http://qtest.fareed9.com/";
-    private final static String PUBLIC_VEHICLE_SERVICE = "http://localhost:8081/service-q-vehicle/rest/api/v2/";
-    private final static String USER_SERVICE = "http://localhost:8081/service-q-user/rest/internal/api/v2/";
-    public final static String USER_MATCH_TOKEN = USER_SERVICE + "match-token";
+    private final static String WEBSITE_BASE_URL = SysProps.getValue("webAppBase");
+    private final static String PUBLIC_VEHICLE_SERVICE = SysProps.getValue("vehiclePublicService");
+    private final static String USER_SERVICE = SysProps.getValue("userService");
 
+    public final static String USER_MATCH_TOKEN = USER_SERVICE + "match-token";
 
     public final static String ACCOUNT_ACTIVATION_EMAIL_SUBJECT= "Account Activation - تفعيل الحساب";
     public final static String RESET_PASSWORD_EMAIL_SUBJECT = "Reset Password - إعادة تهيئة كلمة المرور";
