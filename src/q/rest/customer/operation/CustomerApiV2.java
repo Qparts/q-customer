@@ -518,7 +518,7 @@ public class CustomerApiV2 {
 
 
     private Map<String, Object> getLoginObject(String authHeader, Customer customer, WebApp webApp) {
-        AccessToken token = this.issueToken(customer, webApp, 60);// 60 minutes
+        AccessToken token = this.issueToken(customer, webApp, 60*4);// 60 minutes
         List<CustomerAddress> addresses = dao.getTwoConditions(CustomerAddress.class, "customerId", "status", customer.getId(), 'A');
         List<SocialMediaProfile> smps = dao.getCondition(SocialMediaProfile.class, "customerId", customer.getId());
         PublicCustomer pc = new PublicCustomer(customer, smps, addresses, getCustomerPublicVehicles(authHeader, customer.getId()));
