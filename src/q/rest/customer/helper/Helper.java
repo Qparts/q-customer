@@ -110,14 +110,14 @@ public class Helper {
                 "                        <tr>" +
                 "                            <td>" +
                 "                                <div style='background-color:#555; color:white;padding:12px'>" +
-                "									Qetaa.com Account Activation" +
+                "									Q.parts Account Activation" +
                 "								</div>" +
                 "                            </td>" +
                 "                        </tr>" +
                 "						<tr>" +
                 "                            <td>" +
                 "                                <div style='padding:12px'>" +
-                "									Welcome to Qetaa.com!" +
+                "									Welcome to Q.parts!" +
                 "								</div>" +
                 "                            </td>" +
                 "                        </tr>" +
@@ -155,7 +155,7 @@ public class Helper {
                 "						<tr>" +
                 "                            <td>" +
                 "                                <div style='padding:12px'>" +
-                "									Welcome to Qetaa.com!" +
+                "									Welcome to Q.parts!" +
                 "									<br/>" +
                 "									<br/>" +
                 "								</div>" +
@@ -182,7 +182,7 @@ public class Helper {
                 "                        <tr>" +
                 "                            <td>" +
                 "                                <div style='background-color:#555; color:white;padding:12px'>" +
-                "									Qetaa.com Account Password Reset" +
+                "									Q.Parts Account Password Reset" +
                 "								</div>" +
                 "                            </td>" +
                 "                        </tr>" +
@@ -227,7 +227,7 @@ public class Helper {
                 "						<tr>" +
                 "                            <td>" +
                 "                                <div style='padding:12px'>" +
-                "									Welcome back to Qetaa.com!" +
+                "									Welcome back to Q.Parts!" +
                 "									<br/>" +
                 "									<br/>" +
                 "								</div>" +

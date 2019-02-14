@@ -31,12 +31,6 @@ public class CustomerApiV2 {
     @EJB
     private AsyncService async;
 
-    @GET
-
-    @Path("test")
-    public String test(){
-        return "test";
-    }
 
     @ValidApp
     @POST
@@ -534,7 +528,6 @@ public class CustomerApiV2 {
         map.put("customer", pc);
         return map;
     }
-
 
     private List<PublicVehicle> getCustomerPublicVehicles(String authHeader, long customerId){
         String jpql = "select b.vehicleYearId from CustomerVehicle b where b.customerId = :value0 and b.status = :value1";
