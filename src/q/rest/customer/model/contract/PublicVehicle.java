@@ -8,7 +8,7 @@ public class PublicVehicle {
 	private long id;
 	private Integer vehicleYearId;
 	private long customerId;
-	private boolean isDefault;
+	private boolean defaultVehicle;
 	private String vin;
 	private Map<String,Object> vehicle;
 	
@@ -21,7 +21,7 @@ public class PublicVehicle {
 		this.vehicleYearId = cv.getVehicleYearId();
 		this.customerId = cv.getCustomerId();
 		this.vin = cv.getVin();
-		this.isDefault = cv.isDefault();
+		this.defaultVehicle = cv.isDefaultVehicle();
 	}
 	
 	public Map<String, Object> getVehicle() {
@@ -32,12 +32,12 @@ public class PublicVehicle {
 		this.vehicle = vehicle;
 	}
 
-	public boolean isDefault() {
-		return isDefault;
+	public boolean isDefaultVehicle() {
+		return defaultVehicle;
 	}
 
-	public void setDefault(boolean aDefault) {
-		isDefault = aDefault;
+	public void setDefaultVehicle(boolean defaultVehicle) {
+		this.defaultVehicle = defaultVehicle;
 	}
 
 	public long getId() {

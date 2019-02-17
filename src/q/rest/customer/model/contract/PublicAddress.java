@@ -13,7 +13,7 @@ public class PublicAddress {
 	private Double latitude;
 	private Double longitude;
 	private String mobile;
-	private boolean isDefault;
+	private boolean defaultAddress;
 	
 	public PublicAddress() {
 		
@@ -30,16 +30,16 @@ public class PublicAddress {
 		this.latitude = customerAddress.getLatitude();
 		this.longitude = customerAddress.getLongitude();
 		this.mobile = customerAddress.getMobile();
-		this.isDefault =customerAddress.isDefault();
+		this.defaultAddress =customerAddress.isDefaultAddress();
 	}
 
 
-	public boolean isDefault() {
-		return isDefault;
+	public boolean isDefaultAddress() {
+		return defaultAddress;
 	}
 
-	public void setDefault(boolean aDefault) {
-		isDefault = aDefault;
+	public void setDefaultAddress(boolean defaultAddress) {
+		this.defaultAddress = defaultAddress;
 	}
 
 	public Double getLatitude() {
