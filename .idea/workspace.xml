@@ -7,8 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="136" column="91" lean-forward="true" selection-start-line="136" selection-start-column="91" selection-end-line="136" selection-end-column="91" />
+            <state relative-caret-position="496">
+              <caret line="384" column="25" selection-start-line="384" selection-start-column="25" selection-end-line="384" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,21 +42,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="e#1042#1043#0" expanded="true" />
-                <element signature="e#1070#1071#0" expanded="true" />
-                <element signature="e#1128#1129#0" expanded="true" />
-                <element signature="e#1171#1172#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -69,8 +53,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&quot;vejocle</find>
-      <find>&quot;address</find>
       <find>social</find>
       <find>&quot;social</find>
       <find>&quot;Social</find>
@@ -99,6 +81,8 @@
       <find>qetaa</find>
       <find>&quot;vehicle</find>
       <find>prepare</find>
+      <find>address</find>
+      <find>@path(&quot;address</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -150,10 +134,10 @@
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
       </list>
     </option>
   </component>
@@ -374,12 +358,12 @@
       <workItem from="1550048561803" duration="704000" />
       <workItem from="1550147028336" duration="1910000" />
       <workItem from="1550169066045" duration="183000" />
-      <workItem from="1550393172885" duration="658000" />
+      <workItem from="1550393172885" duration="754000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102541000" />
+    <option name="totallyTimeSpent" value="102637000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -859,16 +843,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="136" column="91" lean-forward="true" selection-start-line="136" selection-start-column="91" selection-end-line="136" selection-end-column="91" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -878,6 +852,19 @@
             <element signature="e#795#796#0" expanded="true" />
             <element signature="e#853#854#0" expanded="true" />
             <element signature="e#896#897#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#1042#1043#0" expanded="true" />
+            <element signature="e#1070#1071#0" expanded="true" />
+            <element signature="e#1128#1129#0" expanded="true" />
+            <element signature="e#1171#1172#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -892,15 +879,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java">
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="496">
+          <caret line="384" column="25" selection-start-line="384" selection-start-column="25" selection-end-line="384" selection-end-column="25" />
           <folding>
-            <element signature="e#1042#1043#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1128#1129#0" expanded="true" />
-            <element signature="e#1171#1172#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

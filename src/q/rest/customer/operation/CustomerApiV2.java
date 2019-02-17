@@ -143,7 +143,6 @@ public class CustomerApiV2 {
         }
     }
 
-
     @ValidApp
     @GET
     @Path("reset-password/token/{token-value}")
@@ -287,7 +286,7 @@ public class CustomerApiV2 {
             cv.setVehicleYearId(pvModel.getVehicleYearId());
             cv.setVin(pvModel.getVin());
             dao.persist(cv);
-            if(pvModel.isDefault()){
+            if(pvModel.isDefaultVehicle()){
                 makeVehicleDefault(cv.getCustomerId(), cv.getId());
             }
             pvModel.setId(cv.getId());
