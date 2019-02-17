@@ -1,5 +1,7 @@
 package q.rest.customer.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -50,7 +52,7 @@ public class CustomerAddress implements Serializable{
 	@Column(name="mobile")
     private String mobile;
 	@Column(name="is_default")
-	private boolean isDefault;
+	private boolean defaultAddress;
 	
 	public CustomerAddress() {
 		
@@ -113,12 +115,12 @@ public class CustomerAddress implements Serializable{
 		this.createdBy = created_by;
 	}
 
-	public boolean isDefault() {
-		return isDefault;
+	public boolean isDefaultAddress() {
+		return defaultAddress;
 	}
 
-	public void setDefault(boolean aDefault) {
-		isDefault = aDefault;
+	public void setDefaultAddress(boolean defaultAddress) {
+		this.defaultAddress = defaultAddress;
 	}
 
 	public Character getStatus() {
@@ -155,7 +157,7 @@ public class CustomerAddress implements Serializable{
 		return id == that.id &&
 				customerId == that.customerId &&
 				cityId == that.cityId &&
-				isDefault == that.isDefault &&
+				defaultAddress == that.defaultAddress &&
 				Objects.equals(line1, that.line1) &&
 				Objects.equals(line2, that.line2) &&
 				Objects.equals(zipCode, that.zipCode) &&
@@ -170,6 +172,6 @@ public class CustomerAddress implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, customerId, line1, line2, cityId, zipCode, created, createdBy, status, latitude, longitude, title, mobile, isDefault);
+		return Objects.hash(id, customerId, line1, line2, cityId, zipCode, created, createdBy, status, latitude, longitude, title, mobile, defaultAddress);
 	}
 }

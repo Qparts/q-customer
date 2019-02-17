@@ -36,14 +36,14 @@ public class CustomerVehicle implements Serializable {
     @Column(name = "status")
     private char status;
     @Column(name = "is_default")
-    private boolean isDefault;
+    private boolean defaultVehicle;
 
-    public boolean isDefault() {
-        return isDefault;
+    public boolean isDefaultVehicle() {
+        return defaultVehicle;
     }
 
-    public void setDefault(boolean aDefault) {
-        isDefault = aDefault;
+    public void setDefaultVehicle(boolean defaultVehicle) {
+        this.defaultVehicle = defaultVehicle;
     }
 
     public long getId() {
