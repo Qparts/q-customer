@@ -300,7 +300,7 @@ public class CustomerApiV2 {
 
     private void makeVehicleDefault(long customerId, long vehicleId){
         try {
-            List<CustomerVehicle> cvs = dao.getTwoConditions(CustomerVehicle.class, "customerId", "isDefault", customerId, true);
+            List<CustomerVehicle> cvs = dao.getTwoConditions(CustomerVehicle.class, "customerId", "defaultVehicle", customerId, true);
             for (CustomerVehicle customerVehicle : cvs) {
                 customerVehicle.setDefaultVehicle(false);
                 dao.update(customerVehicle);
@@ -317,7 +317,7 @@ public class CustomerApiV2 {
 
     private void makeAddressDefault(long customerId, long vehicleId){
         try {
-            List<CustomerAddress> cvs = dao.getTwoConditions(CustomerAddress.class, "customerId", "isDefault", customerId, true);
+            List<CustomerAddress> cvs = dao.getTwoConditions(CustomerAddress.class, "customerId", "defaultAddress", customerId, true);
             for (CustomerAddress address : cvs) {
                 address.setDefaultAddress(false);
                 dao.update(address);

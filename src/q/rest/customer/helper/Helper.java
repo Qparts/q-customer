@@ -204,7 +204,7 @@ public class Helper {
                 "                            <td>" +
                 "                                <div style='padding:12px' align='center'>" +
                 "									<a href='"+activationLink+"'>" +
-                "										<button  type='button' style='background-color:#ee4036; color:white;border:none;padding:12px'>Click here to activte your account</button>" +
+                "										<button  type='button' style='background-color:#ee4036; color:white;border:none;padding:12px'>Click here to reset your password</button>" +
                 "									</a>" +
                 "									<br/>" +
                 "									<br/>" +
