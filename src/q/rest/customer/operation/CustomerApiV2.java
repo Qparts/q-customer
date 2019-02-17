@@ -134,7 +134,7 @@ public class CustomerApiV2 {
             Customer customer = dao.findCondition(Customer.class, "email", email);
             if(customer != null){
                 String code = createPasswordResetObject(customer.getId());
-                String body = Helper.prepareHtmlResetPasswordEmail(AppConstants.getActivationLink(code, email), customer.getFirstName());
+                String body = Helper.prepareHtmlResetPasswordEmail(AppConstants.getPasswordResetLink(code, email), customer.getFirstName());
                 async.sendHtmlEmail(email, AppConstants.RESET_PASSWORD_EMAIL_SUBJECT, body);
             }
             return Response.status(200).build();
