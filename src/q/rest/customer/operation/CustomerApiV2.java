@@ -303,11 +303,11 @@ public class CustomerApiV2 {
         try {
             List<CustomerVehicle> cvs = dao.getTwoConditions(CustomerVehicle.class, "customerId", "isDefault", customerId, true);
             for (CustomerVehicle customerVehicle : cvs) {
-                customerVehicle.setDefault(false);
+                customerVehicle.setDefaultVehicle(false);
                 dao.update(customerVehicle);
             }
             CustomerVehicle cv = dao.find(CustomerVehicle.class, vehicleId);
-            cv.setDefault(true);
+            cv.setDefaultVehicle(true);
             dao.update(cv);
         }catch(Exception ignore){
 
@@ -320,11 +320,11 @@ public class CustomerApiV2 {
         try {
             List<CustomerAddress> cvs = dao.getTwoConditions(CustomerAddress.class, "customerId", "isDefault", customerId, true);
             for (CustomerAddress address : cvs) {
-                address.setDefault(false);
+                address.setDefaultAddress(false);
                 dao.update(address);
             }
             CustomerAddress cv = dao.find(CustomerAddress.class, vehicleId);
-            cv.setDefault(true);
+            cv.setDefaultAddress(true);
             dao.update(cv);
         }catch(Exception ignore){
 
@@ -382,7 +382,7 @@ public class CustomerApiV2 {
             address.setZipCode(publicAddress.getZipCode());
             address.setMobile(publicAddress.getMobile());
             dao.persist(address);
-            if(address.isDefault()){
+            if(address.isDefaultAddress()){
                 this.makeAddressDefault(address.getCustomerId(), address.getId());
             }
             publicAddress.setId(address.getId());

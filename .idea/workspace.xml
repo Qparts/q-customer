@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,14 +19,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="272" column="96" selection-start-line="272" selection-start-column="96" selection-end-line="272" selection-end-column="96" />
+            <state relative-caret-position="233">
+              <caret line="136" column="91" lean-forward="true" selection-start-line="136" selection-start-column="91" selection-end-line="136" selection-end-column="91" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -43,7 +51,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>@GET</find>
       <find>&quot;vejocle</find>
       <find>&quot;address</find>
       <find>social</find>
@@ -73,6 +80,7 @@
       <find>Qetaa</find>
       <find>qetaa</find>
       <find>&quot;vehicle</find>
+      <find>prepare</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -120,14 +128,14 @@
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" />
         <option value="$PROJECT_DIR$/q-rest-customer.xml" />
         <option value="$PROJECT_DIR$/build.xml" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/SysProps.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/dao/DAO.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" />
       </list>
     </option>
   </component>
@@ -164,6 +172,13 @@
               <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="customer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+              <item name="helper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
@@ -333,12 +348,12 @@
       <workItem from="1550048561803" duration="704000" />
       <workItem from="1550147028336" duration="1910000" />
       <workItem from="1550169066045" duration="183000" />
-      <workItem from="1550393172885" duration="160000" />
+      <workItem from="1550393172885" duration="489000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102043000" />
+    <option name="totallyTimeSpent" value="102372000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -784,23 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="169" column="5" lean-forward="true" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/Customer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -850,13 +848,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="272" column="96" selection-start-line="272" selection-start-column="96" selection-end-line="272" selection-end-column="96" />
+        <state relative-caret-position="557">
+          <caret line="103" column="41" lean-forward="true" selection-start-line="103" selection-start-column="41" selection-end-line="103" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="136" column="91" lean-forward="true" selection-start-line="136" selection-start-column="91" selection-end-line="136" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>

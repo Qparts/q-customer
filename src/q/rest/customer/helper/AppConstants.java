@@ -24,6 +24,6 @@ public class AppConstants {
     }
 
     public final static String getPasswordResetLink(String code, String email){
-        return WEBSITE_BASE_URL + "password-reset?code=" + code + "&email=" + email;
+        return WEBSITE_BASE_URL + "password/reset-password?code=" + code + "&email=" + email;
     }
 }
