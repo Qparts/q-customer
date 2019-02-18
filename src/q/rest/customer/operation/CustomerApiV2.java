@@ -239,6 +239,7 @@ public class CustomerApiV2 {
             createSocialMediaLink(customer, smModel.getSocialMediaId(), smModel.getPlatform(), smModel.getEmail());
             return this.getSuccessResponseWithLogin(authHeader, customer, webApp);
         }catch(Exception ex){
+            ex.printStackTrace();
             return getServerErrorResponse();
         }
     }
