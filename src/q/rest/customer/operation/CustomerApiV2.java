@@ -204,11 +204,18 @@ public class CustomerApiV2 {
     @Path("social-media-auth")
     public Response login(@HeaderParam("Authorization") String authHeader, SocialMediaCredentialModel smModel){
         try{
+            System.out.println("social media auth");
+            System.out.println("email : " + smModel.getEmail());
+            System.out.println("social media id " + smModel.getSocialMediaId());
+            System.out.println("platform" + smModel.getPlatform());
+            System.out.println(1);
             if(smModel.getEmail() == null || smModel.getEmail().equals("")
                     || smModel.getSocialMediaId() == null || smModel.getSocialMediaId() == ""
                     || smModel.getPlatform() == null || smModel.getPlatform() == ""){
                 return getBadRequestResponse("Incomplete information");
             }
+
+            System.out.println(2);
 
             WebApp webApp = this.getWebAppFromAuthHeader(authHeader);
             if(this.socialMediaExists(smModel.getSocialMediaId(), smModel.getPlatform())){
@@ -216,6 +223,7 @@ public class CustomerApiV2 {
                 return getSuccessResponseWithLogin(authHeader, customer, webApp);
             }
 
+            System.out.println(3);
             //check if email exists!
             Customer check = dao.findCondition(Customer.class, "email" , smModel.getEmail());
             if(check != null){
@@ -223,6 +231,7 @@ public class CustomerApiV2 {
                 return this.getSuccessResponseWithLogin(authHeader, check, webApp);
             }
 
+            System.out.println(4);
             //email doesn't exist! sign him/her up and create sm link.
             Customer customer = new Customer();
             customer.setEmail(smModel.getEmail());
@@ -236,7 +245,9 @@ public class CustomerApiV2 {
             customer.setCountryId(smModel.getCountryId());
             customer.setStatus('V');
             dao.persist(customer);
+            System.out.println(5);
             createSocialMediaLink(customer, smModel.getSocialMediaId(), smModel.getPlatform(), smModel.getEmail());
+            System.out.println(6);
             return this.getSuccessResponseWithLogin(authHeader, customer, webApp);
         }catch(Exception ex){
             ex.printStackTrace();
