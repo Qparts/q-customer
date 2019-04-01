@@ -26,7 +26,7 @@
   </path>
 
   <path id="library.app.classpath">
-    <pathelement location="web/WEB-INF/lib/jackson-annotations-2.8.5.jar"/>
+    <fileset dir="web/WEB-INF/lib" includes="*.jar"/>
   </path>
 
 
