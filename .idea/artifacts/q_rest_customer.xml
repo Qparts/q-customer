@@ -9,6 +9,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/jackson-annotations-2.8.5.jar" />
+          <element id="library" level="project" name="org.apache.velocity:velocity-engine-core:2.0" />
+          <element id="library" level="project" name="org.apache.velocity.tools:velocity-tools-generic:3.0" />
         </element>
       </element>
     </root>

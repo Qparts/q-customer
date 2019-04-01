@@ -1,8 +1,10 @@
 package q.rest.customer.operation;
 
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
 import q.rest.customer.dao.DAO;
 import q.rest.customer.filter.SecuredCustomer;
-import q.rest.customer.filter.SecuredUser;
 import q.rest.customer.filter.ValidApp;
 import q.rest.customer.helper.AppConstants;
 import q.rest.customer.helper.Helper;
@@ -10,14 +12,13 @@ import q.rest.customer.model.contract.*;
 import q.rest.customer.model.entity.*;
 
 import javax.ejb.EJB;
+import javax.servlet.ServletContext;
 import javax.ws.rs.*;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation.Builder;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
+import java.io.StringWriter;
 import java.util.*;
 
 @Path("/api/v2/")
@@ -25,11 +26,26 @@ import java.util.*;
 @Produces(MediaType.APPLICATION_JSON)
 public class CustomerApiV2 {
 
+    @Context
+    private ServletContext context;
+
     @EJB
     private DAO dao;
 
     @EJB
     private AsyncService async;
+
+
+    @GET
+    @Path("test")
+    @Produces(MediaType.TEXT_HTML)
+    public Response testPasswordHtml(){
+        Map<String,Object> vmap = new HashMap<>();
+        vmap.put("passwordResetLink", "http://somelink.com");
+        vmap.put("firstName", "Fareed");
+        String body = this.getHtmlTemplate(AppConstants.PASSWORD_RESET_EMAIL_TEMPLATE, vmap);
+        return Response.status(200).entity(body).build();
+    }
 
 
     @ValidApp
@@ -71,7 +87,10 @@ public class CustomerApiV2 {
             dao.persist(customer);
 
             String code = this.createVerificationObject(customer.getEmail(), customer.getId());
-            String body = Helper.prepareHtmlActivationEmail(AppConstants.getActivationLink(code, customer.getEmail()));
+            String activationLink = AppConstants.getActivationLink(code, customer.getEmail());
+            Map<String,Object> vmap = new HashMap<>();
+            vmap.put("activationLink", activationLink);
+            String body = getHtmlTemplate(AppConstants.SIGNUP_EMAIL_TEMPLATE, vmap);
             async.sendHtmlEmail(customer.getEmail(), AppConstants.ACCOUNT_ACTIVATION_EMAIL_SUBJECT, body);
             //send back login object
             Map<String,Object> map = this.getLoginObject(authHeader, customer, this.getWebAppFromAuthHeader(authHeader));
@@ -134,7 +153,11 @@ public class CustomerApiV2 {
             Customer customer = dao.findCondition(Customer.class, "email", email);
             if(customer != null){
                 String code = createPasswordResetObject(customer.getId());
-                String body = Helper.prepareHtmlResetPasswordEmail(AppConstants.getPasswordResetLink(code, email), customer.getFirstName());
+                String activationLink = AppConstants.getPasswordResetLink(code, customer.getEmail());
+                Map<String,Object> vmap = new HashMap<>();
+                vmap.put("passwordResetLink", activationLink);
+                vmap.put("firstName", customer.getFirstName());
+                String body = getHtmlTemplate(AppConstants.PASSWORD_RESET_EMAIL_TEMPLATE , vmap);
                 async.sendHtmlEmail(email, AppConstants.RESET_PASSWORD_EMAIL_SUBJECT, body);
             }
             return Response.status(200).build();
@@ -204,26 +227,17 @@ public class CustomerApiV2 {
     @Path("social-media-auth")
     public Response login(@HeaderParam("Authorization") String authHeader, SocialMediaCredentialModel smModel){
         try{
-            System.out.println("social media auth");
-            System.out.println("email : " + smModel.getEmail());
-            System.out.println("social media id " + smModel.getSocialMediaId());
-            System.out.println("platform" + smModel.getPlatform());
-            System.out.println(1);
             if(smModel.getEmail() == null || smModel.getEmail().equals("")
                     || smModel.getSocialMediaId() == null || smModel.getSocialMediaId() == ""
                     || smModel.getPlatform() == null || smModel.getPlatform() == ""){
                 return getBadRequestResponse("Incomplete information");
             }
-
-            System.out.println(2);
-
             WebApp webApp = this.getWebAppFromAuthHeader(authHeader);
             if(this.socialMediaExists(smModel.getSocialMediaId(), smModel.getPlatform())){
                 Customer customer = getCustomerFromSocialMedia(smModel.getPlatform(), smModel.getSocialMediaId());
                 return getSuccessResponseWithLogin(authHeader, customer, webApp);
             }
 
-            System.out.println(3);
             //check if email exists!
             Customer check = dao.findCondition(Customer.class, "email" , smModel.getEmail());
             if(check != null){
@@ -231,7 +245,6 @@ public class CustomerApiV2 {
                 return this.getSuccessResponseWithLogin(authHeader, check, webApp);
             }
 
-            System.out.println(4);
             //email doesn't exist! sign him/her up and create sm link.
             Customer customer = new Customer();
             customer.setEmail(smModel.getEmail());
@@ -245,9 +258,7 @@ public class CustomerApiV2 {
             customer.setCountryId(smModel.getCountryId());
             customer.setStatus('V');
             dao.persist(customer);
-            System.out.println(5);
             createSocialMediaLink(customer, smModel.getSocialMediaId(), smModel.getPlatform(), smModel.getEmail());
-            System.out.println(6);
             return this.getSuccessResponseWithLogin(authHeader, customer, webApp);
         }catch(Exception ex){
             ex.printStackTrace();
@@ -277,6 +288,50 @@ public class CustomerApiV2 {
         }
     }
 
+    @SecuredCustomer
+    @POST
+    @Path("vehicle-if-available")
+    public Response getOrCustomerVehicle(@HeaderParam("Authorization") String header, PublicVehicle pvModel){
+        try{
+            System.out.println(11);
+            if(!customerFound(pvModel.getCustomerId())) {
+                return Response.status(404).build();
+            }
+            System.out.println(21);
+
+            if(!validCustomerOperation(pvModel.getCustomerId(), header)) {
+                return Response.status(401).build();
+            }
+
+            String jpql = "select b from CustomerVehicle b where b.customerId = :value0 and b.vehicleYearId = :value1 and b.vin =:value2";
+            List<CustomerVehicle> customerVehicles = dao.getJPQLParams(CustomerVehicle.class, jpql, pvModel.getCustomerId(), pvModel.getVehicleYearId(), pvModel.getVin().toUpperCase().trim());
+            if(!customerVehicles.isEmpty()){
+                return Response.status(409).entity(customerVehicles.get(0).getId()).build();
+            }
+
+            CustomerVehicle customerVehicle = createVehicle(pvModel);
+            makeVehicleDefault(customerVehicle.getCustomerId(), customerVehicle.getId());
+            return Response.status(200).entity(customerVehicle.getId()).build();
+
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
+    private CustomerVehicle createVehicle(PublicVehicle pv){
+        CustomerVehicle customerVehicle = new CustomerVehicle();
+        customerVehicle.setStatus('A');
+        customerVehicle.setCreated(new Date());
+        customerVehicle.setDefaultVehicle(false);
+        customerVehicle.setCreatedBy(0);
+        customerVehicle.setCustomerId(pv.getCustomerId());
+        customerVehicle.setVehicleYearId(pv.getVehicleYearId());
+        customerVehicle.setVin(pv.getVin().toUpperCase().trim());
+        customerVehicle.setImageAttached(pv.getImageAttached());
+        dao.persist(customerVehicle);
+        return customerVehicle;
+    }
+
 
     @SecuredCustomer
     @POST
@@ -290,14 +345,8 @@ public class CustomerApiV2 {
                 return Response.status(401).build();
             }
 
-            CustomerVehicle cv = new CustomerVehicle();
-            cv.setCreated(new Date());
-            cv.setStatus('A');
-            cv.setCreatedBy(0);
-            cv.setCustomerId(pvModel.getCustomerId());
-            cv.setVehicleYearId(pvModel.getVehicleYearId());
-            cv.setVin(pvModel.getVin());
-            dao.persist(cv);
+            CustomerVehicle cv = createVehicle(pvModel);
+
             if(pvModel.isDefaultVehicle()){
                 makeVehicleDefault(cv.getCustomerId(), cv.getId());
             }
@@ -693,6 +742,23 @@ public class CustomerApiV2 {
         b.header(HttpHeaders.AUTHORIZATION, authHeader);
         Response r = b.post(Entity.entity(t, "application/json"));// not secured
         return r;
+    }
+
+
+    public String getHtmlTemplate(String templateName, Map<String,Object> map){
+        Properties p = new Properties();
+        p.setProperty("resource.loader", "webapp");
+        p.setProperty("webapp.resource.loader.class", "org.apache.velocity.tools.view.WebappResourceLoader");
+        p.setProperty("webapp.resource.loader.path", "/WEB-INF/velocity/");
+        VelocityEngine engine = new VelocityEngine(p);
+        engine.setApplicationAttribute("javax.servlet.ServletContext", context);
+        engine.init();
+        Template template = engine.getTemplate(templateName);
+        VelocityContext velocityContext = new VelocityContext();
+        map.forEach((k,v) -> velocityContext.put(k,v));
+        StringWriter writer = new StringWriter();
+        template.merge(velocityContext, writer);
+        return writer.toString();
     }
 
 }

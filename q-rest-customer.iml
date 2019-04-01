@@ -41,5 +41,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="org.apache.velocity.tools:velocity-tools-generic:3.0" level="project" />
+    <orderEntry type="library" name="org.apache.velocity.tools:velocity-tools-view:3.0" level="project" />
+    <orderEntry type="library" name="org.apache.velocity:velocity-engine-core:2.0" level="project" />
   </component>
 </module>

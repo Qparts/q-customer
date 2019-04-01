@@ -10,8 +10,10 @@ public class PublicVehicle {
 	private long customerId;
 	private boolean defaultVehicle;
 	private String vin;
+	private Boolean imageAttached;
 	private Map<String,Object> vehicle;
-	
+
+
 	public PublicVehicle() {
 		
 	}
@@ -23,7 +25,15 @@ public class PublicVehicle {
 		this.vin = cv.getVin();
 		this.defaultVehicle = cv.isDefaultVehicle();
 	}
-	
+
+	public Boolean getImageAttached() {
+		return imageAttached;
+	}
+
+	public void setImageAttached(Boolean imageAttached) {
+		this.imageAttached = imageAttached;
+	}
+
 	public Map<String, Object> getVehicle() {
 		return vehicle;
 	}

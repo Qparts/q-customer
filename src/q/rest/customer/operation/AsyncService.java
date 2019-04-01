@@ -1,5 +1,9 @@
 package q.rest.customer.operation;
 
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.Velocity;
+import org.apache.velocity.app.VelocityEngine;
 import q.rest.customer.helper.AppConstants;
 
 import javax.ejb.Asynchronous;
@@ -11,12 +15,18 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Transport;
+import javax.servlet.ServletContext;
+import java.io.StringWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 
 
 @Stateless
 public class AsyncService {
+
+
 
 
     @Asynchronous

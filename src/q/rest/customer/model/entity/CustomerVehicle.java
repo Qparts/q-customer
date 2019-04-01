@@ -37,6 +37,16 @@ public class CustomerVehicle implements Serializable {
     private char status;
     @Column(name = "is_default")
     private boolean defaultVehicle;
+    @Column(name = "image_attached")
+    private boolean imageAttached;
+
+    public boolean isImageAttached() {
+        return imageAttached;
+    }
+
+    public void setImageAttached(boolean imageAttached) {
+        this.imageAttached = imageAttached;
+    }
 
     public boolean isDefaultVehicle() {
         return defaultVehicle;

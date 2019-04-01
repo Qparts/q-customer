@@ -7,6 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/velocity/email/password-reset.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/velocity/email/signup.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/q_rest_customer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/q_rest_customer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/q-rest-customer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/q-rest-customer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="250" selection-start-line="250" selection-end-line="250" />
+            <state relative-caret-position="110">
+              <caret line="287" column="9" lean-forward="true" selection-start-line="287" selection-start-column="9" selection-end-line="287" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,10 +41,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java">
+        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+            <state relative-caret-position="46">
+              <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -45,28 +58,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Jsp File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>compiler.args</find>
-      <find>encoding</find>
-      <find>utf</find>
-      <find>javac</find>
-      <find>sub</find>
-      <find>customer</find>
-      <find>validC</find>
-      <find>validCustomer</find>
-      <find>getWebAppFrom</find>
-      <find>getWebAppFromS</find>
-      <find>newe</find>
-      <find>signup</find>
-      <find>Qetaa</find>
-      <find>qetaa</find>
-      <find>&quot;vehicle</find>
-      <find>prepare</find>
-      <find>address</find>
       <find>@path(&quot;address</find>
       <find>token</find>
       <find>resetPass</find>
@@ -80,6 +78,23 @@
       <find>status from</find>
       <find>social-medi</find>
       <find>social</find>
+      <find>Qetaa.com</find>
+      <find>Qetaa</find>
+      <find>qetaa</find>
+      <find>.svg</find>
+      <find>async.</find>
+      <find>https:</find>
+      <find>$</find>
+      <find>prepare</find>
+      <find>getHtm</find>
+      <find>getHtml</find>
+      <find>passwordResetLink</find>
+      <find>[Name</find>
+      <find>PASSWORD_RESET_EMAIL_TEMPLATE</find>
+      <find>s3.</find>
+      <find>vehicle</find>
+      <find>if-</find>
+      <find>vehicle-if-available</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -91,9 +106,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/DAO.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/Customer.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jboss-web.xml" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/filter/ValidApp.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/filter/Secured.java" />
@@ -102,7 +115,6 @@
         <option value="$PROJECT_DIR$/src/q/rest/customer/filter/ValidAppAgent.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/SignupModel.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/SignupModel.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/AccessToken.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/CustomerVehicle.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/AccountVerifyRequestModel.java" />
@@ -127,13 +139,23 @@
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/SysProps.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/dao/DAO.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/signup.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/velocity/signup-template.vm" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email-templates/signup-template.vm" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email-templates/signup.vm" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/velocity/velocity.properties" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/password-reset.html" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/signup.vm" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/password-reset.vm" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
       </list>
     </option>
@@ -144,16 +166,18 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="24" />
     <option name="width" value="1440" />
-    <option name="height" value="798" />
+    <option name="height" value="797" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -161,31 +185,83 @@
               <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
               <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+              <item name="operation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/web/WEB-INF/lib" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="q-rest-customer" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547734177760" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551091498384" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/email" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/class/velocity/email" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/email-templates" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="q.rest.customer.helper" />
       <recent name="q.rest.customer.filter" />
@@ -307,12 +383,17 @@
       <workItem from="1550048561803" duration="704000" />
       <workItem from="1550147028336" duration="1910000" />
       <workItem from="1550169066045" duration="183000" />
-      <workItem from="1550393172885" duration="4522000" />
+      <workItem from="1550393172885" duration="5189000" />
+      <workItem from="1550585243515" duration="301000" />
+      <workItem from="1550648836569" duration="18581000" />
+      <workItem from="1551442140634" duration="487000" />
+      <workItem from="1553797274945" duration="1856000" />
+      <workItem from="1553799171600" duration="2429000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106405000" />
+    <option name="totallyTimeSpent" value="130726000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -324,10 +405,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="798" extended-state="0" />
+    <frame x="1" y="23" width="1440" height="798" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45275036" visible="true" weight="0.3383405" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45275036" visible="true" weight="0.36337626" />
       <window_info id="Structure" order="1" sideWeight="0.5472497" side_tool="true" weight="0.32089016" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" sideWeight="0.50070524" side_tool="true" weight="0.24964234" />
@@ -337,7 +418,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
       <window_info anchor="bottom" x="21" y="307" width="1398" height="233" id="Run" order="2" weight="0.3796034" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -347,7 +428,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32863188" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.2807229" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.28045326" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32863188" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
@@ -369,38 +450,11 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/out/production/q-rest-customer/META-INF/persistence.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp" />
-    <entry file="file://$PROJECT_DIR$/q-rest-customer.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-284" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/filter/Secured.java" />
-    <entry file="jar:///srv/wildfly-14.0.1.Final/modules/system/layers/base/javax/ws/rs/api/main/jboss-jaxrs-api_2.1_spec-1.0.1.Final.jar!/javax/ws/rs/container/ContainerRequestFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/SignupModel.java" />
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/WebApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -578,12 +632,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/jboss-web.xml">
-      <provider editor-type-id="com.intellij.javaee.oss.jboss.editor.JBossWebRootProvider" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
+      <provider editor-type-id="com.intellij.javaee.oss.jboss.editor.JBossWebRootProvider" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -684,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="42" lean-forward="true" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/SysProps.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -751,54 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#767#768#0" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#896#897#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="38" column="34" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1391#1392#0" expanded="true" />
-            <element signature="e#1452#1453#0" expanded="true" />
-            <element signature="e#1504#1505#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -813,17 +812,161 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/signup.jsp" />
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/velocity.properties" />
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/password-reset.html" />
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/password-reset.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="152" column="142" lean-forward="true" selection-start-line="152" selection-start-column="142" selection-end-line="152" selection-end-column="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/signup.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="180" column="120" selection-start-line="180" selection-start-column="120" selection-end-line="180" selection-end-column="120" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#8578#8584#0#HTML" expanded="true" />
+            <element signature="e#8584#8590#0#HTML" expanded="true" />
+            <element signature="e#8590#8596#0#HTML" expanded="true" />
+            <element signature="e#8596#8602#0#HTML" expanded="true" />
+            <element signature="e#8602#8608#0#HTML" expanded="true" />
+            <element signature="e#8608#8614#0#HTML" expanded="true" />
+            <element signature="e#8614#8620#0#HTML" expanded="true" />
+            <element signature="e#8620#8626#0#HTML" expanded="true" />
+            <element signature="e#8626#8632#0#HTML" expanded="true" />
+            <element signature="e#8632#8638#0#HTML" expanded="true" />
+            <element signature="e#8638#8644#0#HTML" expanded="true" />
+            <element signature="e#8644#8650#0#HTML" expanded="true" />
+            <element signature="e#8650#8656#0#HTML" expanded="true" />
+            <element signature="e#8656#8662#0#HTML" expanded="true" />
+            <element signature="e#8662#8668#0#HTML" expanded="true" />
+            <element signature="e#8668#8674#0#HTML" expanded="true" />
+            <element signature="e#8674#8680#0#HTML" expanded="true" />
+            <element signature="e#8680#8686#0#HTML" expanded="true" />
+            <element signature="e#8686#8692#0#HTML" expanded="true" />
+            <element signature="e#8692#8698#0#HTML" expanded="true" />
+            <element signature="e#8698#8704#0#HTML" expanded="true" />
+            <element signature="e#8704#8710#0#HTML" expanded="true" />
+            <element signature="e#8710#8716#0#HTML" expanded="true" />
+            <element signature="e#8716#8722#0#HTML" expanded="true" />
+            <element signature="e#8722#8728#0#HTML" expanded="true" />
+            <element signature="e#8728#8734#0#HTML" expanded="true" />
+            <element signature="e#8734#8740#0#HTML" expanded="true" />
+            <element signature="e#8740#8746#0#HTML" expanded="true" />
+            <element signature="e#8746#8752#0#HTML" expanded="true" />
+            <element signature="e#8752#8758#0#HTML" expanded="true" />
+            <element signature="e#8758#8764#0#HTML" expanded="true" />
+            <element signature="e#8764#8770#0#HTML" expanded="true" />
+            <element signature="e#8770#8776#0#HTML" expanded="true" />
+            <element signature="e#8776#8782#0#HTML" expanded="true" />
+            <element signature="e#8782#8788#0#HTML" expanded="true" />
+            <element signature="e#8788#8794#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#10140#10146#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#p#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#table#0;n#td#0;n#tr#1;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#p#0;n#td#0;n#tr#2;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#table#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2234#2467#0" expanded="true" />
+            <element signature="e#2466#2467#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+            <element signature="e#675#676#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerVehicle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1425#1426#0" expanded="true" />
+            <element signature="e#1461#1462#0" expanded="true" />
+            <element signature="e#1520#1521#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="250" selection-start-line="250" selection-end-line="250" />
+        <state relative-caret-position="110">
+          <caret line="287" column="9" lean-forward="true" selection-start-line="287" selection-start-column="9" selection-end-line="287" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -896,6 +1039,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>org.apache.velocity:velocity-engine-core:2.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

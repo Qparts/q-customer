@@ -6,6 +6,12 @@ public class AppConstants {
     private final static String PUBLIC_VEHICLE_SERVICE = SysProps.getValue("vehiclePublicService");
     private final static String USER_SERVICE = SysProps.getValue("userService");
 
+
+    public final static String SIGNUP_EMAIL_TEMPLATE = "email/signup.vm";
+    public final static String PASSWORD_RESET_EMAIL_TEMPLATE = "email/password-reset.vm";
+
+
+
     public final static String USER_MATCH_TOKEN = USER_SERVICE + "match-token";
 
     public final static String ACCOUNT_ACTIVATION_EMAIL_SUBJECT= "Account Activation - تفعيل الحساب";
