@@ -327,7 +327,12 @@ public class CustomerApiV2 {
         customerVehicle.setCustomerId(pv.getCustomerId());
         customerVehicle.setVehicleYearId(pv.getVehicleYearId());
         customerVehicle.setVin(pv.getVin().toUpperCase().trim());
-        customerVehicle.setImageAttached(pv.getImageAttached());
+        if(pv.getImageAttached() == null){
+            customerVehicle.setImageAttached(false);
+        }
+        else{
+            customerVehicle.setImageAttached(pv.getImageAttached());
+        }
         dao.persist(customerVehicle);
         return customerVehicle;
     }
