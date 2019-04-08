@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,6 +19,18 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="585" column="64" selection-start-line="585" selection-start-column="64" selection-end-line="585" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="179">
@@ -44,8 +55,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>resetPass</find>
-      <find>activate</find>
       <find>&quot;vehicle&quot;</find>
       <find>defa</find>
       <find>isDefa</find>
@@ -74,6 +83,8 @@
       <find>vehicle</find>
       <find>Vehicle&quot;</find>
       <find>ehicle&quot;</find>
+      <find>login</find>
+      <find>login&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -161,6 +172,31 @@
             <path>
               <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
               <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
+              <item name="operation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -328,12 +364,12 @@
       <workItem from="1553799171600" duration="2429000" />
       <workItem from="1554110987124" duration="726000" />
       <workItem from="1554120823124" duration="790000" />
-      <workItem from="1554339961209" duration="2419000" />
+      <workItem from="1554339961209" duration="3836000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134661000" />
+    <option name="totallyTimeSpent" value="136078000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -345,7 +381,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="801" extended-state="1" />
+    <frame x="0" y="23" width="1440" height="801" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45275036" visible="true" weight="0.3783977" />
@@ -863,16 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="334" column="9" selection-start-line="334" selection-start-column="9" selection-end-line="334" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -905,6 +931,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="585" column="64" selection-start-line="585" selection-start-column="64" selection-end-line="585" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
