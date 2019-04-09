@@ -293,12 +293,9 @@ public class CustomerApiV2 {
     @Path("vehicle-if-available")
     public Response getOrCustomerVehicle(@HeaderParam("Authorization") String header, PublicVehicle pvModel){
         try{
-            System.out.println(11);
             if(!customerFound(pvModel.getCustomerId())) {
                 return Response.status(404).build();
             }
-            System.out.println(21);
-
             if(!validCustomerOperation(pvModel.getCustomerId(), header)) {
                 return Response.status(401).build();
             }
@@ -312,8 +309,8 @@ public class CustomerApiV2 {
             CustomerVehicle customerVehicle = createVehicle(pvModel);
             makeVehicleDefault(customerVehicle.getCustomerId(), customerVehicle.getId());
             return Response.status(200).entity(customerVehicle.getId()).build();
-
         }catch (Exception ex){
+            ex.printStackTrace();
             return Response.status(500).build();
         }
     }
