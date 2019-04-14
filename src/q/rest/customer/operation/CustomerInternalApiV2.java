@@ -10,9 +10,7 @@ import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Path("/internal/api/v2")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -51,6 +49,42 @@ public class CustomerInternalApiV2 {
         }catch (Exception ex){
             return Response.status(500).build();
         }
+    }
+
+    @Path("customer-vehicle/vin")
+    @SecuredUser
+    @PUT
+    public Response updateVin(CustomerVehicle customerVehicle){
+        try{
+            customerVehicle.setImageAttached(false);
+            dao.update(customerVehicle);
+            return Response.status(201).build();
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
+    @Path("customer-vehicles/no-vin")
+    @SecuredUser
+    @GET
+    public Response getIncompleteCustomerVehicles(){
+        try{
+            String sql = "select b from CustomerVehicle b where b.imageAttached =:value0 order by b.created asc";
+            List<CustomerVehicle> customerVehicles = dao.getJPQLParams(CustomerVehicle.class, sql, true);
+            List<Map> maps = new ArrayList<>();
+            for(CustomerVehicle customerVehicle : customerVehicles){
+                Map<String,Object> map = new HashMap<String,Object>();
+                Customer customer = dao.find(Customer.class, customerVehicle.getCustomerId());
+                map.put("customer", customer);
+                map.put("customerVehicle", customerVehicle);
+                maps.add(map);
+            }
+            return Response.status(200).entity(maps).build();
+        }
+        catch (Exception ex){
+            return Response.status(500).build();
+        }
+
     }
 
     @Path("match-token")
