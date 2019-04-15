@@ -13,6 +13,7 @@ public class AppConstants {
 
 
     public final static String USER_MATCH_TOKEN = USER_SERVICE + "match-token";
+    public static final String USER_MATCH_TOKEN_WS = USER_SERVICE + "match-token/ws";
 
     public final static String ACCOUNT_ACTIVATION_EMAIL_SUBJECT= "Account Activation - تفعيل الحساب";
     public final static String RESET_PASSWORD_EMAIL_SUBJECT = "Reset Password - إعادة تهيئة كلمة المرور";

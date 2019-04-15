@@ -67,11 +67,9 @@ public class CustomerApiV2 {
     public Response signup(@HeaderParam("Authorization")String authHeader, SignupRequestModel signupModel){
         try{
             Customer check = dao.findCondition(Customer.class, "email", signupModel.getEmail());
-
             if(null != check){
                 return Response.status(409).entity("email already exists").build();
             }
-
             Customer customer = new Customer();
             customer.setEmail(signupModel.getEmail());
             customer.setCountryId(signupModel.getCountryId());
@@ -331,6 +329,9 @@ public class CustomerApiV2 {
             customerVehicle.setImageAttached(pv.getImageAttached());
         }
         dao.persist(customerVehicle);
+        if(customerVehicle.isImageAttached()){
+            async.broadcastToNotification("noVins,"+async.getNoVinsCount());
+        }
         return customerVehicle;
     }
 
@@ -348,6 +349,9 @@ public class CustomerApiV2 {
             }
 
             CustomerVehicle cv = createVehicle(pvModel);
+            if(cv.isImageAttached()){
+                async.broadcastToNotification("noVins," + async.getNoVinsCount());
+            }
 
             if(pvModel.isDefaultVehicle()){
                 makeVehicleDefault(cv.getCustomerId(), cv.getId());
@@ -355,7 +359,6 @@ public class CustomerApiV2 {
             pvModel.setId(cv.getId());
             pvModel.setVehicle(this.getVehicleFromId(header, pvModel.getVehicleYearId()));
             return Response.status(200).entity(pvModel).build();
-
         }catch(Exception ex){
             return getServerErrorResponse();
         }

@@ -20,6 +20,9 @@ public class CustomerInternalApiV2 {
     @EJB
     private DAO dao;
 
+    @EJB
+    private AsyncService async;
+
     @SecuredUser
     @GET
     @Path("newest")
@@ -58,6 +61,7 @@ public class CustomerInternalApiV2 {
         try{
             customerVehicle.setImageAttached(false);
             dao.update(customerVehicle);
+            async.broadcastToNotification("noVins,"+async.getNoVinsCount());
             return Response.status(201).build();
         }catch (Exception ex){
             return Response.status(500).build();

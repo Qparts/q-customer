@@ -1,12 +1,11 @@
 package q.rest.customer.operation;
 
-import org.apache.velocity.Template;
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
-import org.apache.velocity.app.VelocityEngine;
+import q.rest.customer.dao.DAO;
 import q.rest.customer.helper.AppConstants;
+import q.rest.customer.operation.sockets.NotificationsEndPoint;
 
 import javax.ejb.Asynchronous;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -22,7 +21,8 @@ import java.util.Properties;
 @Stateless
 public class AsyncService {
 
-
+    @EJB
+    private DAO dao;
 
 
     @Asynchronous
@@ -48,4 +48,21 @@ public class AsyncService {
             ex.printStackTrace();
         }
     }
+
+    public int getNoVinsCount() {
+        String sql = "select count(b) from CustomerVehicle b where b.imageAttached =:value0";
+        Number number = dao.findJPQLParams(Number.class, sql , true);
+        if(number == null){
+            number = 0;
+        }
+        return number.intValue();
+    }
+
+    @Asynchronous
+    public void broadcastToNotification(String message){
+        NotificationsEndPoint.broadcast(message);
+
+    }
+
+
 }
