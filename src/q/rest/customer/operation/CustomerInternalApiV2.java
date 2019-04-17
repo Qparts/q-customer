@@ -1,15 +1,22 @@
 package q.rest.customer.operation;
 
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
 import q.rest.customer.dao.DAO;
 import q.rest.customer.filter.SecuredCustomer;
 import q.rest.customer.filter.SecuredUser;
+import q.rest.customer.helper.AppConstants;
 import q.rest.customer.helper.Helper;
 import q.rest.customer.model.entity.*;
 
 import javax.ejb.EJB;
+import javax.servlet.ServletContext;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.StringWriter;
 import java.util.*;
 
 @Path("/internal/api/v2")
@@ -22,6 +29,9 @@ public class CustomerInternalApiV2 {
 
     @EJB
     private AsyncService async;
+
+    @Context
+    private ServletContext context;
 
     @SecuredUser
     @GET
@@ -173,6 +183,29 @@ public class CustomerInternalApiV2 {
         }
     }
 
+
+    @SecuredUser
+    @Path("email/quotation-ready")
+    @POST
+    public Response sendQuotationReadyEmail(Map<String,Object> map){
+        try{
+            int quotationId = (Integer) map.get("quotationId");
+            long customerId = ((Number) map.get("customerId")).longValue();
+            Customer customer = dao.find(Customer.class, customerId);
+            String quotationLink= AppConstants.getQuotationReadyLink(quotationId, customer.getEmail());
+            String firstName = customer.getFirstName();
+            Map<String,Object> vmap = new HashMap<>();
+            vmap.put("quotationLink", quotationLink);
+            vmap.put("firstName", firstName);
+            vmap.put("quotationId", quotationId);
+            String body = getHtmlTemplate(AppConstants.QUOTATION_READY_EMAIL_TEMPLATE, vmap);
+            async.sendHtmlEmail(customer.getEmail(), AppConstants.getQuotationReadyEmailSubject(quotationId), body);
+            return Response.status(200).build();
+        }catch(Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
     private Customer getCustomerFromAuthHeader(String authHeader) {
         try {
             String[] values = authHeader.split("&&");
@@ -193,5 +226,24 @@ public class CustomerInternalApiV2 {
             throw new NotAuthorizedException("Unauthorized Access");
         }
         return webApp;
+    }
+
+
+
+
+    public String getHtmlTemplate(String templateName, Map<String,Object> map){
+        Properties p = new Properties();
+        p.setProperty("resource.loader", "webapp");
+        p.setProperty("webapp.resource.loader.class", "org.apache.velocity.tools.view.WebappResourceLoader");
+        p.setProperty("webapp.resource.loader.path", "/WEB-INF/velocity/");
+        VelocityEngine engine = new VelocityEngine(p);
+        engine.setApplicationAttribute("javax.servlet.ServletContext", context);
+        engine.init();
+        Template template = engine.getTemplate(templateName);
+        VelocityContext velocityContext = new VelocityContext();
+        map.forEach((k,v) -> velocityContext.put(k,v));
+        StringWriter writer = new StringWriter();
+        template.merge(velocityContext, writer);
+        return writer.toString();
     }
 }

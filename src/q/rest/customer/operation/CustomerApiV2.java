@@ -41,9 +41,10 @@ public class CustomerApiV2 {
     @Produces(MediaType.TEXT_HTML)
     public Response testPasswordHtml(){
         Map<String,Object> vmap = new HashMap<>();
-        vmap.put("passwordResetLink", "http://somelink.com");
         vmap.put("firstName", "Fareed");
-        String body = this.getHtmlTemplate(AppConstants.PASSWORD_RESET_EMAIL_TEMPLATE, vmap);
+        vmap.put("quotationLink", "http://somelink.com");
+        vmap.put("quotationId", 50001);
+        String body = this.getHtmlTemplate(AppConstants.QUOTATION_READY_EMAIL_TEMPLATE, vmap);
         return Response.status(200).entity(body).build();
     }
 
