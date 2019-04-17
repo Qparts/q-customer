@@ -37,10 +37,12 @@ public class AsyncService {
                 return new PasswordAuthentication(AppConstants.EMAIL_ADDRESS, AppConstants.PASSWORD);
             }
         });
+        System.out.println("session is available");
         properties.setProperty("mail.smtp.host", AppConstants.SMTP_SERVER);
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.starttls.enable", "true");
+        System.out.println("trying now");
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(AppConstants.EMAIL_ADDRESS));
