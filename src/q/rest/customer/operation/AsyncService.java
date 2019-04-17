@@ -27,6 +27,10 @@ public class AsyncService {
 
     @Asynchronous
     public void sendHtmlEmail(String email, String subject, String body) {
+        System.out.println("========");
+        System.out.println("sending an email to " + email);
+        System.out.println("subject is " + subject);
+        System.out.println("========");
         Properties properties = System.getProperties();
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
