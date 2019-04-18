@@ -70,6 +70,7 @@ public class CustomerInternalApiV2 {
     public Response updateVin(CustomerVehicle customerVehicle){
         try{
             customerVehicle.setImageAttached(false);
+            customerVehicle.setVin(customerVehicle.getVin().toUpperCase().trim());
             dao.update(customerVehicle);
             async.broadcastToNotification("noVins,"+async.getNoVinsCount());
             return Response.status(201).build();

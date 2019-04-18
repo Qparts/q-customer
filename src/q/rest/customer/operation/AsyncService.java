@@ -27,22 +27,16 @@ public class AsyncService {
 
     @Asynchronous
     public void sendHtmlEmail(String email, String subject, String body) {
-        System.out.println("========");
-        System.out.println("sending an email to " + email);
-        System.out.println("subject is " + subject);
-        System.out.println("========");
         Properties properties = System.getProperties();
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(AppConstants.EMAIL_ADDRESS, AppConstants.PASSWORD);
             }
         });
-        System.out.println("session is available");
         properties.setProperty("mail.smtp.host", AppConstants.SMTP_SERVER);
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.starttls.enable", "true");
-        System.out.println("trying now");
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(AppConstants.EMAIL_ADDRESS));
