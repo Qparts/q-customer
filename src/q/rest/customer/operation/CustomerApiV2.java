@@ -342,25 +342,30 @@ public class CustomerApiV2 {
     @Path("vehicle")
     public Response addCustomerVehicle(@HeaderParam("Authorization") String header, PublicVehicle pvModel){
         try{
+            System.out.println(1);
             if(!customerFound(pvModel.getCustomerId())) {
                 return Response.status(404).build();
             }
             if(!validCustomerOperation(pvModel.getCustomerId(), header)) {
                 return Response.status(401).build();
             }
-
+            System.out.println(2);
             CustomerVehicle cv = createVehicle(pvModel);
             if(cv.isImageAttached()){
                 async.broadcastToNotification("noVins," + async.getNoVinsCount());
             }
-
+            System.out.println(3);
             if(pvModel.isDefaultVehicle()){
                 makeVehicleDefault(cv.getCustomerId(), cv.getId());
             }
+            System.out.println(4);
             pvModel.setId(cv.getId());
+            System.out.println(5);
             pvModel.setVehicle(this.getVehicleFromId(header, pvModel.getVehicleYearId()));
+            System.out.println(6);
             return Response.status(200).entity(pvModel).build();
         }catch(Exception ex){
+            ex.printStackTrace();
             return getServerErrorResponse();
         }
     }

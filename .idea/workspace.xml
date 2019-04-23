@@ -7,8 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,50 +18,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="29" column="35" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="29" selection-end-column="35" />
+            <state relative-caret-position="572">
+              <caret line="364" column="32" selection-start-line="364" selection-start-column="32" selection-end-line="364" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="107" column="5" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/quotation-ready.vm">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="145" column="174" selection-start-line="145" selection-start-column="174" selection-end-line="145" selection-end-column="174" />
-              <folding>
-                <element signature="n#style#0;n#td#0;n#tr#3;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,8 +44,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>qetaa</find>
-      <find>.svg</find>
       <find>async.</find>
       <find>https:</find>
       <find>prepare</find>
@@ -99,7 +61,6 @@
       <find>login&quot;</find>
       <find>if-n</find>
       <find>no</find>
-      <find>vehicle</find>
       <find>vehicle&quot;</find>
       <find>if-ex</find>
       <find>parta</find>
@@ -110,6 +71,9 @@
       <find>tem</find>
       <find>signiup</find>
       <find>update</find>
+      <find>url</find>
+      <find>vehicle</find>
+      <find>&quot;vehicle&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -167,11 +131,11 @@
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/NotificationsEndPoint.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/signup.vm" />
         <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/quotation-ready.vm" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
       </list>
     </option>
   </component>
@@ -191,6 +155,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,13 +179,6 @@
               <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="customer" type="462c0819:PsiDirectoryNode" />
-              <item name="helper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
               <item name="operation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -232,7 +190,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -248,7 +205,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555599905984" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555603546083" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -398,12 +355,14 @@
       <workItem from="1554120823124" duration="790000" />
       <workItem from="1554339961209" duration="11284000" />
       <workItem from="1555418782351" duration="2561000" />
-      <workItem from="1555495078300" duration="8475000" />
+      <workItem from="1555495078300" duration="9384000" />
+      <workItem from="1555927629355" duration="1404000" />
+      <workItem from="1556017881556" duration="53000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154562000" />
+    <option name="totallyTimeSpent" value="156928000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -418,7 +377,7 @@
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45275036" visible="true" weight="0.3783977" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45275036" visible="true" weight="0.38340485" />
       <window_info id="Structure" order="1" sideWeight="0.5472497" side_tool="true" weight="0.32089016" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" sideWeight="0.50070524" side_tool="true" weight="0.24964234" />
@@ -429,7 +388,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" x="21" y="307" width="1398" height="233" id="Run" order="2" visible="true" weight="0.3787234" />
+      <window_info anchor="bottom" x="21" y="307" width="1398" height="233" id="Run" order="2" weight="0.3787234" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -876,16 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="107" column="5" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
@@ -895,8 +844,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
+        <state relative-caret-position="285">
           <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="67" column="16" lean-forward="true" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -907,26 +866,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="145" column="174" selection-start-line="145" selection-start-column="174" selection-end-line="145" selection-end-column="174" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#3;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="29" column="35" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="29" selection-end-column="35" />
+        <state relative-caret-position="256">
+          <caret line="107" column="5" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+        <state relative-caret-position="572">
+          <caret line="364" column="32" selection-start-line="364" selection-start-column="32" selection-end-line="364" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
