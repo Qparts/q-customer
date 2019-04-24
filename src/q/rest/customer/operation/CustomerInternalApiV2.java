@@ -8,6 +8,7 @@ import q.rest.customer.filter.SecuredCustomer;
 import q.rest.customer.filter.SecuredUser;
 import q.rest.customer.helper.AppConstants;
 import q.rest.customer.helper.Helper;
+import q.rest.customer.model.contract.WireTransferEmailRequest;
 import q.rest.customer.model.entity.*;
 
 import javax.ejb.EJB;
@@ -185,12 +186,49 @@ public class CustomerInternalApiV2 {
     }
 
 
+    @SecuredCustomer
+    @POST
+    @Path("email/wire-transfer")
+    public Response sendWireTransferEmail(WireTransferEmailRequest wire){
+        try{
+            Map<String,Object> vmap = new HashMap<>();
+            Customer customer = dao.find(Customer.class, wire.getCustomerId());
+            vmap.put("firstName", customer.getFirstName());
+            vmap.put("orderLink", "https://www.q.parts");
+            vmap.put("cartId", wire.getCartId());
+            vmap.put("wireTransferId", wire.getWireTransferId());
+            vmap.put("amount", wire.getAmount());
+            List<Map> banks = new ArrayList<>();
+            for(Map<String,Object> map : wire.getBanks()){
+                String account = (String) map.get("account");
+                String owner = (String) map.get("owner");
+                String iban = (String) map.get("iban");
+                String name = (String) map.get("name");
+
+                Map<String,Object> bankMap = new HashMap<>();
+                bankMap.put("name", name);
+                bankMap.put("accountNo", account);
+                bankMap.put("accountName", owner);
+                bankMap.put("iban", iban);
+                banks.add(bankMap);
+            }
+            vmap.put("banks", banks);
+            String body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_EMAIL_TEMPLATE, vmap);
+            async.sendHtmlEmail(customer.getEmail(), AppConstants.getWireTransferRequestEmailSubject(wire.getCartId()), body);
+            return Response.status(200).build();
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
+
+
     @SecuredUser
     @Path("email/quotation-ready")
     @POST
     public Response sendQuotationReadyEmail(Map<String,Object> map){
         try{
-            int quotationId = (Integer) map.get("quotationId");
+            long quotationId = ((Number) map.get("quotationId")).longValue();
             long customerId = ((Number) map.get("customerId")).longValue();
             Customer customer = dao.find(Customer.class, customerId);
             String quotationLink= AppConstants.getQuotationReadyLink(quotationId, customer.getEmail());

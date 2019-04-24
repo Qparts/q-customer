@@ -49,6 +49,42 @@ public class CustomerApiV2 {
     }
 
 
+    @GET
+    @Path("test2")
+    @Produces(MediaType.TEXT_HTML)
+    public Response testPasswordHtml2(){
+        Map<String,Object> vmap = new HashMap<>();
+        vmap.put("firstName", "Fareed");
+        vmap.put("orderLink", "http://somelink.com");
+        vmap.put("cartId", 50001);
+
+        Map<String,String> bankMap1 =new HashMap<>();
+        bankMap1.put("name", "Rajehi");
+        bankMap1.put("iban", "Rajehi IBAN");
+        bankMap1.put("accountNo", "Account Number");
+        bankMap1.put("accountName", "Account Name");
+
+
+        Map<String, String> bankMap2 = new HashMap<>();
+        bankMap2.put("name", "Ahli");
+        bankMap2.put("iban", "Ahli IBAN");
+        bankMap2.put("accountNo", "Account Number");
+        bankMap2.put("accountName", "Account Name");
+
+        List<Map> banks = new ArrayList<>();
+        banks.add(bankMap1);
+        banks.add(bankMap2);
+        vmap.put("banks", banks);
+
+
+        String body = this.getHtmlTemplate(AppConstants.WIRE_TRANSFER_EMAIL_TEMPLATE, vmap);
+        return Response.status(200).entity(body).build();
+    }
+
+
+
+
+
     @ValidApp
     @POST
     @Path("logout")
@@ -141,7 +177,6 @@ public class CustomerApiV2 {
             return getServerErrorResponse();
         }
     }
-
 
     @ValidApp
     @POST
