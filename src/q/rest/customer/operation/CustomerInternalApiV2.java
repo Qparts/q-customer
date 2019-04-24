@@ -197,7 +197,7 @@ public class CustomerInternalApiV2 {
             vmap.put("orderLink", "https://www.q.parts");
             vmap.put("cartId", wire.getCartId());
             vmap.put("wireTransferId", wire.getWireTransferId());
-            vmap.put("amount", wire.getAmount());
+            vmap.put("amount", Helper.round(wire.getAmount(), 2));
             List<Map> banks = new ArrayList<>();
             for(Map<String,Object> map : wire.getBanks()){
                 String account = (String) map.get("account");
