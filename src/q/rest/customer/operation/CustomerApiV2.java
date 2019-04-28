@@ -48,7 +48,6 @@ public class CustomerApiV2 {
         return Response.status(200).entity(body).build();
     }
 
-
     @GET
     @Path("test2")
     @Produces(MediaType.TEXT_HTML)
@@ -159,6 +158,28 @@ public class CustomerApiV2 {
             return getSuccessResponseWithLogin(authHeader, c , webApp);
         }catch(Exception ex){
             return getServerErrorResponse();
+        }
+    }
+
+
+    @ValidApp
+    @POST
+    @Path("code-login")
+    public Response codeLogin(@HeaderParam("Authorization") String header, CredentialsModel cred){
+        try{
+            Customer customer = dao.findCondition(Customer.class, "email", cred.getEmail());
+            if(customer == null){
+                return getResourceNotFoundResponse("Invalid credentials");
+            }
+            String sql = "select b from CodeLogin b where b.customerId = :value0 and b.code = :value1 " +
+                    " and b.expire > :value2 ";
+            CodeLogin codeLogin = dao.findJPQLParams(CodeLogin.class, sql , customer.getId(), cred.getCode(), new Date());
+            if(codeLogin == null){
+                return getResourceNotFoundResponse("Invalid credentials");
+            }
+            return getSuccessResponseWithLogin(header, customer , getWebAppFromAuthHeader(header));
+        }catch (Exception ex){
+            return Response.status(500).build();
         }
     }
 

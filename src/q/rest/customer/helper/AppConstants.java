@@ -34,8 +34,8 @@ public class AppConstants {
     public final static String getActivationLink(String code, String email) {
         return WEBSITE_BASE_URL + "activate-email?code=" + code + "&email=" + email;
     }
-    public final static String getQuotationReadyLink(long quotationId, String email) {
-        return WEBSITE_BASE_URL + "setting/quotations?panel=replied&id=" + quotationId + "&email=" + email;
+    public final static String getQuotationReadyLink(long quotationId, String email, String code) {
+        return WEBSITE_BASE_URL + "setting/quotations?panel=replied&id=" + quotationId + "&code=" + code + "&email=" + email;
     }
 
     public final static String getPasswordResetLink(String code, String email){

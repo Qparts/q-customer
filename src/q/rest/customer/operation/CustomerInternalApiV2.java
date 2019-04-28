@@ -231,7 +231,8 @@ public class CustomerInternalApiV2 {
             long quotationId = ((Number) map.get("quotationId")).longValue();
             long customerId = ((Number) map.get("customerId")).longValue();
             Customer customer = dao.find(Customer.class, customerId);
-            String quotationLink= AppConstants.getQuotationReadyLink(quotationId, customer.getEmail());
+            String code = generateCodeLogin(customerId);
+            String quotationLink= AppConstants.getQuotationReadyLink(quotationId, customer.getEmail(), code);
             String firstName = customer.getFirstName();
             Map<String,Object> vmap = new HashMap<>();
             vmap.put("quotationLink", quotationLink);
@@ -244,6 +245,28 @@ public class CustomerInternalApiV2 {
             return Response.status(500).build();
         }
     }
+
+
+    private String generateCodeLogin(long customerId) {
+        CodeLogin cl = new CodeLogin();
+        boolean available = false;
+        String code = "";
+        do {
+            code = Helper.getRandomSaltString(20);
+            String jpql = "select b from CodeLogin b where b.code = :value0 and b.expire >= :value1";
+            List<CodeLogin> l = dao.getJPQLParams(CodeLogin.class, jpql, code, new Date());
+            if (l.isEmpty()) {
+                available = true;
+            }
+        } while (!available);
+        cl.setCode(code);
+        cl.setCustomerId(customerId);
+        cl.setCreated(new Date());
+        cl.setExpire(Helper.addMinutes(cl.getCreated(), 60 * 24 * 5));
+        dao.persist(cl);
+        return code;
+    }
+
 
     private Customer getCustomerFromAuthHeader(String authHeader) {
         try {
