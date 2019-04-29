@@ -103,6 +103,26 @@ public class CustomerInternalApiV2 {
 
     }
 
+
+
+    @POST
+    @Path("match-token/ws")
+    public Response matchTokenWs(Map<String, Object> map) {
+        try {
+            String token = ((String) map.get("token"));
+            Integer customerId = ((Number) map.get("customerId")).intValue();
+            String jpql = "select b from AccessToken b where b.customerId = :value0 and b.status = :value1 and b.token = :value2 and b.expire > :value3";
+            List<AccessToken> l = dao.getJPQLParams(AccessToken.class, jpql, customerId, 'A', token, new Date());
+            if (!l.isEmpty()) {
+                return Response.status(200).build();
+            } else {
+                throw new Exception();
+            }
+        }catch(Exception ex) {
+            return Response.status(403).build();// unauthorized
+        }
+    }
+
     @Path("match-token")
     @SecuredCustomer
     @POST
