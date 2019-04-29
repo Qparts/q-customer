@@ -110,7 +110,7 @@ public class CustomerInternalApiV2 {
     public Response matchTokenWs(Map<String, Object> map) {
         try {
             String token = ((String) map.get("token"));
-            Integer customerId = ((Number) map.get("customerId")).intValue();
+            Long customerId = ((Number) map.get("customerId")).longValue();
             String jpql = "select b from AccessToken b where b.customerId = :value0 and b.status = :value1 and b.token = :value2 and b.expire > :value3";
             List<AccessToken> l = dao.getJPQLParams(AccessToken.class, jpql, customerId, 'A', token, new Date());
             if (!l.isEmpty()) {
