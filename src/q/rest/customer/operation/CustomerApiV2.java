@@ -175,7 +175,7 @@ public class CustomerApiV2 {
                     " and b.expire > :value2 ";
             CodeLogin codeLogin = dao.findJPQLParams(CodeLogin.class, sql , customer.getId(), cred.getCode(), new Date());
             if(codeLogin == null){
-                return getResourceNotFoundResponse("Invalid credentials");
+                return Response.status(403).entity("Invalid credentials").build();
             }
             return getSuccessResponseWithLogin(header, customer , getWebAppFromAuthHeader(header));
         }catch (Exception ex){
