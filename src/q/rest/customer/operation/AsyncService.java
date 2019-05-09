@@ -2,6 +2,7 @@ package q.rest.customer.operation;
 
 import q.rest.customer.dao.DAO;
 import q.rest.customer.helper.AppConstants;
+import q.rest.customer.operation.sockets.CustomerNotificationEndPoint;
 import q.rest.customer.operation.sockets.NotificationsEndPoint;
 
 import javax.ejb.Asynchronous;
@@ -62,6 +63,11 @@ public class AsyncService {
     public void broadcastToNotification(String message){
         NotificationsEndPoint.broadcast(message);
 
+    }
+
+    @Asynchronous
+    public void sendToCusotmerNotification(String message){
+        CustomerNotificationEndPoint.broadcast(message);
     }
 
 

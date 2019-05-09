@@ -1,5 +1,8 @@
 package q.rest.customer.operation;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.cliftonlabs.json_simple.JsonObject;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -260,6 +263,11 @@ public class CustomerInternalApiV2 {
             vmap.put("quotationId", quotationId);
             String body = getHtmlTemplate(AppConstants.QUOTATION_READY_EMAIL_TEMPLATE, vmap);
             async.sendHtmlEmail(customer.getEmail(), AppConstants.getQuotationReadyEmailSubject(quotationId), body);
+            Map<String,Object> nmap= new HashMap<String, Object>();
+            nmap.put("purpose", "quotationComplete");
+            nmap.put("url", quotationLink);
+            String objectMapper = new ObjectMapper().writeValueAsString(nmap);
+            async.sendToCusotmerNotification(objectMapper);
             return Response.status(200).build();
         }catch(Exception ex){
             return Response.status(500).build();
