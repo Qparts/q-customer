@@ -2,6 +2,7 @@ package q.rest.customer.operation;
 
 import q.rest.customer.dao.DAO;
 import q.rest.customer.helper.AppConstants;
+import q.rest.customer.model.entity.EmailSent;
 import q.rest.customer.operation.sockets.CustomerNotificationEndPoint;
 import q.rest.customer.operation.sockets.NotificationsEndPoint;
 
@@ -15,6 +16,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Transport;
+import java.util.Date;
 import java.util.Properties;
 
 
@@ -27,7 +29,7 @@ public class AsyncService {
 
 
     @Asynchronous
-    public void sendHtmlEmail(String email, String subject, String body) {
+    public void sendHtmlEmail(EmailSent emailSent, String email, String subject, String body) {
         Properties properties = System.getProperties();
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -45,9 +47,16 @@ public class AsyncService {
             message.setSubject(subject);
             message.setContent(body, "text/html; charset=utf-8");
             Transport.send(message);
+            createEmailSentObject(emailSent, 'S');
         } catch (MessagingException ex) {
-            ex.printStackTrace();
+            createEmailSentObject(emailSent, 'F');
         }
+    }
+
+    private void createEmailSentObject(EmailSent emailSent, char status){
+        emailSent.setCreated(new Date());
+        emailSent.setStatus(status);
+        dao.persist(emailSent);
     }
 
     public int getNoVinsCount() {

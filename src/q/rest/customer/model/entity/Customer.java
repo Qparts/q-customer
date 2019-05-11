@@ -45,6 +45,16 @@ public class Customer implements Serializable {
     private List<CustomerVehicle> vehicles;
     @Transient
     private List<CustomerAddress> addresses;
+    @Transient
+    private List<EmailSent> emailsSent;
+
+    public List<EmailSent> getEmailsSent() {
+        return emailsSent;
+    }
+
+    public void setEmailsSent(List<EmailSent> emailsSent) {
+        this.emailsSent = emailsSent;
+    }
 
     public boolean isSmsActive() {
         return smsActive;

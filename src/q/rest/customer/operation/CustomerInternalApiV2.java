@@ -187,8 +187,10 @@ public class CustomerInternalApiV2 {
     private void prepareCustomer(Customer customer){
         List<CustomerAddress> addresses = dao.getCondition(CustomerAddress.class, "customerId", customer.getId());
         List<CustomerVehicle> vehicles = dao.getCondition(CustomerVehicle.class, "customerId", customer.getId());
+        List<EmailSent> emails = dao.getCondition(EmailSent.class, "customerId", customer.getId());
         customer.setAddresses(addresses);
         customer.setVehicles(vehicles);
+        customer.setEmailsSent(emails);
     }
 
 
@@ -237,7 +239,15 @@ public class CustomerInternalApiV2 {
             }
             vmap.put("banks", banks);
             String body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_EMAIL_TEMPLATE, vmap);
-            async.sendHtmlEmail(customer.getEmail(), AppConstants.getWireTransferRequestEmailSubject(wire.getCartId()), body);
+
+            EmailSent emailSent = new EmailSent();
+            emailSent.setEmail(customer.getEmail());
+            emailSent.setPurpose("Wire Transfer");
+            emailSent.setCreatedBy(0);
+            emailSent.setCartId(wire.getCartId());
+            emailSent.setCustomerId(customer.getId());
+            emailSent.setWireId(wire.getWireTransferId());
+            async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.getWireTransferRequestEmailSubject(wire.getCartId()), body);
             return Response.status(200).build();
         }catch (Exception ex){
             return Response.status(500).build();
@@ -262,7 +272,15 @@ public class CustomerInternalApiV2 {
             vmap.put("firstName", firstName);
             vmap.put("quotationId", quotationId);
             String body = getHtmlTemplate(AppConstants.QUOTATION_READY_EMAIL_TEMPLATE, vmap);
-            async.sendHtmlEmail(customer.getEmail(), AppConstants.getQuotationReadyEmailSubject(quotationId), body);
+
+            EmailSent emailSent = new EmailSent();
+            emailSent.setEmail(customer.getEmail());
+            emailSent.setPurpose("Quotation Ready");
+            emailSent.setCreatedBy(0);
+            emailSent.setCustomerId(customer.getId());
+            emailSent.setQuotationId(quotationId);
+
+            async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.getQuotationReadyEmailSubject(quotationId), body);
             Map<String,Object> nmap= new HashMap<String, Object>();
             nmap.put("purpose", "quotationComplete");
             nmap.put("url", quotationLink);

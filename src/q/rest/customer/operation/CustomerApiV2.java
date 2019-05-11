@@ -125,7 +125,12 @@ public class CustomerApiV2 {
             Map<String,Object> vmap = new HashMap<>();
             vmap.put("activationLink", activationLink);
             String body = getHtmlTemplate(AppConstants.SIGNUP_EMAIL_TEMPLATE, vmap);
-            async.sendHtmlEmail(customer.getEmail(), AppConstants.ACCOUNT_ACTIVATION_EMAIL_SUBJECT, body);
+            EmailSent emailSent = new EmailSent();
+            emailSent.setEmail(customer.getEmail());
+            emailSent.setPurpose("Signup Activation");
+            emailSent.setCreatedBy(0);
+            emailSent.setCustomerId(customer.getId());
+            async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.ACCOUNT_ACTIVATION_EMAIL_SUBJECT, body);
             //send back login object
             Map<String,Object> map = this.getLoginObject(authHeader, customer, this.getWebAppFromAuthHeader(authHeader));
             return Response.status(202).entity(map).build();
@@ -133,6 +138,8 @@ public class CustomerApiV2 {
             return getServerErrorResponse();
         }
     }
+
+
 
     @ValidApp
     @POST
@@ -213,7 +220,12 @@ public class CustomerApiV2 {
                 vmap.put("passwordResetLink", activationLink);
                 vmap.put("firstName", customer.getFirstName());
                 String body = getHtmlTemplate(AppConstants.PASSWORD_RESET_EMAIL_TEMPLATE , vmap);
-                async.sendHtmlEmail(email, AppConstants.RESET_PASSWORD_EMAIL_SUBJECT, body);
+                EmailSent emailSent = new EmailSent();
+                emailSent.setEmail(customer.getEmail());
+                emailSent.setPurpose("Reset Password");
+                emailSent.setCreatedBy(0);
+                emailSent.setCustomerId(customer.getId());
+                async.sendHtmlEmail(emailSent, email, AppConstants.RESET_PASSWORD_EMAIL_SUBJECT, body);
             }
             return Response.status(200).build();
         } catch (Exception ex){
