@@ -256,6 +256,18 @@ public class CustomerInternalApiV2 {
         }
     }
 
+    @SecuredUser
+    @Path("address")
+    @POST
+    public Response createAddress(CustomerAddress address){
+        try{
+            address.setCreated(new Date());
+            dao.persist(address);
+            return Response.status(201).build();
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
 
 
     @SecuredUser
