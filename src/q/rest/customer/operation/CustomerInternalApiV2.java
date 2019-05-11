@@ -229,9 +229,11 @@ public class CustomerInternalApiV2 {
                 String owner = (String) map.get("owner");
                 String iban = (String) map.get("iban");
                 String name = (String) map.get("name");
+                String nameAr = (String) map.get("nameAr");
 
                 Map<String,Object> bankMap = new HashMap<>();
                 bankMap.put("name", name);
+                bankMap.put("nameAr", nameAr);
                 bankMap.put("accountNo", account);
                 bankMap.put("accountName", owner);
                 bankMap.put("iban", iban);

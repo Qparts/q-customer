@@ -143,9 +143,23 @@
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                     <tr>
                         <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
-                            <h1 style="margin: 0 0 10px; font-size: 25px; line-height: 30px; color: #37363c; font-weight: normal;">Hi $firstName, Thank you for ordering from us!</h1>
+                            <h1 style="margin: 0 0 10px; font-size: 25px; line-height: 30px; color: #37363c; font-weight: normal;">Hi $firstName</h1>
+                        </td>
+                        <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;" dir="rtl">
+                            <h1 style="margin: 0 0 10px; font-size: 25px; line-height: 30px; color: #37363c; font-weight: normal;"> مرحبا $firstName </h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                            <h1 style="margin: 0 0 10px; font-size: 20px; line-height: 30px; color: #37363c; font-weight: normal;">Thanks for ordering from us!</h1>
                             <p style="margin: 0 0 10px;">
                                 We will process your cart No. $cartId after you transfer the amount to our account. Please view our bank accounts information below:
+                            </p>
+                        </td>
+                        <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;" dir="rtl">
+                            <h1 style="margin: 0 0 10px; font-size: 25px; line-height: 30px; color: #37363c; font-weight: normal;">شكرا لطلبكم من موقعنا</h1>
+                            <p style="margin: 0 0 10px;">
+                                سوف نقوم بانهاء اجراءات طلبكم رقم $cartId  بعد ايداعكم للمبلغ في حسابنا. الرجاء الإطلاع على حساباتنا البنكية ادناه:
                             </p>
                         </td>
                     </tr>
@@ -157,25 +171,38 @@
                                 Transfer Request # $wireTransferId
                             </p>
                         </td>
+                        <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;" dir="rtl">
+                            <h1 style="font-size: 20px; color: #ed4036; font-weight: normal;">المبلغ: <span style="font-size: 20px; color: #555555; font-weight: normal;"> SR $amount  </span></span></h1>
+                            <p style="margin: 0 0 10px; font-size: 10pt">
+                                رقم طلب الإيداع # $wireTransferId
+                            </p>
+                        </td>
                     </tr>
 
                     <tr>
-                        <td>
+                        <td colspan="2">
                         #foreach ($bank in $banks)
-                            <div style="padding: 0 0 0 20px; font-family: sans-serif; font-size: 15px;">
-                                <h1 style="font-size: 20px; color: #ed4036; font-weight: normal;">$bank.name</h1>
+                            <div style="padding: 0 0 0 20px; font-family: sans-serif; font-size: 15px;" align="center">
+                                <h1 style="font-size: 20px; color: #ed4036; font-weight: normal;">$bank.name - $bank.nameAr</h1>
                             </div>
                             <div style="padding: 0 20px;">
                             <table role="presentation" cellspacing="0" cellpadding="0" border="1" width="100%" style="border: 1px solid #DDDDDD; border-radius: 10px">
                                 <tr>
-                                    <td style="padding: 0 0 0 20px; font-family: sans-serif; font-size: 15px; color: #555555; width: 30%">
-                                        <p style="margin: 3px">
+                                    <td style="padding: 0 0 0 20px; font-family: sans-serif; font-size: 15px; color: #555555; width: 25%">
+                                        <p style="margin: 3px;">
                                             Account No.
                                         </p>
                                     </td>
                                     <td style="padding: 0 0 0 20px; font-family: sans-serif; font-size: 15px; color: #555555;">
+                                        <div align="center">
+                                            <p style="margin: 3px;">
+                                                $bank.accountNo
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 0 20px 0 0; font-family: sans-serif; font-size: 15px; color: #555555; width: 25%" dir="rtl">
                                         <p style="margin: 3px">
-                                            $bank.accountNo
+                                            رقم الحساب
                                         </p>
                                     </td>
                                 </tr>
@@ -186,8 +213,15 @@
                                         </p>
                                     </td>
                                     <td style="padding: 0 0 0 20px; font-family: sans-serif; font-size: 15px; color: #555555;">
+                                        <div align="center">
+                                            <p style="margin: 3px">
+                                                $bank.iban
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 0 20px 0 0; font-family: sans-serif; font-size: 15px; color: #555555;" dir="rtl">
                                         <p style="margin: 3px">
-                                            $bank.iban
+                                            ايبان
                                         </p>
                                     </td>
                                 </tr>
@@ -198,8 +232,15 @@
                                         </p>
                                     </td>
                                     <td style="padding: 0 0 0 20px; font-family: sans-serif; font-size: 15px; color: #555555;">
+                                        <div align="center">
+                                            <p style="margin: 3px">
+                                                $bank.accountName
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 0 20px 0 0; font-family: sans-serif; font-size: 15px; color: #555555;" dir="rtl">
                                         <p style="margin: 3px">
-                                            $bank.accountName
+                                            مالك الحساب
                                         </p>
                                     </td>
                                 </tr>
@@ -227,6 +268,11 @@
                                 Our customer service represtative will contact you shortly.
                             </p>
                         </td>
+                        <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;" dir="rtl">
+                            <p style="margin: 0 0 10px;">
+                                سيقوم مندوب خدمة العملاء لدينا بالإتصال بكم قريبا
+                            </p>
+                        </td>
                     </tr>
 
                     <tr>
@@ -235,11 +281,12 @@
                                 Thank you for ordering from <a href="https://www.q.parts/" target="_blank" style="text-decoration:none;color:#ed4036">Q.parts</a>,
                             </p>
                         </td>
+                        <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;" dir="rtl">
+                            <p style="margin: 0 0 10px;">
+                                شكرا لطلبكم من <a href="https://www.q.parts/" target="_blank" style="text-decoration:none;color:#ed4036">كيو.بارتس</a>,
+                            </p>
+                        </td>
                     </tr>
-
-
-
-
                     <tr style="display: none;">
                         <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; border-top: 5px solid #f7f7f7;">
                             <p style="margin: 0 0 10px;">

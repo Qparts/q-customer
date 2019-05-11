@@ -39,7 +39,7 @@ public class CustomerApiV2 {
     @GET
     @Path("test")
     @Produces(MediaType.TEXT_HTML)
-    public Response testPasswordHtml(){
+    public Response testQuotationReadyHtml(){
         Map<String,Object> vmap = new HashMap<>();
         vmap.put("firstName", "Fareed");
         vmap.put("quotationLink", "http://somelink.com");
@@ -51,14 +51,17 @@ public class CustomerApiV2 {
     @GET
     @Path("test2")
     @Produces(MediaType.TEXT_HTML)
-    public Response testPasswordHtml2(){
+    public Response testWireTransferHtml(){
         Map<String,Object> vmap = new HashMap<>();
         vmap.put("firstName", "Fareed");
         vmap.put("orderLink", "http://somelink.com");
         vmap.put("cartId", 50001);
+        vmap.put("amount", 2234);
+        vmap.put("wireTransferId", 5123123);
 
         Map<String,String> bankMap1 =new HashMap<>();
         bankMap1.put("name", "Rajehi");
+        bankMap1.put("nameAr", "الراجحي");
         bankMap1.put("iban", "Rajehi IBAN");
         bankMap1.put("accountNo", "Account Number");
         bankMap1.put("accountName", "Account Name");
@@ -66,6 +69,7 @@ public class CustomerApiV2 {
 
         Map<String, String> bankMap2 = new HashMap<>();
         bankMap2.put("name", "Ahli");
+        bankMap2.put("nameAr", "الأهلي");
         bankMap2.put("iban", "Ahli IBAN");
         bankMap2.put("accountNo", "Account Number");
         bankMap2.put("accountName", "Account Name");
@@ -80,6 +84,28 @@ public class CustomerApiV2 {
         return Response.status(200).entity(body).build();
     }
 
+    @GET
+    @Path("test3")
+    @Produces(MediaType.TEXT_HTML)
+    public Response testSignupHtml(){
+        Map<String,Object> vmap = new HashMap<>();
+        vmap.put("activationLink", "http://somelink.com");
+        String body = this.getHtmlTemplate(AppConstants.SIGNUP_EMAIL_TEMPLATE, vmap);
+        return Response.status(200).entity(body).build();
+    }
+
+
+
+    @GET
+    @Path("test4")
+    @Produces(MediaType.TEXT_HTML)
+    public Response testPasswordResetHtml(){
+        Map<String,Object> vmap = new HashMap<>();
+        vmap.put("passwordResetLink", "http://somelink.com");
+        vmap.put("firstName", "Fareed");
+        String body = this.getHtmlTemplate(AppConstants.PASSWORD_RESET_EMAIL_TEMPLATE, vmap);
+        return Response.status(200).entity(body).build();
+    }
 
 
 
