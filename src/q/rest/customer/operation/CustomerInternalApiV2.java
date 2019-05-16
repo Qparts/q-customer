@@ -295,9 +295,12 @@ public class CustomerInternalApiV2 {
             emailSent.setQuotationId(quotationId);
 
             async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.getQuotationReadyEmailSubject(quotationId), body);
+            String title = "Quotation #" + quotationId + " is completed! - ";
+            title += " تم الإنتهاء من التعسيرة رقم " + quotationId;
             Map<String,Object> nmap= new HashMap<String, Object>();
             nmap.put("purpose", "quotationComplete");
             nmap.put("url", quotationLink);
+            nmap.put("title", title);
             String objectMapper = new ObjectMapper().writeValueAsString(nmap);
             async.sendToCusotmerNotification(objectMapper);
             return Response.status(200).build();
