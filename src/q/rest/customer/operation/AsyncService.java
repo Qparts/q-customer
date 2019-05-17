@@ -75,8 +75,8 @@ public class AsyncService {
     }
 
     @Asynchronous
-    public void sendToCusotmerNotification(String message){
-        CustomerNotificationEndPoint.broadcast(message);
+    public void sendToCusotmerNotification(String message, long customerId){
+        CustomerNotificationEndPoint.sendToCustomer(message, customerId);
     }
 
 

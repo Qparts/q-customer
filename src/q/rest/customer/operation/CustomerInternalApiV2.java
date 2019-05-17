@@ -302,7 +302,7 @@ public class CustomerInternalApiV2 {
             nmap.put("url", quotationLink);
             nmap.put("title", title);
             String objectMapper = new ObjectMapper().writeValueAsString(nmap);
-            async.sendToCusotmerNotification(objectMapper);
+            async.sendToCusotmerNotification(objectMapper, customerId);
             return Response.status(200).build();
         }catch(Exception ex){
             return Response.status(500).build();
