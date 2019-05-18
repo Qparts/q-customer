@@ -133,7 +133,7 @@ public class CustomerApiV2 {
                 return Response.status(409).entity("email already exists").build();
             }
             Customer customer = new Customer();
-            customer.setEmail(signupModel.getEmail());
+            customer.setEmail(signupModel.getEmail().toLowerCase());
             customer.setCountryId(signupModel.getCountryId());
             customer.setCreated(new Date());
             customer.setCreatedBy(0);
@@ -340,7 +340,7 @@ public class CustomerApiV2 {
 
             //email doesn't exist! sign him/her up and create sm link.
             Customer customer = new Customer();
-            customer.setEmail(smModel.getEmail());
+            customer.setEmail(smModel.getEmail().toLowerCase());
             customer.setFirstName(smModel.getFirstName());
             customer.setLastName(smModel.getLastName());
             customer.setSmsActive(false);
@@ -683,7 +683,7 @@ public class CustomerApiV2 {
 
 
     private Map<String, Object> getLoginObject(String authHeader, Customer customer, WebApp webApp) {
-        AccessToken token = this.issueToken(customer, webApp, 60 * 6);// 60 minutes
+        AccessToken token = this.issueToken(customer, webApp, 60 * 24 * 7);// 60 minutes
         List<CustomerAddress> addresses = dao.getTwoConditions(CustomerAddress.class, "customerId", "status", customer.getId(), 'A');
         List<SocialMediaProfile> smps = dao.getCondition(SocialMediaProfile.class, "customerId", customer.getId());
         PublicCustomer pc = new PublicCustomer(customer, smps, addresses, getCustomerPublicVehicles(authHeader, customer.getId()));
