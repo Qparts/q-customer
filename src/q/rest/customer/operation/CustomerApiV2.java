@@ -222,7 +222,7 @@ public class CustomerApiV2 {
     public Response login(@HeaderParam("Authorization") String authHeader, CredentialsModel cModel){
         try {
             WebApp webApp = this.getWebAppFromAuthHeader(authHeader);
-            Customer customer = dao.findTwoConditions(Customer.class, "email", "password", cModel.getEmail(), Helper.cypher(cModel.getPassword()));
+            Customer customer = dao.findTwoConditions(Customer.class, "email", "password", cModel.getEmail().toLowerCase(), Helper.cypher(cModel.getPassword()));
             if (customer == null) {
                 return getResourceNotFoundResponse("Invalid credentials");
             }

@@ -20,10 +20,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java">
+        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="78" column="42" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
+            <state relative-caret-position="1135">
+              <caret line="314" column="34" lean-forward="true" selection-start-line="314" selection-start-column="34" selection-end-line="314" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -34,38 +34,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="342" column="62" selection-start-line="342" selection-start-column="62" selection-end-line="342" selection-end-column="62" />
+            <state relative-caret-position="343">
+              <caret line="227" column="13" lean-forward="true" selection-start-line="227" selection-start-column="13" selection-end-line="227" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/sockets/CustomerNotificationEndPoint.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2802#2803#0" expanded="true" />
-                <element signature="e#2830#2831#0" expanded="true" />
-                <element signature="e#2888#2889#0" expanded="true" />
-                <element signature="e#2931#2932#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,15 +56,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>border=&quot;1</find>
-      <find>sold</find>
-      <find>copy</find>
       <find>email</find>
       <find>sendHtm</find>
       <find>sendHtmnk</find>
       <find>accountName</find>
       <find>read</find>
-      <find>login</find>
       <find>codeLogin</find>
       <find>token</find>
       <find>match-</find>
@@ -114,6 +82,10 @@
       <find>signup</find>
       <find>signup&quot;</find>
       <find>social</find>
+      <find>searc</find>
+      <find>login</find>
+      <find>&quot;login&quot;</find>
+      <find>&quot;login</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -195,6 +167,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -225,23 +199,7 @@
               <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="customer" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
               <item name="operation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="sockets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
@@ -273,8 +231,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -449,12 +405,14 @@
       <workItem from="1557601866855" duration="5627000" />
       <workItem from="1557609242262" duration="2749000" />
       <workItem from="1557960364803" duration="2955000" />
-      <workItem from="1558179613862" duration="569000" />
+      <workItem from="1558179613862" duration="1187000" />
+      <workItem from="1558220302030" duration="619000" />
+      <workItem from="1558612246562" duration="39000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191026000" />
+    <option name="totallyTimeSpent" value="192302000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -469,7 +427,7 @@
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45275036" visible="true" weight="0.40057224" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45275036" visible="true" weight="0.41201717" />
       <window_info id="Structure" order="1" sideWeight="0.5472497" side_tool="true" weight="0.32089016" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" sideWeight="0.50070524" side_tool="true" weight="0.24964234" />
@@ -955,50 +913,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-431">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/sockets/CustomerNotificationEndPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2802#2803#0" expanded="true" />
-            <element signature="e#2830#2831#0" expanded="true" />
-            <element signature="e#2888#2889#0" expanded="true" />
-            <element signature="e#2931#2932#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="78" column="42" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/EmailVerification.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1023,10 +937,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/AsyncService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="78" column="42" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/sockets/CustomerNotificationEndPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2802#2803#0" expanded="true" />
+            <element signature="e#2830#2831#0" expanded="true" />
+            <element signature="e#2888#2889#0" expanded="true" />
+            <element signature="e#2931#2932#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1135">
+          <caret line="314" column="34" lean-forward="true" selection-start-line="314" selection-start-column="34" selection-end-line="314" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="342" column="62" selection-start-line="342" selection-start-column="62" selection-end-line="342" selection-end-column="62" />
+        <state relative-caret-position="343">
+          <caret line="227" column="13" lean-forward="true" selection-start-line="227" selection-start-column="13" selection-end-line="227" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
