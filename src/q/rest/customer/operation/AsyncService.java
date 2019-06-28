@@ -3,6 +3,7 @@ package q.rest.customer.operation;
 import q.rest.customer.dao.DAO;
 import q.rest.customer.helper.AppConstants;
 import q.rest.customer.model.entity.EmailSent;
+import q.rest.customer.model.entity.SmsSent;
 import q.rest.customer.operation.sockets.CustomerNotificationEndPoint;
 import q.rest.customer.operation.sockets.NotificationsEndPoint;
 
@@ -16,6 +17,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Transport;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Properties;
 
@@ -52,6 +59,36 @@ public class AsyncService {
             createEmailSentObject(emailSent, 'F');
         }
     }
+
+    @Asynchronous
+    public void sendSms(SmsSent smsSent, String mobileFull, String text) {
+        try {
+            String textEncoded = URLEncoder.encode(text, StandardCharsets.UTF_8);
+            String url = AppConstants.getSMSMaxLink(mobileFull, textEncoded);
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+            int responseCode = con.getResponseCode();
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            createSmsSentSentObject(smsSent, 'S');
+            in.close();
+        } catch (Exception ignore) {
+
+        }
+    }
+
+
+    private void createSmsSentSentObject(SmsSent smsSent, char status){
+        smsSent.setCreated(new Date());
+        smsSent.setStatus(status);
+        dao.persist(smsSent);
+    }
+
 
     private void createEmailSentObject(EmailSent emailSent, char status){
         emailSent.setCreated(new Date());

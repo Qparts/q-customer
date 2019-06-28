@@ -1,6 +1,7 @@
 package q.rest.customer.model.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ public class WebApp implements Serializable{
 
     @Id
     @Column(name = "app_code", updatable=false)
-    private Integer appCode;
+    private int appCode;
 
     @Column(name = "app_name")
     private String appName;
@@ -25,13 +26,6 @@ public class WebApp implements Serializable{
     @Column(name="active")
     private boolean active;
 
-    public Integer getAppCode() {
-        return appCode;
-    }
-
-    public void setAppCode(Integer appCode) {
-        this.appCode = appCode;
-    }
 
     public String getAppName() {
         return appName;
@@ -57,30 +51,28 @@ public class WebApp implements Serializable{
         this.active = active;
     }
 
+    public int getAppCode() {
+        return appCode;
+    }
+
+    public void setAppCode(int appCode) {
+        this.appCode = appCode;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WebApp webApp = (WebApp) o;
+        return appCode == webApp.appCode &&
+                active == webApp.active &&
+                Objects.equals(appName, webApp.appName) &&
+                Objects.equals(appSecret, webApp.appSecret);
+    }
+
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((appCode == null) ? 0 : appCode.hashCode());
-        return result;
+        return Objects.hash(appCode, appName, appSecret, active);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        WebApp other = (WebApp) obj;
-        if (appCode == null) {
-            if (other.appCode != null)
-                return false;
-        } else if (!appCode.equals(other.appCode))
-            return false;
-        return true;
-    }
-
-
 }

@@ -1,8 +1,7 @@
 package q.rest.customer.operation;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.cliftonlabs.json_simple.JsonObject;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -17,7 +16,11 @@ import q.rest.customer.model.entity.*;
 import javax.ejb.EJB;
 import javax.servlet.ServletContext;
 import javax.ws.rs.*;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.StringWriter;
@@ -50,6 +53,8 @@ public class CustomerInternalApiV2 {
         }
 
     }
+
+
 
     @SecuredUser
     @GET
@@ -240,11 +245,21 @@ public class CustomerInternalApiV2 {
                 banks.add(bankMap);
             }
             vmap.put("banks", banks);
-            String body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_EMAIL_TEMPLATE, vmap);
+            String body;
+            //this is q-parts
+            if(customer.getAppCode() == 2){
+                body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_EMAIL_TEMPLATE, vmap);
+            }
+
+            //this is qetaa.com
+            else{
+                body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_QETAA_EMAIL_TEMPLATE, vmap);
+            }
 
             EmailSent emailSent = new EmailSent();
             emailSent.setEmail(customer.getEmail());
             emailSent.setPurpose("Wire Transfer");
+            emailSent.setAppCode(customer.getAppCode());
             emailSent.setCreatedBy(0);
             emailSent.setCartId(wire.getCartId());
             emailSent.setCustomerId(customer.getId());
@@ -269,7 +284,185 @@ public class CustomerInternalApiV2 {
         }
     }
 
+    private SmsSent getSmsSent(String mobile, String content, String purpose, Long customerId){
+        SmsSent smsSent = new SmsSent();
+        smsSent.setMobile(mobile);
+        smsSent.setSmsContent(content);
+        smsSent.setPurpose(purpose);
+        smsSent.setCreatedBy(0);
+        smsSent.setCustomerId(customerId);
+        return smsSent;
+    }
 
+    private void notifyQuotationReadyViaSMS(Customer customer, long quotaitonId, String quotationLink){
+        String text = "عزيزنا العميل, تسعيرتكم رقم ";
+        text +=quotaitonId;
+        text += " جاهزة على الرابط ";
+        text += quotationLink;
+        SmsSent smsSent = getSmsSent(customer.getMobile(), text, "Quotation Ready", customer.getId());
+        smsSent.setQuotationId(quotaitonId);
+        async.sendSms(smsSent, customer.getMobile(), text);
+
+    }
+
+    private void notifyQuotationReadyViaSocket(Customer customer, long quotationId, String quotationLink) throws JsonProcessingException {
+        String title = "Quotation #" + quotationId + " is completed! - ";
+        title += " تم الإنتهاء من التعسيرة رقم " + quotationId;
+        Map<String,Object> nmap= new HashMap<String, Object>();
+        nmap.put("purpose", "quotationComplete");
+
+        nmap.put("url", quotationLink);
+        nmap.put("title", title);
+        String objectMapper = new ObjectMapper().writeValueAsString(nmap);
+        async.sendToCusotmerNotification(objectMapper, customer.getId());
+    }
+
+    private void notifyQuotationReadyViaEmail(Customer customer, long quotationId, String quotationLink){
+        String firstName = customer.getFirstName();
+        Map<String,Object> vmap = new HashMap<>();
+        vmap.put("quotationLink", quotationLink);
+        vmap.put("firstName", firstName);
+        vmap.put("quotationId", quotationId);
+        String body;
+        if(customer.getAppCode() == 2){
+            body = getHtmlTemplate(AppConstants.QUOTATION_READY_EMAIL_TEMPLATE, vmap);
+        }
+        else{
+            body = getHtmlTemplate(AppConstants.QUOTATION_READY_QETAA_EMAIL_TEMPLATE, vmap);
+        }
+        EmailSent emailSent = new EmailSent();
+        emailSent.setEmail(customer.getEmail());
+        emailSent.setPurpose("Quotation Ready");
+        emailSent.setCreatedBy(0);
+        emailSent.setAppCode(customer.getAppCode());
+        emailSent.setCustomerId(customer.getId());
+        emailSent.setQuotationId(quotationId);
+        async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.getQuotationReadyEmailSubject(quotationId), body);
+    }
+
+    private void notifyShipmentViaEmail(String header, Customer customer, CustomerAddress address, String cartNumbers, boolean trackable, String reference, String courierName, String courierNameAr, String trackLink, Long shipmentId){
+        Map<String,Object> vmap = new HashMap<>();
+        Map<String,String> cityMap = getCityVariableNamesOnly(address.getCityId(), header);
+        vmap.put("trackReference", reference);
+        vmap.put("trackLink", trackLink);
+        vmap.put("firstName", customer.getFirstName());
+        vmap.put("cartNumber", cartNumbers);
+        vmap.put("trackable", trackable);
+        vmap.put("courierName", courierName);
+        vmap.put("courierNameAr", courierNameAr);
+        vmap.put("shipmentId", shipmentId);
+        vmap.put("line1", address.getLine1());
+        vmap.put("line2", address.getLine2());
+        vmap.put("cityName", cityMap.get("cityName"));
+        vmap.put("cityNameAr", cityMap.get("cityNameAr"));
+        vmap.put("regionName", cityMap.get("regionName"));
+        vmap.put("regionNameAr", cityMap.get("regionNameAr"));
+        vmap.put("countryName", cityMap.get("countryName"));
+        vmap.put("countryNameAr", cityMap.get("countryNameAr"));
+        EmailSent emailSent = new EmailSent();
+        emailSent.setEmail(customer.getEmail());
+        emailSent.setPurpose("Shipment");
+        emailSent.setCreatedBy(0);
+        emailSent.setAppCode(customer.getAppCode());
+        emailSent.setCustomerId(customer.getId());
+        emailSent.setShipmentId(shipmentId);
+        String body="";
+        if(customer.getAppCode() == 2){
+            body = this.getHtmlTemplate(AppConstants.SHIPMENT_QETAA_EMAIL_TEMPLATE, vmap);
+        }
+        else{
+            body = this.getHtmlTemplate(AppConstants.SHIPMENT_QETAA_EMAIL_TEMPLATE, vmap);
+        }
+
+        async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.getShipmentEmailSubject(shipmentId), body);
+    }
+
+    private void notifyShipmentViaSMS(Customer customer, String cartNumbers, boolean trackable, String reference, String courierNameAr, String trackLink, long shipmentId){
+        String text = "تم شحن القطع الى عنوانك للطلب رقم ";
+        text += cartNumbers;
+        if(trackable) {
+            text += " رقم التتبع ";
+            text += reference.trim().replace(" ", "");
+            text += " على الناقل ";
+            text += courierNameAr;
+            text += " , رابط التتبع: ";
+            text += trackLink + " ";
+        }
+        text += " شكرا لكم, نتمنى أن نكون عند حسن ظنكم";
+        SmsSent smsSent = getSmsSent(customer.getMobile(), text, "Shipment", customer.getId());
+        smsSent.setShipmentId(shipmentId);
+        async.sendSms(smsSent, customer.getMobile(), text);
+    }
+
+
+
+    @SecuredUser
+    @POST
+    @Path("notify-shipment")
+    public Response sendShipmentReady(@HeaderParam("Authorization") String header, Map<String, Object> map){
+        try{
+            long shipmentId = ((Number) map.get("shipmentId")).longValue();
+            long customerId = ((Number) map.get("customerId")).longValue();
+            long addressId = ((Number) map.get("addressId")).longValue();
+            String trackLink = (String) map.get("trackLink");
+            String trackReference = (String) map.get("trackReference");
+            String courierName = (String) map.get("courierName");
+            String courierNameAr = (String) map.get("courierNameAr");
+            boolean trackable = (boolean) map.get("trackable");
+            String cartNumbers = (String) map.get("cartNumber");
+            Customer customer = dao.find(Customer.class, customerId);
+            CustomerAddress address = dao.find(CustomerAddress.class, addressId);
+            //qetaa
+            if(customer.getAppCode() != 2){
+                if(customer.getCountryId() == 1){
+                    notifyShipmentViaSMS(customer, cartNumbers, trackable, trackReference, courierNameAr, trackLink, shipmentId);
+                }
+            }
+            notifyShipmentViaEmail(header, customer, address, cartNumbers, trackable, trackReference, courierName, courierNameAr, trackLink, shipmentId);
+            return Response.status(200).build();
+
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
+    @SecuredUser
+    @POST
+    @Path("quotation-ready")
+    public Response sendQutotaitonReady(@HeaderParam("Authorization") String authHeader, Map<String, Object> map) {
+        try {
+            long quotationId = ((Number) map.get("quotationId")).longValue();
+            long customerId = ((Number) map.get("customerId")).longValue();
+            Customer customer = dao.find(Customer.class, customerId);
+            //q parts
+            if(customer.getAppCode() == 2){
+                String code = generateCodeLogin(customer.getId(), 20);
+                String quotationLink= AppConstants.getQuotationReadyLink(quotationId, customer.getEmail(), code, customer.getAppCode());
+                notifyQuotationReadyViaEmail(customer, quotationId, quotationLink);
+                notifyQuotationReadyViaSocket(customer, quotationId, quotationLink);
+            }
+            //from qetaa
+            else {
+                String code = generateCodeLogin(customer.getId(), 6);
+                if(customer.getCountryId() == 1){
+                    String quotationLink= AppConstants.getCodeLoginLink(customer.getEmail(), code,quotationId);
+                    notifyQuotationReadyViaSMS(customer, quotationId, quotationLink);
+                }
+                else{
+                    String quotationLink= AppConstants.getQuotationReadyLink(quotationId, customer.getEmail(), code, customer.getAppCode());
+                    notifyQuotationReadyViaEmail(customer, quotationId, quotationLink);
+                }
+
+            }
+
+            return Response.status(200).build();
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
+
+    /*
     @SecuredUser
     @Path("email/quotation-ready")
     @POST
@@ -278,15 +471,27 @@ public class CustomerInternalApiV2 {
             long quotationId = ((Number) map.get("quotationId")).longValue();
             long customerId = ((Number) map.get("customerId")).longValue();
             Customer customer = dao.find(Customer.class, customerId);
-            String code = generateCodeLogin(customerId);
-            String quotationLink= AppConstants.getQuotationReadyLink(quotationId, customer.getEmail(), code);
+            String code = "";
+            if(customer.getAppCode() == 2){
+                code = generateCodeLogin(customer.getId(), 20);
+            }
+            else{
+                code = generateCodeLogin(customer.getId(), 6);
+            }
+
+            String quotationLink= AppConstants.getQuotationReadyLink(quotationId, customer.getEmail(), code, customer.getAppCode());
             String firstName = customer.getFirstName();
             Map<String,Object> vmap = new HashMap<>();
             vmap.put("quotationLink", quotationLink);
             vmap.put("firstName", firstName);
             vmap.put("quotationId", quotationId);
-            String body = getHtmlTemplate(AppConstants.QUOTATION_READY_EMAIL_TEMPLATE, vmap);
-
+            String body;
+            if(customer.getAppCode() == 2){
+                body = getHtmlTemplate(AppConstants.QUOTATION_READY_EMAIL_TEMPLATE, vmap);
+            }
+            else{
+                body = getHtmlTemplate(AppConstants.QUOTATION_READY_QETAA_EMAIL_TEMPLATE, vmap);
+            }
             EmailSent emailSent = new EmailSent();
             emailSent.setEmail(customer.getEmail());
             emailSent.setPurpose("Quotation Ready");
@@ -308,14 +513,15 @@ public class CustomerInternalApiV2 {
             return Response.status(500).build();
         }
     }
+    */
 
 
-    private String generateCodeLogin(long customerId) {
+    private String generateCodeLogin(long customerId, int length) {
         CodeLogin cl = new CodeLogin();
         boolean available = false;
         String code = "";
         do {
-            code = Helper.getRandomSaltString(20);
+            code = Helper.getRandomSaltString(length);
             String jpql = "select b from CodeLogin b where b.code = :value0 and b.expire >= :value1";
             List<CodeLogin> l = dao.getJPQLParams(CodeLogin.class, jpql, code, new Date());
             if (l.isEmpty()) {
@@ -353,6 +559,14 @@ public class CustomerInternalApiV2 {
         return webApp;
     }
 
+    private HashMap<String,String> getCityVariableNamesOnly(int cityId, String header){
+        Response r = getSecuredRequest(AppConstants.getCityVariableNames(cityId), header);
+        if(r.getStatus() == 200){
+            return r.readEntity(HashMap.class);
+        }
+        return null;
+    }
+
 
 
 
@@ -370,5 +584,14 @@ public class CustomerInternalApiV2 {
         StringWriter writer = new StringWriter();
         template.merge(velocityContext, writer);
         return writer.toString();
+    }
+
+
+
+    public <T> Response getSecuredRequest(String link, String authHeader) {
+        Invocation.Builder b = ClientBuilder.newClient().target(link).request();
+        b.header(HttpHeaders.AUTHORIZATION, authHeader);
+        Response r = b.get();
+        return r;
     }
 }

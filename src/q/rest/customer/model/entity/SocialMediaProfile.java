@@ -29,6 +29,16 @@ public class SocialMediaProfile implements Serializable{
 	private String socialMediaEmail;
 	@Column(name="customer_id")
 	private long customerId;
+	@Column(name="app_code")
+	private int appCode;
+
+	public int getAppCode() {
+		return appCode;
+	}
+
+	public void setAppCode(int appCode) {
+		this.appCode = appCode;
+	}
 
 	public long getId(){
 		return id;

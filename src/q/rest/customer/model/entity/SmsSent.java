@@ -4,13 +4,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Table(name = "cst_email_sent")
+@Table(name = "cst_sms_sent")
 @Entity
-public class EmailSent implements Serializable {
+public class SmsSent implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @SequenceGenerator(name = "cst_email_sent_id_seq_gen", sequenceName = "cst_email_sent_id_seq", initialValue = 1, allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cst_email_sent_id_seq_gen")
+    @SequenceGenerator(name = "cst_sms_sent_id_seq_gen", sequenceName = "cst_sms_sent_id_seq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cst_sms_sent_id_seq_gen")
     @Column(name = "id")
     private long id;
     @Column(name = "customer_id")
@@ -21,19 +21,21 @@ public class EmailSent implements Serializable {
     private Long quotationId;
     @Column(name="cart_id")
     private Long cartId;
-    @Column(name="shipment_id")
-    private Long shipmentId;
     @Column(name="created")
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
     @Column(name="created_by")
     private int createdBy;
-    @Column(name="email")
-    private String email;
+    @Column(name="sms_content")
+    private String smsContent;
+    @Column(name="mobile")
+    private String mobile;
     @Column (name = "status")
     private char status;
     @Column(name="wire_id")
     private Long wireId;
+    @Column(name="shipment_id")
+    private Long shipmentId;
     @Column(name="app_code")
     private int appCode;
 
@@ -118,12 +120,20 @@ public class EmailSent implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public String getEmail() {
-        return email;
+    public String getSmsContent() {
+        return smsContent;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setSmsContent(String smsContent) {
+        this.smsContent = smsContent;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public Long getShipmentId() {

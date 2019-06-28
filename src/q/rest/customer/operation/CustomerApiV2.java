@@ -36,6 +36,7 @@ public class CustomerApiV2 {
     private AsyncService async;
 
 
+
     @GET
     @Path("test")
     @Produces(MediaType.TEXT_HTML)
@@ -79,8 +80,7 @@ public class CustomerApiV2 {
         banks.add(bankMap2);
         vmap.put("banks", banks);
 
-
-        String body = this.getHtmlTemplate(AppConstants.WIRE_TRANSFER_EMAIL_TEMPLATE, vmap);
+        String body = this.getHtmlTemplate(AppConstants.WIRE_TRANSFER_QETAA_EMAIL_TEMPLATE, vmap);
         return Response.status(200).entity(body).build();
     }
 
@@ -110,6 +110,41 @@ public class CustomerApiV2 {
 
 
 
+    @GET
+    @Path("test5")
+    @Produces(MediaType.TEXT_HTML)
+    public Response testQetaaSignupHtml() {
+        Map<String, Object> vmap = new HashMap<>();
+        vmap.put("activationCode", "1234");
+        String body = this.getHtmlTemplate(AppConstants.SIGNUP_EMAIL_TEMPLATE_QETAA, vmap);
+        return Response.status(200).entity(body).build();
+    }
+
+    @GET
+    @Path("test6")
+    @Produces(MediaType.TEXT_HTML)
+    public Response testShipmentHtml(){
+        Map<String,Object> vmap = new HashMap<>();
+        vmap.put("trackReference", "12312312312312");
+        vmap.put("trackLink", "http://somelink.com");
+        vmap.put("trackable", true);
+        vmap.put("firstName", "Fareed");
+        vmap.put("cartNumber", "50012312");
+        vmap.put("courierName", "SMSA");
+        vmap.put("courierNameAr", "سمسا");
+        vmap.put("shipmentId", "53289473");
+        vmap.put("line1", "Some address");
+        vmap.put("line2", "Some address line2");
+        vmap.put("cityName", "Khobar");
+        vmap.put("cityNameAr", "الخبر");
+        vmap.put("regionName", "Easter Province");
+        vmap.put("regionNameAr", "المنطقة الشرقية");
+        vmap.put("countryName", "Saudi Arabia");
+        vmap.put("countryNameAr", "السعودية");
+        String body = this.getHtmlTemplate(AppConstants.SHIPMENT_EMAIL_TEMPLATE, vmap);
+        return Response.status(200).entity(body).build();
+    }
+
     @ValidApp
     @POST
     @Path("logout")
@@ -123,12 +158,160 @@ public class CustomerApiV2 {
         }
     }
 
+
+    @ValidApp
+    @PUT
+    @Path("reset-password/sms")
+    public Response resetPassword(@HeaderParam("Authorization") String header, Map<String, String> map) {
+        try {
+            WebApp webApp = getWebAppFromAuthHeader(header);
+            String mobile = Helper.getFullMobile(map.get("mobile"), "966");
+            String password = Helper.cypher(map.get("password"));
+            Customer customer = dao.findTwoConditions(Customer.class, "mobile", "appCode", mobile, webApp.getAppCode());
+            customer.setPassword(password);
+            dao.update(customer);
+            return getSuccessResponseWithLogin(header, customer, webApp);
+        } catch (Exception ex) {
+            return Response.status(500).build();
+        }
+    }
+
+
+    @ValidApp
+    @POST
+    @Path("reset-password/sms")
+    public Response resetPasswordSms(@HeaderParam("Authorization") String header, Map<String,String> map){
+        try {
+            String mobile = map.get("mobile");
+            String mobileFull = Helper.getFullMobile(mobile, "966");
+            WebApp webApp = getWebAppFromAuthHeader(header);
+            List<Customer> list = dao.getTwoConditions(Customer.class, "mobile", "appCode", mobileFull, webApp.getAppCode());
+            if (list.isEmpty() || list.size() > 1) {
+                return Response.status(404).build();
+            } else {
+                int code = Helper.getRandomInteger(1000, 9999);
+                String smsContent =  "رمز التحقق:" + code;
+                SmsSent smsSent = this.getSmsSent(mobile, smsContent, "Qetaa reset password", null);
+                this.async.sendSms(smsSent, mobile, smsContent);
+                return Response.status(200).entity(code).build();
+            }
+
+        } catch (Exception ex) {
+            return Response.status(500).build();
+        }
+    }
+
+    private SmsSent getSmsSent(String mobile, String content, String purpose, Long customerId){
+        SmsSent smsSent = new SmsSent();
+        smsSent.setMobile(mobile);
+        smsSent.setSmsContent(content);
+        smsSent.setPurpose(purpose);
+        smsSent.setCreatedBy(0);
+        smsSent.setCustomerId(customerId);
+        return smsSent;
+    }
+
+
+    @ValidApp
+    @POST
+    @Path("request-signup-code")
+    public Response requestSMS(@HeaderParam("Authorization") String authHeader, Map<String, String> map) {
+        try {
+            System.out.println("received at api");
+
+            WebApp webApp = this.getWebAppFromAuthHeader(authHeader);
+
+            String email = map.get("email");
+            String countryCode = map.get("countryCode");
+            String mobile = Helper.getFullMobile(map.get("mobile"), countryCode);
+
+
+            String sql = "select b from Customer b where (b.mobile =:value0 or b.email =:value1) and b.appCode = :value2";
+
+            List<Customer> check = dao.getJPQLParams(Customer.class, sql, mobile, email, webApp.getAppCode());
+            if(!check.isEmpty()){
+                return Response.status(409).build();
+            }
+            int code = Helper.getRandomInteger(1000, 9999);
+            if(countryCode.equals("966")){
+                String smsContent =  "رمز التحقق:" + code;
+                SmsSent smsSent = this.getSmsSent(mobile, smsContent, "Qetaa Signup code", null);
+                smsSent.setMobile(mobile);
+                smsSent.setSmsContent(smsContent);
+                smsSent.setCreatedBy(0);
+                this.async.sendSms(smsSent, mobile, smsContent);
+            }
+            else{
+                //create body
+                Map<String, Object> vmap = new HashMap<>();
+                vmap.put("activationCode", code);
+                String body = this.getHtmlTemplate(AppConstants.SIGNUP_EMAIL_TEMPLATE_QETAA, vmap);
+                EmailSent emailSent = new EmailSent();
+                emailSent.setEmail(email);
+                emailSent.setPurpose("Qetaa Signup code");
+                emailSent.setCreatedBy(0);
+                emailSent.setCustomerId(null);
+                emailSent.setAppCode(webApp.getAppCode());
+                async.sendHtmlEmail(emailSent, email, AppConstants.ACCOUNT_SIGNUP_CODE_EMAIL_SUBJECT, body);
+            }
+
+            return Response.status(200).entity(code).build();
+
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return Response.status(500).build();
+        }
+    }
+
+
+
+
+
+    @ValidApp
+    @POST
+    @Path("signup/qetaa")
+    public Response signupQetaa(@HeaderParam("Authorization") String header, QetaaRegisterModel registerModel){
+        try{
+            WebApp webApp = getWebAppFromAuthHeader(header);
+            Customer customer = new Customer();
+            customer.setEmail(registerModel.getEmail().toLowerCase());
+            customer.setCountryId(registerModel.getCountryId());
+            customer.setCreated(new Date());
+            customer.setDefaultLang("ar");
+            customer.setCreatedBy(0);
+            customer.setFirstName(registerModel.getFirstName());
+            customer.setLastName(registerModel.getLastName());
+            if(registerModel.getType() != 'F'){
+                customer.setPassword(Helper.cypher(registerModel.getPassword()));
+            }
+            customer.setSmsActive((registerModel.getCountryId() == 1));
+            customer.setNewsletterActive(true);
+            customer.setStatus('A');//active
+            customer.setMobile(registerModel.getMobile());
+            customer.setAppCode(webApp.getAppCode());
+            dao.persist(customer);
+
+            if(registerModel.getType() == 'F'){
+                createSocialMediaLink(customer, registerModel.getFacebookId(), "facebook", registerModel.getContactEmail(), webApp.getAppCode());
+            }
+            Map<String,Object> map = this.getLoginObject(header, customer, webApp);
+            return Response.status(200).entity(map).build();
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
+
+
+
     @ValidApp
     @POST
     @Path("signup")
     public Response signup(@HeaderParam("Authorization")String authHeader, SignupRequestModel signupModel){
         try{
-            Customer check = dao.findCondition(Customer.class, "email", signupModel.getEmail());
+            WebApp webApp = getWebAppFromAuthHeader(authHeader);
+            Customer check = dao.findTwoConditions(Customer.class, "email", "appCode", signupModel.getEmail(), webApp.getAppCode());
             if(null != check){
                 return Response.status(409).entity("email already exists").build();
             }
@@ -144,6 +327,7 @@ public class CustomerApiV2 {
             customer.setSmsActive(false);
             customer.setNewsletterActive(true);
             customer.setStatus('I');//inactive
+            customer.setAppCode(webApp.getAppCode());
             dao.persist(customer);
 
             String code = this.createVerificationObject(customer.getEmail(), customer.getId());
@@ -155,10 +339,11 @@ public class CustomerApiV2 {
             emailSent.setEmail(customer.getEmail());
             emailSent.setPurpose("Signup Activation");
             emailSent.setCreatedBy(0);
+            emailSent.setAppCode(webApp.getAppCode());
             emailSent.setCustomerId(customer.getId());
             async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.ACCOUNT_ACTIVATION_EMAIL_SUBJECT, body);
             //send back login object
-            Map<String,Object> map = this.getLoginObject(authHeader, customer, this.getWebAppFromAuthHeader(authHeader));
+            Map<String,Object> map = this.getLoginObject(authHeader, customer, webApp);
             return Response.status(202).entity(map).build();
         }catch(Exception ex){
             return getServerErrorResponse();
@@ -200,7 +385,8 @@ public class CustomerApiV2 {
     @Path("code-login")
     public Response codeLogin(@HeaderParam("Authorization") String header, CredentialsModel cred){
         try{
-            Customer customer = dao.findCondition(Customer.class, "email", cred.getEmail());
+            WebApp webApp = getWebAppFromAuthHeader(header);
+            Customer customer = dao.findTwoConditions(Customer.class, "email", "appCode", cred.getEmail(), webApp.getAppCode());
             if(customer == null){
                 return getResourceNotFoundResponse("Invalid credentials");
             }
@@ -216,13 +402,38 @@ public class CustomerApiV2 {
         }
     }
 
+
+    //for qetaa only
+    @ValidApp
+    @POST
+    @Path("login/facebook")
+    public Response facebookLogin(@HeaderParam("Authroization") String header, QetaaRegisterModel registerModel){
+        try{
+            WebApp webApp = getWebAppFromAuthHeader(header);
+            // already authenticated in facebook
+            Customer customer = getCustomerFromSocialMedia("facebook", registerModel.getFacebookId(), webApp.getAppCode());
+            // get customer from facebook
+            if(customer == null ){
+                return Response.status(404).build();
+            }
+            return getSuccessResponseWithLogin(header, customer, webApp);
+
+        }catch (Exception ex){
+            return Response.status(200).build();
+        }
+    }
+
     @ValidApp
     @POST
     @Path("login")
     public Response login(@HeaderParam("Authorization") String authHeader, CredentialsModel cModel){
         try {
             WebApp webApp = this.getWebAppFromAuthHeader(authHeader);
-            Customer customer = dao.findTwoConditions(Customer.class, "email", "password", cModel.getEmail().toLowerCase(), Helper.cypher(cModel.getPassword()));
+            String email = cModel.getEmail().trim().toLowerCase();
+            String password= Helper.cypher(cModel.getPassword());
+            String sql = "select b from Customer b where (b.email = :value0 or b.mobile =:value1) and b.password = :value2 and b.appCode =:value3";
+            Customer customer = dao.findJPQLParams(Customer.class, sql, email, Helper.getFullMobile(email, "966") , password, webApp.getAppCode());
+            //Customer customer = dao.findTwoConditions(Customer.class, "email", "password", cModel.getEmail().toLowerCase(), Helper.cypher(cModel.getPassword()));
             if (customer == null) {
                 return getResourceNotFoundResponse("Invalid credentials");
             }
@@ -232,11 +443,15 @@ public class CustomerApiV2 {
         }
     }
 
+
+
+
     @ValidApp
     @POST
     @Path("reset-password")
     public Response resetPassword(@HeaderParam("Authorization") String authHeader, CredentialsModel cModel){
         try{
+            WebApp webApp = getWebAppFromAuthHeader(authHeader);
             String email = cModel.getEmail();
             Customer customer = dao.findCondition(Customer.class, "email", email);
             if(customer != null){
@@ -250,6 +465,7 @@ public class CustomerApiV2 {
                 emailSent.setEmail(customer.getEmail());
                 emailSent.setPurpose("Reset Password");
                 emailSent.setCreatedBy(0);
+                emailSent.setAppCode(webApp.getAppCode());
                 emailSent.setCustomerId(customer.getId());
                 async.sendHtmlEmail(emailSent, email, AppConstants.RESET_PASSWORD_EMAIL_SUBJECT, body);
             }
@@ -259,6 +475,8 @@ public class CustomerApiV2 {
         }
     }
 
+
+    //needs visit for merged dashboard
     @ValidApp
     @GET
     @Path("reset-password/token/{token-value}")
@@ -282,6 +500,7 @@ public class CustomerApiV2 {
         }
     }
 
+    //needs visit for merged dashboard
     @ValidApp
     @PUT
     @Path("reset-password")
@@ -315,6 +534,7 @@ public class CustomerApiV2 {
         }
     }
 
+    //not for qetaa .. for q only
     @ValidApp
     @POST
     @Path("social-media-auth")
@@ -326,15 +546,15 @@ public class CustomerApiV2 {
                 return getBadRequestResponse("Incomplete information");
             }
             WebApp webApp = this.getWebAppFromAuthHeader(authHeader);
-            if(this.socialMediaExists(smModel.getSocialMediaId(), smModel.getPlatform())){
-                Customer customer = getCustomerFromSocialMedia(smModel.getPlatform(), smModel.getSocialMediaId());
+            if(this.socialMediaExists(smModel.getSocialMediaId(), smModel.getPlatform(), webApp.getAppCode())){
+                Customer customer = getCustomerFromSocialMedia(smModel.getPlatform(), smModel.getSocialMediaId(), webApp.getAppCode());
                 return getSuccessResponseWithLogin(authHeader, customer, webApp);
             }
 
             //check if email exists!
-            Customer check = dao.findCondition(Customer.class, "email" , smModel.getEmail());
+            Customer check = dao.findTwoConditions(Customer.class, "email" , "appCode", smModel.getEmail(), webApp.getAppCode());
             if(check != null){
-                this.createSocialMediaLink(check, smModel.getSocialMediaId(), smModel.getPlatform(), smModel.getEmail());
+                this.createSocialMediaLink(check, smModel.getSocialMediaId(), smModel.getPlatform(), smModel.getEmail(), webApp.getAppCode());
                 return this.getSuccessResponseWithLogin(authHeader, check, webApp);
             }
 
@@ -350,8 +570,9 @@ public class CustomerApiV2 {
             customer.setCreatedBy(0);
             customer.setCountryId(smModel.getCountryId());
             customer.setStatus('V');
+            customer.setAppCode(webApp.getAppCode());
             dao.persist(customer);
-            createSocialMediaLink(customer, smModel.getSocialMediaId(), smModel.getPlatform(), smModel.getEmail());
+            createSocialMediaLink(customer, smModel.getSocialMediaId(), smModel.getPlatform(), smModel.getEmail(), webApp.getAppCode());
             return this.getSuccessResponseWithLogin(authHeader, customer, webApp);
         }catch(Exception ex){
             ex.printStackTrace();
@@ -564,6 +785,7 @@ public class CustomerApiV2 {
     @Path("social-media")
     public Response addSocialMedia(@HeaderParam("Authorization") String header, AddSocialMediaRequestModel smModel){
         try {
+            WebApp webApp = getWebAppFromAuthHeader(header);
             //check if this customer exists
             if (!customerFound(smModel.getCustomerId())) {
                 return Response.status(404).build();
@@ -575,29 +797,32 @@ public class CustomerApiV2 {
             }
 
             //check if this social media exists
-            if (socialMediaExists(smModel.getSocialMediaId(), smModel.getPlatform())) {
+            if (socialMediaExists(smModel.getSocialMediaId(), smModel.getPlatform(), webApp.getAppCode())) {
                 return Response.status(409).build();
             }
 
             //check if a customer is registered with this email
-            Customer check = dao.findCondition(Customer.class, "email", smModel.getEmail());
+            Customer check = dao.findTwoConditions(Customer.class, "email", "appCode", smModel.getEmail(), webApp.getAppCode());
             if (check != null) {
                 return Response.status(409).build();
             }
 
             Customer customer = dao.find(Customer.class, smModel.getCustomerId());
-            createSocialMediaLink(customer, smModel.getSocialMediaId(), smModel.getPlatform(), smModel.getEmail());
+            createSocialMediaLink(customer, smModel.getSocialMediaId(), smModel.getPlatform(), smModel.getEmail(), webApp.getAppCode());
             return Response.status(201).build();
         }catch(Exception ex){
             return getServerErrorResponse();
         }
     }
 
+    //meeds visit
     @SecuredCustomer
     @PUT
     @Path("password")
     public Response updatePassword(@HeaderParam("Authorization") String header, PasswordUpdateModel pwModel){
         try{
+
+            WebApp webApp = getWebAppFromAuthHeader(header);
             if(pwModel.getNewPassword() == null || pwModel.getOldPassword() == null || pwModel.getNewPassword().equals("") || pwModel.getOldPassword().equals("")){
                 return getBadRequestResponse();
             }
@@ -610,8 +835,8 @@ public class CustomerApiV2 {
                 return Response.status(401).build();
             }
 
-            String sql = "select b from Customer b where b.id = :value0 and b.password = :value1";
-            Customer customer = dao.findJPQLParams(Customer.class, sql, pwModel.getCustomerId(), Helper.cypher(pwModel.getOldPassword()));
+            String sql = "select b from Customer b where b.id = :value0 and b.password = :value1 and b.appCode = :value2";
+            Customer customer = dao.findJPQLParams(Customer.class, sql, pwModel.getCustomerId(), Helper.cypher(pwModel.getOldPassword()), webApp.getAppCode() );
             if(customer == null){
                 Map<String,String> mapz = new HashMap<>();
                 mapz.put("result", "old password did not match");
@@ -626,12 +851,13 @@ public class CustomerApiV2 {
     }
 
 
-    private void createSocialMediaLink(Customer c, String socialMediaId, String platform, String email) throws Exception{
+    private void createSocialMediaLink(Customer c, String socialMediaId, String platform, String email, int appCode) throws Exception{
         SocialMediaProfile sm = new SocialMediaProfile();
         sm.setCustomerId(c.getId());
         sm.setPlatform(platform);
         sm.setSocialMediaId(socialMediaId);
         sm.setSocialMediaEmail(email);
+        sm.setAppCode(appCode);
         dao.persist(sm);
     }
 
@@ -717,8 +943,9 @@ public class CustomerApiV2 {
     }
 
 
-    private Customer getCustomerFromSocialMedia(String platform, String socialMediaId) {
-        SocialMediaProfile sm = dao.findTwoConditions(SocialMediaProfile.class, "platform", "socialMediaId", platform, socialMediaId);
+    private Customer getCustomerFromSocialMedia(String platform, String socialMediaId, int appCode) {
+        String sql = "select b from SocialMediaProfile b where b.platform = :value0 and b.socialMediaId = :value1 and b.appCode = :value2";
+        SocialMediaProfile sm = dao.findJPQLParams(SocialMediaProfile.class, sql , platform, socialMediaId, appCode);
         if(sm == null) {
             return null;
         }
@@ -726,9 +953,10 @@ public class CustomerApiV2 {
     }
 
 
-    private boolean socialMediaExists(String socialMediaId, String platform) {
-        SocialMediaProfile smCheck = dao.findTwoConditions(SocialMediaProfile.class, "platform", "socialMediaId", platform, socialMediaId);
-        if(smCheck != null) {
+    private boolean socialMediaExists(String socialMediaId, String platform, int appCode) {
+        String sql = "select b from SocialMediaProfile b where b.platform = :value0 and b.socialMediaId = :value1 and b.appCode = :value2";
+        SocialMediaProfile sm = dao.findJPQLParams(SocialMediaProfile.class, sql , platform, socialMediaId, appCode);
+        if(sm != null) {
             return true;
         }
         return false;
@@ -818,6 +1046,17 @@ public class CustomerApiV2 {
             return null;
         }
     }
+
+    private long getCustomerIdFromHeader(String header){
+        try{
+            String[] values = header.split("&&");
+            String customerId = values[3].trim();
+            return Long.parseLong(customerId);
+        } catch (Exception ex ){
+            return 0;
+        }
+    }
+
 
     // retrieves app object from app secret
     private WebApp getWebAppFromSecret(String secret) throws Exception {

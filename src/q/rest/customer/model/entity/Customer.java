@@ -40,6 +40,10 @@ public class Customer implements Serializable {
     private boolean smsActive;
     @Column(name="newsletter_active")
     private boolean newsletterActive;
+    @Column(name="app_code")
+    private int appCode;
+    @Column(name="mobile")
+    private String mobile;
 
     @Transient
     private List<CustomerVehicle> vehicles;
@@ -166,5 +170,21 @@ public class Customer implements Serializable {
 
     public void setAddresses(List<CustomerAddress> addresses) {
         this.addresses = addresses;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public int getAppCode() {
+        return appCode;
+    }
+
+    public void setAppCode(int appCode) {
+        this.appCode = appCode;
     }
 }
