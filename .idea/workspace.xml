@@ -7,9 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/LoginObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/contract/LoginObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/LoginObject.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,7 +18,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="329">
@@ -28,6 +26,15 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/LoginObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -183,8 +190,8 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/shipment.vm" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/SmsSent.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/LoginObject.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/LoginObject.java" />
       </list>
     </option>
   </component>
@@ -262,7 +269,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561807075950" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561807339776" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -437,12 +444,12 @@
       <workItem from="1560610438795" duration="1586000" />
       <workItem from="1561208283786" duration="7315000" />
       <workItem from="1561464180122" duration="7037000" />
-      <workItem from="1561765750940" duration="2567000" />
+      <workItem from="1561765750940" duration="2829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="234828000" />
+    <option name="totallyTimeSpent" value="235090000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1047,13 +1054,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/LoginObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
@@ -1061,6 +1061,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/LoginObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
         </state>
       </provider>
     </entry>

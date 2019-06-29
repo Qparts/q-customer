@@ -1,6 +1,8 @@
 package q.rest.customer.model.contract;
 
-public class LoginObject {
+import java.io.Serializable;
+
+public class LoginObject implements Serializable {
     private PublicCustomer customer;
     private String token;
     private long tokenExpire;
