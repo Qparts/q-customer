@@ -6,7 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="" />
+    <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,13 +32,49 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicCustomer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+            <state relative-caret-position="307">
+              <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1967#1968#0" expanded="true" />
+                <element signature="e#2094#2095#0" expanded="true" />
+                <element signature="e#2149#2150#0" expanded="true" />
+                <element signature="e#2210#2211#0" expanded="true" />
+                <element signature="e#2269#2270#0" expanded="true" />
+                <element signature="e#2344#2345#0" expanded="true" />
+                <element signature="e#2411#2412#0" expanded="true" />
+                <element signature="e#2502#2503#0" expanded="true" />
+                <element signature="e#2567#2568#0" expanded="true" />
+                <element signature="e#2654#2655#0" expanded="true" />
+                <element signature="e#2715#2716#0" expanded="true" />
+                <element signature="e#2794#2795#0" expanded="true" />
+                <element signature="e#2862#2863#0" expanded="true" />
+                <element signature="e#2954#2955#0" expanded="true" />
+                <element signature="e#3034#3035#0" expanded="true" />
+                <element signature="e#3138#3139#0" expanded="true" />
+                <element signature="e#3217#3218#0" expanded="true" />
+                <element signature="e#3318#3319#0" expanded="true" />
+                <element signature="e#3378#3379#0" expanded="true" />
+                <element signature="e#3456#3457#0" expanded="true" />
+                <element signature="e#3531#3532#0" expanded="true" />
+                <element signature="e#3631#3632#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="7" column="50" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#648#649#0" expanded="true" />
+                <element signature="e#675#676#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,7 +193,6 @@
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/SysProps.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/dao/DAO.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/CustomerAddress.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/signup.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/velocity/signup-template.vm" />
         <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email-templates/signup-template.vm" />
@@ -161,7 +200,6 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/velocity/velocity.properties" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/password-reset.html" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/NotificationsEndPoint.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/NotificationsEndPoint.java" />
@@ -193,6 +231,8 @@
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicSocialMediaProfile.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicCustomer.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" />
       </list>
     </option>
   </component>
@@ -202,7 +242,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="797" />
@@ -446,12 +486,12 @@
       <workItem from="1561208283786" duration="7315000" />
       <workItem from="1561464180122" duration="7037000" />
       <workItem from="1561765750940" duration="2903000" />
-      <workItem from="1561807424109" duration="746000" />
+      <workItem from="1561807424109" duration="959000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235910000" />
+    <option name="totallyTimeSpent" value="236123000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -609,19 +649,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#639#669#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#1042#1043#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1128#1129#0" expanded="true" />
-            <element signature="e#1171#1172#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -813,18 +840,6 @@
             <element signature="e#2830#2831#0" expanded="true" />
             <element signature="e#2888#2889#0" expanded="true" />
             <element signature="e#2931#2932#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#675#676#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1057,9 +1072,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicSocialMediaProfile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        <state relative-caret-position="60">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
+            <element signature="e#250#251#0" expanded="true" />
             <element signature="e#272#273#0" expanded="true" />
             <element signature="e#317#318#0" expanded="true" />
             <element signature="e#348#349#0" expanded="true" />
@@ -1071,12 +1087,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicCustomer.java">
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+        <state relative-caret-position="60">
+          <caret line="6" column="50" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicCustomer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1967#1968#0" expanded="true" />
+            <element signature="e#2094#2095#0" expanded="true" />
+            <element signature="e#2149#2150#0" expanded="true" />
+            <element signature="e#2210#2211#0" expanded="true" />
+            <element signature="e#2269#2270#0" expanded="true" />
+            <element signature="e#2344#2345#0" expanded="true" />
+            <element signature="e#2411#2412#0" expanded="true" />
+            <element signature="e#2502#2503#0" expanded="true" />
+            <element signature="e#2567#2568#0" expanded="true" />
+            <element signature="e#2654#2655#0" expanded="true" />
+            <element signature="e#2715#2716#0" expanded="true" />
+            <element signature="e#2794#2795#0" expanded="true" />
+            <element signature="e#2862#2863#0" expanded="true" />
+            <element signature="e#2954#2955#0" expanded="true" />
+            <element signature="e#3034#3035#0" expanded="true" />
+            <element signature="e#3138#3139#0" expanded="true" />
+            <element signature="e#3217#3218#0" expanded="true" />
+            <element signature="e#3318#3319#0" expanded="true" />
+            <element signature="e#3378#3379#0" expanded="true" />
+            <element signature="e#3456#3457#0" expanded="true" />
+            <element signature="e#3531#3532#0" expanded="true" />
+            <element signature="e#3631#3632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="50" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+            <element signature="e#675#676#0" expanded="true" />
           </folding>
         </state>
       </provider>

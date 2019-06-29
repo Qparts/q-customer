@@ -2,7 +2,9 @@ package q.rest.customer.model.contract;
 
 import q.rest.customer.model.entity.CustomerAddress;
 
-public class PublicAddress {
+import java.io.Serializable;
+
+public class PublicAddress implements Serializable {
 	private long id;
 	private long customerId;
 	private String line1;

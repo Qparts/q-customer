@@ -1,10 +1,11 @@
 package q.rest.customer.model.contract;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import q.rest.customer.model.entity.CustomerVehicle;
 
-public class PublicVehicle {
+public class PublicVehicle implements Serializable {
 	private long id;
 	private Integer vehicleYearId;
 	private long customerId;

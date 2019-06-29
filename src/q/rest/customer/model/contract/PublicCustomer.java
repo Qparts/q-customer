@@ -4,12 +4,13 @@ import q.rest.customer.model.entity.Customer;
 import q.rest.customer.model.entity.CustomerAddress;
 import q.rest.customer.model.entity.SocialMediaProfile;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PublicCustomer {
+public class PublicCustomer implements Serializable {
 
     private long id;
     private String email;
@@ -40,11 +41,15 @@ public class PublicCustomer {
         this.vehicles = vehicles;
 
         socialMedia = new ArrayList<>();
+        try{
         for(SocialMediaProfile smp : profiles) {
             PublicSocialMediaProfile contract = new PublicSocialMediaProfile();
             contract.setPlatform(smp.getPlatform());
             contract.setSocialMediaId(smp.getSocialMediaId());
             this.socialMedia.add(contract);
+        }
+        }catch (Exception ignore){
+
         }
     }
 
