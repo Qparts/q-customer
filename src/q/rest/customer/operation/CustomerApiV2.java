@@ -412,7 +412,6 @@ public class CustomerApiV2 {
             WebApp webApp = getWebAppFromAuthHeader(header);
             // already authenticated in facebook
             Customer customer = getCustomerFromSocialMedia("facebook", registerModel.getFacebookId(), webApp.getAppCode());
-            System.out.println("found customer " + customer.getId());
             // get customer from facebook
             if(customer == null ){
                 return Response.status(404).build();

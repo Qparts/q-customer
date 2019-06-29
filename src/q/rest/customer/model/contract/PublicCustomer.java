@@ -19,7 +19,7 @@ public class PublicCustomer {
     private Integer countryId;
     private String defaultLang;
     private char status;
-    private List<Map<String,Object>> socialMedia;
+    private List<PublicSocialMediaProfile> socialMedia;
     private List<PublicAddress> addresses;
     private List<PublicVehicle> vehicles;
 
@@ -41,24 +41,24 @@ public class PublicCustomer {
 
         socialMedia = new ArrayList<>();
         for(SocialMediaProfile smp : profiles) {
-            Map<String,Object> map = new HashMap<String,Object>();
-            map.put("platform", smp.getPlatform());
-            map.put("socialMediaId", smp.getSocialMediaId());
-            this.socialMedia.add(map);
+            PublicSocialMediaProfile contract = new PublicSocialMediaProfile();
+            contract.setPlatform(smp.getPlatform());
+            contract.setSocialMediaId(smp.getSocialMediaId());
+            this.socialMedia.add(contract);
         }
     }
 
 
 
 
-    public List<Map<String, Object>> getSocialMedia() {
+    public List<PublicSocialMediaProfile> getSocialMedia() {
         return socialMedia;
     }
 
 
 
 
-    public void setSocialMedia(List<Map<String, Object>> socialMedia) {
+    public void setSocialMedia(List<PublicSocialMediaProfile> socialMedia) {
         this.socialMedia = socialMedia;
     }
 
