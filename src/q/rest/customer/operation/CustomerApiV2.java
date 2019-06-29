@@ -412,14 +412,18 @@ public class CustomerApiV2 {
             WebApp webApp = getWebAppFromAuthHeader(header);
             // already authenticated in facebook
             Customer customer = getCustomerFromSocialMedia("facebook", registerModel.getFacebookId(), webApp.getAppCode());
+            System.out.println("found customer " + customer.getId());
             // get customer from facebook
             if(customer == null ){
+                System.out.println("null customer");
                 return Response.status(404).build();
             }
-            return getSuccessResponseWithLogin(header, customer, webApp);
-
+            LoginObject loginObject = getLoginObject(header, customer, webApp);
+            return Response.status(200).entity(loginObject).build();
         }catch (Exception ex){
-            return Response.status(200).build();
+            System.out.println("an exception");
+            ex.printStackTrace();
+            return Response.status(500).build();
         }
     }
 
