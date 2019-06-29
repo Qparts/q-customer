@@ -409,7 +409,9 @@ public class CustomerApiV2 {
     @Path("login/facebook")
     public Response facebookLogin(@HeaderParam("Authroization") String header, QetaaRegisterModel registerModel){
         try{
+            System.out.println("header is " + header);
             WebApp webApp = getWebAppFromAuthHeader(header);
+            System.out.println("appcode is " + webApp.getAppCode());
             // already authenticated in facebook
             Customer customer = getCustomerFromSocialMedia("facebook", registerModel.getFacebookId(), webApp.getAppCode());
             System.out.println("found customer " + customer.getId());
