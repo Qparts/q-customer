@@ -6,12 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicSocialMediaProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" afterDir="false" />
-    </list>
+    <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -451,12 +446,12 @@
       <workItem from="1561208283786" duration="7315000" />
       <workItem from="1561464180122" duration="7037000" />
       <workItem from="1561765750940" duration="2903000" />
-      <workItem from="1561807424109" duration="582000" />
+      <workItem from="1561807424109" duration="746000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235746000" />
+    <option name="totallyTimeSpent" value="235910000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -468,7 +463,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="797" extended-state="1" />
+    <frame x="0" y="23" width="1440" height="797" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45275036" visible="true" weight="0.22103004" />
