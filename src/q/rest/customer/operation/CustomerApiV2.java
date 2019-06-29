@@ -407,7 +407,7 @@ public class CustomerApiV2 {
     @ValidApp
     @POST
     @Path("login/facebook")
-    public Response facebookLogin(@HeaderParam("Authroization") String header, QetaaRegisterModel registerModel){
+    public Response facebookLogin(@HeaderParam("Authorization") String header, QetaaRegisterModel registerModel){
         try{
             System.out.println("header is " + header);
             WebApp webApp = getWebAppFromAuthHeader(header);
