@@ -295,7 +295,7 @@ public class CustomerApiV2 {
             if(registerModel.getType() == 'F'){
                 createSocialMediaLink(customer, registerModel.getFacebookId(), "facebook", registerModel.getContactEmail(), webApp.getAppCode());
             }
-            Map<String,Object> map = this.getLoginObject(header, customer, webApp);
+            LoginObject map = this.getLoginObject(header, customer, webApp);
             return Response.status(200).entity(map).build();
         }catch (Exception ex){
             return Response.status(500).build();
@@ -343,8 +343,8 @@ public class CustomerApiV2 {
             emailSent.setCustomerId(customer.getId());
             async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.ACCOUNT_ACTIVATION_EMAIL_SUBJECT, body);
             //send back login object
-            Map<String,Object> map = this.getLoginObject(authHeader, customer, webApp);
-            return Response.status(202).entity(map).build();
+            LoginObject loginObject = this.getLoginObject(authHeader, customer, webApp);
+            return Response.status(202).entity(loginObject).build();
         }catch(Exception ex){
             return getServerErrorResponse();
         }
@@ -412,6 +412,7 @@ public class CustomerApiV2 {
             WebApp webApp = getWebAppFromAuthHeader(header);
             // already authenticated in facebook
             Customer customer = getCustomerFromSocialMedia("facebook", registerModel.getFacebookId(), webApp.getAppCode());
+            System.out.println("found customer " + customer.getId());
             // get customer from facebook
             if(customer == null ){
                 return Response.status(404).build();
@@ -908,16 +909,16 @@ public class CustomerApiV2 {
     }
 
 
-    private Map<String, Object> getLoginObject(String authHeader, Customer customer, WebApp webApp) {
+    private LoginObject getLoginObject(String authHeader, Customer customer, WebApp webApp) {
         AccessToken token = this.issueToken(customer, webApp, 60 * 24 * 7);// 60 minutes
         List<CustomerAddress> addresses = dao.getTwoConditions(CustomerAddress.class, "customerId", "status", customer.getId(), 'A');
         List<SocialMediaProfile> smps = dao.getCondition(SocialMediaProfile.class, "customerId", customer.getId());
         PublicCustomer pc = new PublicCustomer(customer, smps, addresses, getCustomerPublicVehicles(authHeader, customer.getId()));
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("token", token.getToken());
-        map.put("tokenExpire", token.getExpire().getTime());
-        map.put("customer", pc);
-        return map;
+        LoginObject loginObject = new LoginObject();
+        loginObject.setCustomer(pc);
+        loginObject.setToken(token.getToken());
+        loginObject.setTokenExpire(token.getExpire().getTime());
+        return loginObject;
     }
 
     private List<PublicVehicle> getCustomerPublicVehicles(String authHeader, long customerId){
@@ -1032,8 +1033,8 @@ public class CustomerApiV2 {
     }
 
     private Response getSuccessResponseWithLogin(String authHeader, Customer customer, WebApp webApp){
-        Map map = getLoginObject(authHeader, customer, webApp);
-        return Response.status(200).entity(map).build();
+        LoginObject loginObject = getLoginObject(authHeader, customer, webApp);
+        return Response.status(200).entity(loginObject).build();
     }
 
     private WebApp getWebAppFromAuthHeader(String authHeader) {
