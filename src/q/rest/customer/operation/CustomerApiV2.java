@@ -434,7 +434,7 @@ public class CustomerApiV2 {
             String sql = "select b from Customer b where (b.email = :value0 or b.mobile =:value1) and b.password = :value2 and b.appCode =:value3";
             Customer customer = dao.findJPQLParams(Customer.class, sql, email, Helper.getFullMobile(email, "966") , password, webApp.getAppCode());
             if (customer == null) {
-                System.out.println("could not find customer" + email + " , password" + password + webApp.getAppCode());
+                System.out.println("could not find customer: " + email + " , password: " + password + ", appCode: " + webApp.getAppCode());
                 return getResourceNotFoundResponse("Invalid credentials");
             }
             return getSuccessResponseWithLogin(authHeader, customer, webApp);
