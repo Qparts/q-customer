@@ -409,21 +409,16 @@ public class CustomerApiV2 {
     @Path("login/facebook")
     public Response facebookLogin(@HeaderParam("Authorization") String header, QetaaRegisterModel registerModel){
         try{
-            System.out.println("header is " + header);
             WebApp webApp = getWebAppFromAuthHeader(header);
-            System.out.println("appcode is " + webApp.getAppCode());
             // already authenticated in facebook
             Customer customer = getCustomerFromSocialMedia("facebook", registerModel.getFacebookId(), webApp.getAppCode());
-            System.out.println("found customer " + customer.getId());
             // get customer from facebook
             if(customer == null ){
-                System.out.println("null customer");
                 return Response.status(404).build();
             }
             LoginObject loginObject = getLoginObject(header, customer, webApp);
             return Response.status(200).entity(loginObject).build();
         }catch (Exception ex){
-            System.out.println("an exception");
             ex.printStackTrace();
             return Response.status(500).build();
         }

@@ -63,15 +63,41 @@ public class CustomerInternalApiV2 {
         try {
             Long id = Helper.convertToLong(query);
             String lowered = "%"+ query.trim().toLowerCase() + "%";
-            String sql = "select b from Customer b where b.id = :value0 and lower(b.email) like :value1 " +
-                    "or lowert(b.firstName) like :value1 or lower(b.lastName) like :value1 or b.id in (" +
-                    "select c.customerId from CustomerAddress where b.mobile like :value1)";
+            String sql = "select b from Customer b where b.id = :value0 " +
+                    "or lower(b.email) like :value1 " +
+                    "or lower(b.firstName) like :value1 " +
+                    "or lower(b.lastName) like :value1 " +
+                    "or b.id in (select c.customerId from CustomerAddress c where c.mobile like :value1) " +
+                    "or b.mobile like :value1";
             List<Customer> customers = dao.getJPQLParamsOffsetMax(Customer.class, sql, 0, 20, id, lowered);
             return Response.status(200).entity(customers).build();
         }catch (Exception ex){
             return Response.status(500).build();
         }
     }
+
+
+    @SecuredUser
+    @POST
+    @Path("search")
+    public Response searchProduct(Map<String,String> map){
+        try {
+            String query = map.get("query");
+            Long id = Helper.convertToLong(query);
+            String lowered = "%"+ query.trim().toLowerCase() + "%";
+            String sql = "select b from Customer b where b.id = :value0 " +
+                    "or lower(b.email) like :value1 " +
+                    "or lower(b.firstName) like :value1 " +
+                    "or lower(b.lastName) like :value1  " +
+                    "or b.id in (select c.customerId from CustomerAddress c where c.mobile like :value1) " +
+                    "or b.mobile like :value1";
+            List<Customer> customers = dao.getJPQLParamsOffsetMax(Customer.class, sql, 0, 20, id, lowered);
+            return Response.status(200).entity(customers).build();
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
 
     @Path("customer-vehicle/vin")
     @SecuredUser
