@@ -217,17 +217,17 @@ public class CustomerApiV2 {
     @Path("request-signup-code")
     public Response requestSMS(@HeaderParam("Authorization") String authHeader, Map<String, String> map) {
         try {
-            System.out.println("received at api");
-
-            WebApp webApp = this.getWebAppFromAuthHeader(authHeader);
-
+            WebApp webApp;
+            try {
+                Integer appCode = Integer.parseInt(map.get("appCode"));
+                webApp = dao.find(WebApp.class, appCode);
+            }catch (Exception ex){
+                webApp = this.getWebAppFromAuthHeader(authHeader);
+            }
             String email = map.get("email");
             String countryCode = map.get("countryCode");
             String mobile = Helper.getFullMobile(map.get("mobile"), countryCode);
-
-
             String sql = "select b from Customer b where (b.mobile =:value0 or b.email =:value1) and b.appCode = :value2";
-
             List<Customer> check = dao.getJPQLParams(Customer.class, sql, mobile, email, webApp.getAppCode());
             if(!check.isEmpty()){
                 return Response.status(409).build();
@@ -435,7 +435,6 @@ public class CustomerApiV2 {
             String sql = "select b from Customer b where (b.email = :value0 or b.mobile =:value1) and b.password = :value2 and b.appCode =:value3";
             Customer customer = dao.findJPQLParams(Customer.class, sql, email, Helper.getFullMobile(email, "966") , password, webApp.getAppCode());
             if (customer == null) {
-                System.out.println("could not find customer: " + email + " , password: " + password + ", appCode: " + webApp.getAppCode());
                 return getResourceNotFoundResponse("Invalid credentials");
             }
             return getSuccessResponseWithLogin(authHeader, customer, webApp);
@@ -1073,7 +1072,6 @@ public class CustomerApiV2 {
         List<Integer> modelYearIds = new ArrayList<>();
         modelYearIds.add(modelYearId);
         Response r = this.postSecuredRequest(AppConstants.POST_GET_MODEL_YEARS_FROM_IDS, modelYearIds, authHeader);
-        System.out.println("status from vehicle service " + r.getStatus());
         if(r.getStatus() == 200) {
             List<Map<String,Object>> list = r.readEntity(new GenericType<List<Map<String,Object>>>(){});
             return list.get(0);

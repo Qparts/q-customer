@@ -10,6 +10,8 @@ import q.rest.customer.filter.SecuredCustomer;
 import q.rest.customer.filter.SecuredUser;
 import q.rest.customer.helper.AppConstants;
 import q.rest.customer.helper.Helper;
+import q.rest.customer.model.contract.QetaaRegisterModel;
+import q.rest.customer.model.contract.SignupRequestModel;
 import q.rest.customer.model.contract.WireTransferEmailRequest;
 import q.rest.customer.model.entity.*;
 
@@ -96,6 +98,41 @@ public class CustomerInternalApiV2 {
             return Response.status(500).build();
         }
     }
+
+
+    @SecuredUser
+    @POST
+    @Path("customer")
+    public Response createCustomer(@HeaderParam("Authorization") String header, SignupRequestModel signupRequestModel){
+        try{
+            WebApp webApp = dao.find(WebApp.class, signupRequestModel.getAppCode());
+            String sql = "select b from Customer b where (b.email = :value0 or b.mobile =:value1) and b.appCode = :value2";
+            String mobileFull = Helper.getFullMobile(signupRequestModel.getMobile(), signupRequestModel.getCountryCode());
+            Customer check = dao.findJPQLParams(Customer.class, sql, signupRequestModel.getEmail().toLowerCase().trim(), mobileFull, signupRequestModel.getAppCode());
+            if(check != null){
+                return Response.status(409).build();
+            }
+            Customer customer = new Customer();
+            customer.setEmail(signupRequestModel.getEmail().toLowerCase().trim());
+            customer.setCountryId(signupRequestModel.getCountryId());
+            customer.setCreated(new Date());
+            customer.setDefaultLang(signupRequestModel.getDefaultLang());
+            customer.setCreatedBy(signupRequestModel.getCreatedBy());
+            customer.setFirstName(signupRequestModel.getFirstName());
+            customer.setLastName(signupRequestModel.getLastName());
+            customer.setPassword(Helper.cypher(signupRequestModel.getPassword()));
+            customer.setSmsActive((signupRequestModel.getCountryId() == 1));
+            customer.setMobile(mobileFull);
+            customer.setNewsletterActive(true);
+            customer.setStatus('A');//active
+            customer.setAppCode(webApp.getAppCode());
+            dao.persist(customer);
+            return Response.status(201).build();
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
 
 
     @SecuredUser
@@ -612,6 +649,19 @@ public class CustomerInternalApiV2 {
             return null;
         }
     }
+
+
+    private WebApp getWebAppFromAuthHeader(String authHeader) {
+        try {
+            String[] values = authHeader.split("&&");
+            String appSecret = values[2].trim();
+            // Validate app secret
+            return getWebAppFromSecret(appSecret);
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
 
 
     // retrieves app object from app secret
