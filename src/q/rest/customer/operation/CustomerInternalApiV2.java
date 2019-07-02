@@ -17,7 +17,6 @@ import javax.ejb.EJB;
 import javax.servlet.ServletContext;
 import javax.ws.rs.*;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
@@ -94,6 +93,29 @@ public class CustomerInternalApiV2 {
             List<Customer> customers = dao.getJPQLParamsOffsetMax(Customer.class, sql, 0, 20, id, lowered);
             return Response.status(200).entity(customers).build();
         }catch (Exception ex){
+            return Response.status(500).build();
+        }
+    }
+
+
+    @SecuredUser
+    @POST
+    @Path("vehicle")
+    public Response addCustomerVehicle(@HeaderParam("Authorization") String header, CustomerVehicle cv){
+        try{
+            String sql = "select b from CustomerVehicle b where b.customerId = :value0 and b.vehicleYearId = :value1 and b.vin = :value2";
+            List<CustomerVehicle> check = dao.getJPQLParams(CustomerVehicle.class, sql, cv.getCustomerId(), cv.getVehicleYearId(), cv.getVin());
+            if(!check.isEmpty()){
+                return Response.status(409).build();
+            }
+            cv.setVin(cv.getVin().toUpperCase());
+            cv.setCreated(new Date());
+            dao.persist(cv);
+            if(cv.isDefaultVehicle()){
+                makeVehicleDefault(cv.getCustomerId(), cv.getId());
+            }
+            return Response.status(201).build();
+        }catch(Exception ex){
             return Response.status(500).build();
         }
     }
@@ -318,6 +340,23 @@ public class CustomerInternalApiV2 {
         smsSent.setCreatedBy(0);
         smsSent.setCustomerId(customerId);
         return smsSent;
+    }
+
+
+
+    private void makeVehicleDefault(long customerId, long vehicleId){
+        try {
+            List<CustomerVehicle> cvs = dao.getTwoConditions(CustomerVehicle.class, "customerId", "defaultVehicle", customerId, true);
+            for (CustomerVehicle customerVehicle : cvs) {
+                customerVehicle.setDefaultVehicle(false);
+                dao.update(customerVehicle);
+            }
+            CustomerVehicle cv = dao.find(CustomerVehicle.class, vehicleId);
+            cv.setDefaultVehicle(true);
+            dao.update(cv);
+        }catch(Exception ignore){
+
+        }
     }
 
     private void notifyQuotationReadyViaSMS(Customer customer, long quotaitonId, String quotationLink){
