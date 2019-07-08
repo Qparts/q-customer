@@ -288,7 +288,7 @@ public class CustomerApiV2 {
             customer.setSmsActive((registerModel.getCountryId() == 1));
             customer.setNewsletterActive(true);
             customer.setStatus('A');//active
-            customer.setMobile(registerModel.getMobile());
+            customer.setMobile(Helper.getFullMobile(registerModel.getMobile(), registerModel.getCountryCode()));
             customer.setAppCode(webApp.getAppCode());
             dao.persist(customer);
 
