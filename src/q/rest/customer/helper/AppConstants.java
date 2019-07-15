@@ -1,5 +1,6 @@
 package q.rest.customer.helper;
 
+import q.rest.customer.model.contract.WireTransferEmailRequest;
 import q.rest.customer.model.entity.Customer;
 
 public class AppConstants {
@@ -23,7 +24,9 @@ public class AppConstants {
     public final static String QUOTATION_READY_EMAIL_TEMPLATE = "email/quotation-ready.vm";
     public final static String QUOTATION_READY_QETAA_EMAIL_TEMPLATE = "email/quotation-ready-qetaa.vm";
     public final static String WIRE_TRANSFER_EMAIL_TEMPLATE = "email/wire-transfer.vm";
+    public final static String WIRE_TRANSFER_QUOTATION_EMAIL_TEMPLATE = "email/wire-transfer-quotation.vm";
     public final static String WIRE_TRANSFER_QETAA_EMAIL_TEMPLATE = "email/wire-transfer-qetaa.vm";
+    public final static String WIRE_TRANSFER_QETAA_QUOTAITON_EMAIL_TEMPLATE = "email/wire-transfer-quotation-qetaa.vm";
     public final static String SHIPMENT_QETAA_EMAIL_TEMPLATE = "email/shipment-qetaa.vm";
     public final static String SHIPMENT_EMAIL_TEMPLATE = "email/shipment.vm";
 
@@ -36,8 +39,14 @@ public class AppConstants {
     public final static String getQuotationReadyEmailSubject(long quotationId){
         return "Quotation No. " + quotationId + " طلب التسعيرة رقم ";
     }
-    public final static String getWireTransferRequestEmailSubject(long cartId){
-        return "Cart No. " + cartId + " رقم الطلب:  ";
+    public final static String getWireTransferRequestEmailSubject(WireTransferEmailRequest wire){
+        if(wire.getPurpose().equals("cart")){
+            return "Cart No. " + wire.getCartId() + " رقم الطلب:  ";
+        }
+        else{
+            return "Quotation No. " + wire.getQuotationId() + " رقم التسعيرة:  ";
+        }
+
     }
     public final static String getShipmentEmailSubject(long shipmentId){
         return "Shipment No. " + shipmentId + " شحنة رقم";

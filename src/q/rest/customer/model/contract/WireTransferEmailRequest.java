@@ -7,6 +7,8 @@ public class WireTransferEmailRequest {
 
     private long customerId;
     private long cartId;
+    private long quotationId;
+    private String purpose;
     private long wireTransferId;
     private double amount;
     private List<Map<String,Object>> banks;
@@ -50,5 +52,21 @@ public class WireTransferEmailRequest {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public long getQuotationId() {
+        return quotationId;
+    }
+
+    public void setQuotationId(long quotationId) {
+        this.quotationId = quotationId;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
     }
 }

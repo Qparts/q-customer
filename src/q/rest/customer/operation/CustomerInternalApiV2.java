@@ -10,7 +10,6 @@ import q.rest.customer.filter.SecuredCustomer;
 import q.rest.customer.filter.SecuredUser;
 import q.rest.customer.helper.AppConstants;
 import q.rest.customer.helper.Helper;
-import q.rest.customer.model.contract.QetaaRegisterModel;
 import q.rest.customer.model.contract.SignupRequestModel;
 import q.rest.customer.model.contract.WireTransferEmailRequest;
 import q.rest.customer.model.entity.*;
@@ -311,6 +310,7 @@ public class CustomerInternalApiV2 {
             vmap.put("firstName", customer.getFirstName());
             vmap.put("orderLink", "https://www.q.parts");
             vmap.put("cartId", wire.getCartId());
+            vmap.put("quotationId", wire.getQuotationId());
             vmap.put("wireTransferId", wire.getWireTransferId());
             vmap.put("amount", Helper.round(wire.getAmount(), 2));
             List<Map> banks = new ArrayList<>();
@@ -333,12 +333,22 @@ public class CustomerInternalApiV2 {
             String body;
             //this is q-parts
             if(customer.getAppCode() == 2){
-                body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_EMAIL_TEMPLATE, vmap);
-            }
+                if(wire.getPurpose().equals("cart")){
+                    body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_EMAIL_TEMPLATE, vmap);
+                }
+                else {
+                    body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_QUOTATION_EMAIL_TEMPLATE, vmap);
+                }
 
+            }
             //this is qetaa.com
             else{
-                body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_QETAA_EMAIL_TEMPLATE, vmap);
+                if(wire.getPurpose().equals("cart")){
+                    body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_QETAA_EMAIL_TEMPLATE, vmap);
+                }
+                else {
+                    body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_QETAA_QUOTAITON_EMAIL_TEMPLATE, vmap);
+                }
             }
 
             EmailSent emailSent = new EmailSent();
@@ -349,7 +359,7 @@ public class CustomerInternalApiV2 {
             emailSent.setCartId(wire.getCartId());
             emailSent.setCustomerId(customer.getId());
             emailSent.setWireId(wire.getWireTransferId());
-            async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.getWireTransferRequestEmailSubject(wire.getCartId()), body);
+            async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.getWireTransferRequestEmailSubject(wire), body);
             return Response.status(200).build();
         }catch (Exception ex){
             return Response.status(500).build();

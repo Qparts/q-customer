@@ -7,8 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/velocity/email/wire-transfer-quotation-qetaa.vm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/velocity/email/wire-transfer-quotation.vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/model/contract/WireTransferEmailRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/model/contract/WireTransferEmailRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,24 +22,24 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="293" lean-forward="true" selection-start-line="293" selection-end-line="293" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1260">
-              <caret line="109" column="29" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="29" />
+            <state relative-caret-position="5">
+              <caret line="305" column="53" lean-forward="true" selection-start-line="305" selection-start-column="53" selection-end-line="305" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -44,14 +48,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/SignupRequestModel.java">
+        <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="83" column="36" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
+            <state relative-caret-position="235">
+              <caret line="228" column="59" lean-forward="true" selection-start-line="228" selection-start-column="59" selection-end-line="228" selection-end-column="59" />
               <folding>
-                <element signature="e#1800#1801#0" expanded="true" />
-                <element signature="e#1854#1855#0" expanded="true" />
-                <element signature="e#1900#1901#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,11 +72,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getCityV</find>
-      <find>s</find>
-      <find>test6</find>
-      <find>wire</find>
-      <find>Wire Tran</find>
       <find>shipmet</find>
       <find>notifyShipmentViaEmail</find>
       <find>Syst</find>
@@ -100,6 +97,11 @@
       <find>sms</find>
       <find>Syste</find>
       <find>syste</find>
+      <find>customers-from-ids</find>
+      <find>email/wire-transfer</find>
+      <find>quotationId</find>
+      <find>cart</find>
+      <find>Cart</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -111,8 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/PasswordReset.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/ResetPasswordRequestModel.java" />
         <option value="$PROJECT_DIR$/src/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/EmailVerification.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/filter/SecuredUser.java" />
@@ -131,7 +131,6 @@
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/NotificationsEndPoint.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/NotificationsEndPoint.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/WireTransferEmailRequest.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/CodeLogin.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/CustomerNotificationEndPoint.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java" />
@@ -150,7 +149,6 @@
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/CredentialsModel.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/quotation-ready-qetaa.vm" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/EmailSent.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/shipment-qetaa.vm" />
         <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/shipment.vm" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/entity/SmsSent.java" />
@@ -160,8 +158,12 @@
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicAddress.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/PublicVehicle.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/SignupRequestModel.java" />
-        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" />
         <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/model/contract/WireTransferEmailRequest.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" />
+        <option value="$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/wire-transfer-quotation-qetaa.vm" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/velocity/email/wire-transfer-quotation.vm" />
       </list>
     </option>
   </component>
@@ -198,35 +200,28 @@
             <path>
               <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
               <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="contract" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
               <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="velocity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="q-rest-customer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="q-rest-customer" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="velocity" type="462c0819:PsiDirectoryNode" />
+              <item name="email" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -257,12 +252,11 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/email" />
-      <recent name="$PROJECT_DIR$/web/WEB-INF/lib" />
-      <recent name="$PROJECT_DIR$/src/q/rest/customer/filter" />
-      <recent name="$PROJECT_DIR$/src/q/rest/customer/model/contract" />
-      <recent name="$PROJECT_DIR$/src/q/rest/customer/model/entity" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/class/velocity/email" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/email-templates" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="q.rest.customer.model.contract" />
@@ -271,11 +265,12 @@
       <recent name="q.rest.customer.operation" />
       <recent name="q.rest.customer.helper" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/email" />
-      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity" />
-      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/class/velocity/email" />
-      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/email-templates" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF/lib" />
+      <recent name="$PROJECT_DIR$/src/q/rest/customer/filter" />
+      <recent name="$PROJECT_DIR$/src/q/rest/customer/model/contract" />
+      <recent name="$PROJECT_DIR$/src/q/rest/customer/model/entity" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -425,12 +420,15 @@
       <workItem from="1561807424109" duration="1935000" />
       <workItem from="1561881685965" duration="10750000" />
       <workItem from="1562570171587" duration="32000" />
-      <workItem from="1562570227966" duration="52000" />
+      <workItem from="1562570227966" duration="1552000" />
+      <workItem from="1562910278926" duration="604000" />
+      <workItem from="1563046891050" duration="737000" />
+      <workItem from="1563170525167" duration="1837000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247933000" />
+    <option name="totallyTimeSpent" value="252611000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -445,7 +443,7 @@
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45275036" visible="true" weight="0.2267525" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45275036" visible="true" weight="0.2353362" />
       <window_info id="Structure" order="1" sideWeight="0.5472497" side_tool="true" weight="0.32089016" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" sideWeight="0.50070524" side_tool="true" weight="0.24964234" />
@@ -456,7 +454,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" x="21" y="307" width="1398" height="233" id="Run" order="2" weight="0.3787234" />
+      <window_info anchor="bottom" x="21" y="307" width="1398" height="233" id="Run" order="2" visible="true" weight="0.3787234" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -499,38 +497,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/jackson-annotations-2.8.5.jar!/com/fasterxml/jackson/annotation/JsonIgnoreProperties.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/AddSocialMediaRequestModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-          <folding>
-            <element signature="e#234#235#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#313#314#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#388#389#0" expanded="true" />
-            <element signature="e#421#422#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#591#592#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#699#700#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/PasswordReset.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -626,36 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/WireTransferEmailRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
-            <element signature="e#405#406#0" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#582#583#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#764#765#0" expanded="true" />
-            <element signature="e#792#793#0" expanded="true" />
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#871#872#0" expanded="true" />
-            <element signature="e#976#977#0" expanded="true" />
-            <element signature="e#1005#1006#0" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1085#1086#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/entity/AccessToken.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -704,13 +640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="70" column="5" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="70" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/wire-transfer.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4320">
-          <caret line="288" column="25" selection-start-line="288" selection-start-column="25" selection-end-line="288" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -798,16 +727,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/wire-transfer-qetaa.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="142" column="99" selection-start-line="142" selection-start-column="99" selection-end-line="142" selection-end-column="99" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#p#0;n#td#1;n#tr#6;n#table#0;n#td#0;n#tr#1;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/signup-code-qetaa.vm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -843,13 +762,6 @@
             <element signature="e#2911#2912#0" expanded="true" />
             <element signature="e#2955#2956#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1057,28 +969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="109" column="29" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/SignupRequestModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="83" column="36" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
-          <folding>
-            <element signature="e#1800#1801#0" expanded="true" />
-            <element signature="e#1854#1855#0" expanded="true" />
-            <element signature="e#1900#1901#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -1089,10 +979,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/SignupRequestModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="628">
+          <caret line="83" column="36" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
+          <folding>
+            <element signature="e#1800#1801#0" expanded="true" />
+            <element signature="e#1854#1855#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/wire-transfer-qetaa.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="142" column="99" selection-start-line="142" selection-start-column="99" selection-end-line="142" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/wire-transfer.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1920">
+          <caret line="288" column="25" selection-start-line="288" selection-start-column="25" selection-end-line="288" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="293" lean-forward="true" selection-start-line="293" selection-end-line="293" />
+        <state relative-caret-position="235">
+          <caret line="228" column="59" lean-forward="true" selection-start-line="228" selection-start-column="59" selection-end-line="228" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5">
+          <caret line="305" column="53" lean-forward="true" selection-start-line="305" selection-start-column="53" selection-end-line="305" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/model/contract/WireTransferEmailRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="56" column="30" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
+            <element signature="e#1005#1006#0" expanded="true" />
+            <element signature="e#1049#1050#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1179#1180#0" expanded="true" />
+            <element signature="e#1213#1214#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="e#1311#1312#0" expanded="true" />
+            <element signature="e#1345#1346#0" expanded="true" />
+            <element signature="e#1375#1376#0" expanded="true" />
+            <element signature="e#1421#1422#0" expanded="true" />
+            <element signature="e#1459#1460#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/wire-transfer-quotation.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="127" column="31" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/velocity/email/wire-transfer-quotation-qetaa.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="127" column="31" selection-start-line="127" selection-start-column="31" selection-end-line="127" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/q/rest/customer/helper/AppConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
