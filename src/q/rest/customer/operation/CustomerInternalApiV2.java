@@ -347,7 +347,7 @@ public class CustomerInternalApiV2 {
                     body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_QETAA_EMAIL_TEMPLATE, vmap);
                 }
                 else {
-                    body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_QETAA_QUOTAITON_EMAIL_TEMPLATE, vmap);
+                    body = getHtmlTemplate(AppConstants.WIRE_TRANSFER_QETAA_QUOTATION_EMAIL_TEMPLATE, vmap);
                 }
             }
 

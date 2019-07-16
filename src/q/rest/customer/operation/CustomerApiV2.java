@@ -4,7 +4,9 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import q.rest.customer.dao.DAO;
+import q.rest.customer.filter.Secured;
 import q.rest.customer.filter.SecuredCustomer;
+import q.rest.customer.filter.SecuredUser;
 import q.rest.customer.filter.ValidApp;
 import q.rest.customer.helper.AppConstants;
 import q.rest.customer.helper.Helper;
@@ -209,6 +211,40 @@ public class CustomerApiV2 {
         smsSent.setCreatedBy(0);
         smsSent.setCustomerId(customerId);
         return smsSent;
+    }
+
+    @Secured
+    @POST
+    @Path("email/quotation-submitted")
+    public Response sendEmailQuotationSubmitted(@HeaderParam("Authorization") String authHeader, Map<String, Object> map){
+        try{
+            long customerId = ( (Number) map.get("customerId")).longValue();
+            long quotationId= ( (Number) map.get("quotationId")).longValue();
+            Customer customer = dao.find(Customer.class, customerId);
+            Map<String,Object> vmap = new HashMap<>();
+            vmap.put("firstName", customer.getFirstName());
+            vmap.put("quotationId", quotationId);
+            String body;
+            //this is q-parts
+            if(customer.getAppCode() == 2){
+                body = getHtmlTemplate(AppConstants.QUOTATION_SUBMITTED_EMAIL_TEMPLATE, vmap);
+            }
+            //this is qetaa.com
+            else{
+                body = getHtmlTemplate(AppConstants.QUOTATION_SUBMITTED_QETAA_EMAIL_TEMPLATE, vmap);
+            }
+            EmailSent emailSent = new EmailSent();
+            emailSent.setEmail(customer.getEmail());
+            emailSent.setPurpose("Quotation Submitted");
+            emailSent.setAppCode(customer.getAppCode());
+            emailSent.setCreatedBy(0);
+            emailSent.setQuotationId(quotationId);
+            emailSent.setCustomerId(customer.getId());
+            async.sendHtmlEmail(emailSent, customer.getEmail(), AppConstants.getQuotationReadyEmailSubject(quotationId), body);
+            return Response.status(201).build();
+        }catch (Exception ex){
+            return Response.status(500).build();
+        }
     }
 
 

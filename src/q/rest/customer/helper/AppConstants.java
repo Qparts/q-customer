@@ -26,9 +26,11 @@ public class AppConstants {
     public final static String WIRE_TRANSFER_EMAIL_TEMPLATE = "email/wire-transfer.vm";
     public final static String WIRE_TRANSFER_QUOTATION_EMAIL_TEMPLATE = "email/wire-transfer-quotation.vm";
     public final static String WIRE_TRANSFER_QETAA_EMAIL_TEMPLATE = "email/wire-transfer-qetaa.vm";
-    public final static String WIRE_TRANSFER_QETAA_QUOTAITON_EMAIL_TEMPLATE = "email/wire-transfer-quotation-qetaa.vm";
+    public final static String WIRE_TRANSFER_QETAA_QUOTATION_EMAIL_TEMPLATE = "email/wire-transfer-quotation-qetaa.vm";
     public final static String SHIPMENT_QETAA_EMAIL_TEMPLATE = "email/shipment-qetaa.vm";
     public final static String SHIPMENT_EMAIL_TEMPLATE = "email/shipment.vm";
+    public final static String QUOTATION_SUBMITTED_EMAIL_TEMPLATE = "email/quotation-submitted.vm";
+    public final static String QUOTATION_SUBMITTED_QETAA_EMAIL_TEMPLATE = "email/quotation-submitted-qetaa.vm";
 
     public final static String USER_MATCH_TOKEN = USER_SERVICE + "match-token";
     public static final String USER_MATCH_TOKEN_WS = USER_SERVICE + "match-token/ws";
@@ -39,6 +41,7 @@ public class AppConstants {
     public final static String getQuotationReadyEmailSubject(long quotationId){
         return "Quotation No. " + quotationId + " طلب التسعيرة رقم ";
     }
+
     public final static String getWireTransferRequestEmailSubject(WireTransferEmailRequest wire){
         if(wire.getPurpose().equals("cart")){
             return "Cart No. " + wire.getCartId() + " رقم الطلب:  ";
