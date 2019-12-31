@@ -756,6 +756,29 @@ public class CustomerApiV2 {
 
     @SecuredCustomer
     @DELETE
+    @Path("vehicle/{vehicleId}")
+    public Response archiveVehicle(@HeaderParam("Authorization") String header, @PathParam(value="vehicleId") long vehicleId){
+        try{
+            CustomerVehicle cv = dao.find(CustomerVehicle.class, vehicleId);
+            if(!customerFound(cv.getCustomerId())) {
+                return Response.status(404).build();
+            }
+
+            if(!validCustomerOperation(cv.getCustomerId(), header)) {
+                return Response.status(401).build();
+            }
+
+            cv.setStatus('X');
+            dao.update(cv);
+            return Response.status(201).build();
+
+        }catch (Exception ex){
+            return getServerErrorResponse();
+        }
+    }
+
+    @SecuredCustomer
+    @DELETE
     @Path("address/{addressId}")
     public Response archiveAddress(@HeaderParam("Authorization") String header, @PathParam(value = "addressId") long addressId){
         try{
