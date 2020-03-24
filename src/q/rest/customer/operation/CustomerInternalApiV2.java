@@ -31,6 +31,7 @@ import java.util.*;
 @Produces(MediaType.APPLICATION_JSON)
 public class CustomerInternalApiV2 {
 
+
     @EJB
     private DAO dao;
 

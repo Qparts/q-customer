@@ -46,8 +46,6 @@ public class NotificationsEndPoint {
         if(this.tokenMatched()) {
             notificationsEndPoints.add(this);
             broadcast("noVins,"+async.getNoVinsCount());
-            //broadcast("pendingQuotations," + async.getPendingQuotations());
-            //broadcast("quotingQuotations," + async.getAssinedQuotations(userId));
         }
         else {
             session.close();

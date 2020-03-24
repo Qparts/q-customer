@@ -8,7 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/CustomerNotificationEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/CustomerNotificationEndPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/NotificationsEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/NotificationsEndPoint.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -227,7 +229,14 @@
       <workItem from="1563246319019" duration="2111000" />
       <workItem from="1576416546180" duration="166000" />
       <workItem from="1577146669993" duration="548000" />
-      <workItem from="1577614297514" duration="1995000" />
+      <workItem from="1577614297514" duration="2406000" />
+      <workItem from="1577802530852" duration="249000" />
+      <workItem from="1578140807159" duration="12000" />
+      <workItem from="1579073808101" duration="258000" />
+      <workItem from="1579232004793" duration="1981000" />
+      <workItem from="1580563682907" duration="2342000" />
+      <workItem from="1581242298945" duration="1773000" />
+      <workItem from="1585067335964" duration="1210000" />
     </task>
     <servers />
   </component>
