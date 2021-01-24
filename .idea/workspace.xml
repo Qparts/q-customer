@@ -7,12 +7,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b6ba954-8428-4eec-b645-54b645d0b9cb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/exception/Error.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/exception/GlobalException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/annotation/InternalApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/annotation/SubscriberJwt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/annotation/UserJwt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/annotation/UserSubscriberJwt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/annotation/V3ValidApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/jwt/InternalAppAgent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/jwt/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/jwt/JwtFilterSubscriber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/jwt/JwtFilterUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/jwt/JwtFilterUserSubscriber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/filter/jwt/ValidAppAgent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/helper/KeyConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/model/entity/stock/StockCustomer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/model/entity/stock/StockSupplier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/StockCustomerApiV3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/FastInfoset-1.2.15.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/bcprov-jdk15on-1.65.01.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/byte-buddy-1.10.10.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/classmate-1.5.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/dom4j-2.1.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/hibernate-commons-annotations-5.1.0.Final.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/hibernate-core-5.4.18.Final.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/hibernate-types-52-2.9.11.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/istack-commons-runtime-3.0.7.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/jandex-2.1.3.Final.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/javassist-3.24.0-GA.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/javax.activation-api-1.2.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/javax.persistence-api-2.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/jaxb-api-2.3.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/jaxb-runtime-2.3.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/jboss-logging-3.3.2.Final.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/jjwt-api-0.11.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/jjwt-impl-0.11.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/jjwt-jackson-0.11.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/stax-ex-1.8.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/txw2-2.3.1.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerInternalApiV2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/CustomerNotificationEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/CustomerNotificationEndPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/NotificationsEndPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/sockets/NotificationsEndPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/q-rest-customer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/q-rest-customer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/helper/Helper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/q/rest/customer/operation/CustomerApiV2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +71,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1V1NGRu6rzZylZapP3KjyHJRnAe" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/web/WEB-INF/lib" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
@@ -44,7 +93,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562109485218" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -54,44 +103,32 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/q/rest/customer/filter" />
-      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/email" />
-      <recent name="$PROJECT_DIR$/web/WEB-INF/lib" />
-      <recent name="$PROJECT_DIR$/src/q/rest/customer/model/contract" />
-      <recent name="$PROJECT_DIR$/src/q/rest/customer/model/entity" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="q.rest.customer.model.contract" />
-      <recent name="q.rest.customer.model.entity" />
-      <recent name="q.rest.customer.operation.sockets" />
-      <recent name="q.rest.customer.operation" />
-      <recent name="q.rest.customer.helper" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/email" />
       <recent name="$PROJECT_DIR$/web/WEB-INF/velocity" />
       <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/class/velocity/email" />
       <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/email-templates" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="q.rest.customer.helper" />
+      <recent name="q.rest.customer.exception" />
+      <recent name="q.rest.customer.model.contract" />
+      <recent name="q.rest.customer.model.entity" />
+      <recent name="q.rest.customer.operation.sockets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/WEB-INF/lib" />
+      <recent name="$PROJECT_DIR$/src/q/rest/customer/filter" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF/velocity/email" />
+      <recent name="$PROJECT_DIR$/src/q/rest/customer/model/contract" />
+      <recent name="$PROJECT_DIR$/src/q/rest/customer/model/entity" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration name="JBoss 14.0.1.Final (Remote)" type="JBossConfiguration" factoryName="Remote" APPLICATION_SERVER_NAME="JBoss 14.0.1.Final" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="JBoss 19.0.1.Final (Remote)" type="JBossConfiguration" factoryName="Remote" APPLICATION_SERVER_NAME="JBoss 19.1.0.Final" ALTERNATIVE_JRE_ENABLED="false">
       <option name="PORT" value="8081" />
       <option name="LOCAL" value="false" />
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/q-rest-customer_war exploded/" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/q-rest-customer/" />
       <option name="UPDATING_POLICY" value="hot-swap-classes" />
       <deployment>
         <artifact name="q-rest-customer">
@@ -100,25 +137,25 @@
       </deployment>
       <server-settings>
         <data>
-          <option name="credentialAlias" value="e6d45ee9-89de-4732-9b3f-4fa5efac1943" />
+          <option name="credentialAlias" value="9982fb9a-33d5-4226-b382-3d73ec0b33f4" />
           <option name="managementPort" value="9991" />
           <option name="serverGroup" value="" />
           <option name="stagingRemotePath" value="" />
           <option name="transportStagingTarget">
             <TransportTarget>
-              <option name="id" value="42e2f5a4-0c97-4fe2-942d-eafb88e0fa30" />
-              <id>42e2f5a4-0c97-4fe2-942d-eafb88e0fa30</id>
+              <option name="id" value="322b4afb-84bb-4675-ab43-6b3aa6e380af" />
+              <id>322b4afb-84bb-4675-ab43-6b3aa6e380af</id>
             </TransportTarget>
           </option>
           <option name="username" value="fareed" />
           <username>fareed</username>
-          <credential-alias>e6d45ee9-89de-4732-9b3f-4fa5efac1943</credential-alias>
+          <credential-alias>9982fb9a-33d5-4226-b382-3d73ec0b33f4</credential-alias>
           <management-port>9991</management-port>
           <server-group />
           <transport-target>
             <TransportTarget>
-              <option name="id" value="42e2f5a4-0c97-4fe2-942d-eafb88e0fa30" />
-              <id>42e2f5a4-0c97-4fe2-942d-eafb88e0fa30</id>
+              <option name="id" value="322b4afb-84bb-4675-ab43-6b3aa6e380af" />
+              <id>322b4afb-84bb-4675-ab43-6b3aa6e380af</id>
             </TransportTarget>
           </transport-target>
           <staging-path />
@@ -126,7 +163,7 @@
       </server-settings>
       <predefined_log_file enabled="true" id="JBoss" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="62828" />
+        <option name="DEBUG_PORT" value="57126" />
         <option name="LOCAL" value="false" />
       </RunnerSettings>
       <method v="2">
@@ -136,6 +173,28 @@
         </option>
       </method>
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="JBoss Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="JBoss Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -236,7 +295,15 @@
       <workItem from="1579232004793" duration="1981000" />
       <workItem from="1580563682907" duration="2342000" />
       <workItem from="1581242298945" duration="1773000" />
-      <workItem from="1585067335964" duration="1210000" />
+      <workItem from="1585067335964" duration="1253000" />
+      <workItem from="1590797164984" duration="5000" />
+      <workItem from="1591448364907" duration="2092000" />
+      <workItem from="1592078563261" duration="538000" />
+      <workItem from="1608299143777" duration="10089000" />
+      <workItem from="1608399514601" duration="7952000" />
+      <workItem from="1608906442070" duration="882000" />
+      <workItem from="1609198600351" duration="437000" />
+      <workItem from="1610821577369" duration="2860000" />
     </task>
     <servers />
   </component>
@@ -265,6 +332,86 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="79" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608309005144">
+      <screen x="0" y="23" width="1440" height="789" />
+    </state>
+    <state x="184" y="79" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.789@0.23.1440.789" timestamp="1608309005144" />
+    <state x="622" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1608400316042">
+      <screen x="0" y="23" width="1680" height="939" />
+    </state>
+    <state x="622" y="124" key="#com.intellij.ide.util.MemberChooser/-1920.23.1920.1057/0.23.1680.939@0.23.1680.939" timestamp="1608400316042" />
+    <state x="533" y="108" key="#com.intellij.ide.util.MemberChooser/0.23.1440.789@0.23.1440.789" timestamp="1608304979320" />
+    <state x="533" y="108" key="#com.intellij.ide.util.MemberChooser/0.23.1440.792@0.23.1440.792" timestamp="1608307701769" />
+    <state width="958" height="241" key="GridCell.Tab.0.bottom" timestamp="1610837790878">
+      <screen x="0" y="23" width="1440" height="789" />
+    </state>
+    <state width="958" height="250" key="GridCell.Tab.0.bottom/-1920.23.1920.1057/0.23.1680.939@0.23.1680.939" timestamp="1609199092030" />
+    <state width="958" height="201" key="GridCell.Tab.0.bottom/-1920.23.1920.969/0.23.1680.1027@0.23.1680.1027" timestamp="1608338372861" />
+    <state width="958" height="241" key="GridCell.Tab.0.bottom/0.23.1440.789@0.23.1440.789" timestamp="1610837790878" />
+    <state width="958" height="250" key="GridCell.Tab.0.bottom/0.23.1440.792@0.23.1440.792" timestamp="1608665752546" />
+    <state width="958" height="241" key="GridCell.Tab.0.center" timestamp="1610837790877">
+      <screen x="0" y="23" width="1440" height="789" />
+    </state>
+    <state width="958" height="250" key="GridCell.Tab.0.center/-1920.23.1920.1057/0.23.1680.939@0.23.1680.939" timestamp="1609199092030" />
+    <state width="958" height="201" key="GridCell.Tab.0.center/-1920.23.1920.969/0.23.1680.1027@0.23.1680.1027" timestamp="1608338372860" />
+    <state width="958" height="241" key="GridCell.Tab.0.center/0.23.1440.789@0.23.1440.789" timestamp="1610837790877" />
+    <state width="958" height="250" key="GridCell.Tab.0.center/0.23.1440.792@0.23.1440.792" timestamp="1608665752546" />
+    <state width="958" height="241" key="GridCell.Tab.0.left" timestamp="1610837790877">
+      <screen x="0" y="23" width="1440" height="789" />
+    </state>
+    <state width="958" height="250" key="GridCell.Tab.0.left/-1920.23.1920.1057/0.23.1680.939@0.23.1680.939" timestamp="1609199092029" />
+    <state width="958" height="201" key="GridCell.Tab.0.left/-1920.23.1920.969/0.23.1680.1027@0.23.1680.1027" timestamp="1608338372860" />
+    <state width="958" height="241" key="GridCell.Tab.0.left/0.23.1440.789@0.23.1440.789" timestamp="1610837790877" />
+    <state width="958" height="250" key="GridCell.Tab.0.left/0.23.1440.792@0.23.1440.792" timestamp="1608665752546" />
+    <state width="958" height="241" key="GridCell.Tab.0.right" timestamp="1610837790877">
+      <screen x="0" y="23" width="1440" height="789" />
+    </state>
+    <state width="958" height="250" key="GridCell.Tab.0.right/-1920.23.1920.1057/0.23.1680.939@0.23.1680.939" timestamp="1609199092030" />
+    <state width="958" height="201" key="GridCell.Tab.0.right/-1920.23.1920.969/0.23.1680.1027@0.23.1680.1027" timestamp="1608338372860" />
+    <state width="958" height="241" key="GridCell.Tab.0.right/0.23.1440.789@0.23.1440.789" timestamp="1610837790877" />
+    <state width="958" height="250" key="GridCell.Tab.0.right/0.23.1440.792@0.23.1440.792" timestamp="1608665752546" />
+    <state width="958" height="241" key="GridCell.Tab.1.bottom" timestamp="1610837790877">
+      <screen x="0" y="23" width="1440" height="789" />
+    </state>
+    <state width="958" height="250" key="GridCell.Tab.1.bottom/-1920.23.1920.1057/0.23.1680.939@0.23.1680.939" timestamp="1609199092029" />
+    <state width="958" height="201" key="GridCell.Tab.1.bottom/-1920.23.1920.969/0.23.1680.1027@0.23.1680.1027" timestamp="1608338372860" />
+    <state width="958" height="241" key="GridCell.Tab.1.bottom/0.23.1440.789@0.23.1440.789" timestamp="1610837790877" />
+    <state width="958" height="250" key="GridCell.Tab.1.bottom/0.23.1440.792@0.23.1440.792" timestamp="1608665752545" />
+    <state width="958" height="241" key="GridCell.Tab.1.center" timestamp="1610837790876">
+      <screen x="0" y="23" width="1440" height="789" />
+    </state>
+    <state width="958" height="250" key="GridCell.Tab.1.center/-1920.23.1920.1057/0.23.1680.939@0.23.1680.939" timestamp="1609199092028" />
+    <state width="958" height="201" key="GridCell.Tab.1.center/-1920.23.1920.969/0.23.1680.1027@0.23.1680.1027" timestamp="1608338372859" />
+    <state width="958" height="241" key="GridCell.Tab.1.center/0.23.1440.789@0.23.1440.789" timestamp="1610837790876" />
+    <state width="958" height="250" key="GridCell.Tab.1.center/0.23.1440.792@0.23.1440.792" timestamp="1608665752545" />
+    <state width="958" height="241" key="GridCell.Tab.1.left" timestamp="1610837790876">
+      <screen x="0" y="23" width="1440" height="789" />
+    </state>
+    <state width="958" height="250" key="GridCell.Tab.1.left/-1920.23.1920.1057/0.23.1680.939@0.23.1680.939" timestamp="1609199092028" />
+    <state width="958" height="201" key="GridCell.Tab.1.left/-1920.23.1920.969/0.23.1680.1027@0.23.1680.1027" timestamp="1608338372858" />
+    <state width="958" height="241" key="GridCell.Tab.1.left/0.23.1440.789@0.23.1440.789" timestamp="1610837790876" />
+    <state width="958" height="250" key="GridCell.Tab.1.left/0.23.1440.792@0.23.1440.792" timestamp="1608665752544" />
+    <state width="958" height="241" key="GridCell.Tab.1.right" timestamp="1610837790877">
+      <screen x="0" y="23" width="1440" height="789" />
+    </state>
+    <state width="958" height="250" key="GridCell.Tab.1.right/-1920.23.1920.1057/0.23.1680.939@0.23.1680.939" timestamp="1609199092029" />
+    <state width="958" height="201" key="GridCell.Tab.1.right/-1920.23.1920.969/0.23.1680.1027@0.23.1680.1027" timestamp="1608338372859" />
+    <state width="958" height="241" key="GridCell.Tab.1.right/0.23.1440.789@0.23.1440.789" timestamp="1610837790877" />
+    <state width="958" height="250" key="GridCell.Tab.1.right/0.23.1440.792@0.23.1440.792" timestamp="1608665752545" />
+    <state x="243" y="23" key="SettingsEditor" timestamp="1608324069167">
+      <screen x="0" y="23" width="1680" height="939" />
+    </state>
+    <state x="243" y="23" key="SettingsEditor/-1920.23.1920.1057/0.23.1680.939@0.23.1680.939" timestamp="1608324069167" />
+    <state x="208" y="23" key="SettingsEditor/0.23.1440.789@0.23.1440.789" timestamp="1608299841415" />
+    <state x="424" y="318" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1608299643186">
+      <screen x="0" y="23" width="1440" height="789" />
+    </state>
+    <state x="424" y="318" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.789@0.23.1440.789" timestamp="1608299643186" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -275,82 +422,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>q-rest-customer</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Web (q-rest-customer)|Web</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>q-rest-customer</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>org.apache.velocity.tools:velocity-tools-generic:3.0</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

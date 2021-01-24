@@ -1,5 +1,7 @@
 package q.rest.customer.helper;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -30,6 +32,15 @@ public class Helper {
         }
     }
 
+    public static int convertToInteger(String query){
+        try{
+            return Integer.parseInt(query);
+        }
+        catch(Exception ex){
+            return -1;
+        }
+    }
+
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 
@@ -57,6 +68,11 @@ public class Helper {
 
     public static Date addMinutes(Date original, int minutes) {
         return new Date(original.getTime() + (1000L * 60 * minutes));
+    }
+
+
+    public static Date addDays(Date original, long days) {
+        return new Date(original.getTime() + (1000L * 60 * 60 * 24 * days));
     }
 
     public String getDateFormat(Date date){
@@ -100,6 +116,12 @@ public class Helper {
             salt.append(SALTCHARS.charAt(index));
         }
         return salt.toString();
+    }
+
+    public static int getCompanyFromJWT(String header) {
+        String token = header.substring("Bearer".length()).trim();
+        Claims claims = Jwts.parserBuilder().setSigningKey(KeyConstant.PUBLIC_KEY).build().parseClaimsJws(token).getBody();
+        return Integer.parseInt(claims.get("comp").toString());
     }
 
 }

@@ -515,8 +515,8 @@ public class CustomerApiV2 {
     //needs visit for merged dashboard
     @ValidApp
     @GET
-    @Path("reset-password/token/{token-value}")
-    public Response checkResetPassword(@HeaderParam("Authorization") String authHeader, @PathParam("token-value") String tokenValue){
+    @Path("reset-password/token/{tokenValue}")
+    public Response checkResetPassword(@HeaderParam("Authorization") String authHeader, @PathParam("tokenValue") String tokenValue){
         try{
             //check if this token value exists!
             String sql = "select b from PasswordReset b where b.token =:value0 and b.status = :value1";
