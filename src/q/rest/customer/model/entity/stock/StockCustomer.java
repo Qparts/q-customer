@@ -27,6 +27,15 @@ public class StockCustomer implements Serializable {
     private String phone;
     private String address;
     private String note;
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public int getCountryId() {
         return countryId;
