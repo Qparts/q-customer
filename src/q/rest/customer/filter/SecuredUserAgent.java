@@ -25,8 +25,8 @@ import java.util.Map;
 @Priority(Priorities.AUTHENTICATION)
 public class SecuredUserAgent implements ContainerRequestFilter {
 
-    @EJB
-    private DAO dao;
+//    @EJB
+//    private DAO dao;
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
@@ -49,37 +49,30 @@ public class SecuredUserAgent implements ContainerRequestFilter {
     }
 
     private void matchToken(String token, String username, String appSecret, String type, String header) throws NotAuthorizedException{
-        validateSecret(appSecret);
-        if(!type.equals("U")){
-            throw new NotAuthorizedException("Request authorization failed");
-        }
-        String link = AppConstants.USER_MATCH_TOKEN;
-        Map<String,String> map = new HashMap<>();
-        map.put("username", username);
-        map.put("appSecret", appSecret);
-        map.put("token", token);
-        Response r = this.postSecuredRequest(link, map, header);
-        if(r.getStatus() != 200){
-            throw new NotAuthorizedException("Request authorization failed");
-        }
+//        validateSecret(appSecret);
+//        if(!type.equals("U")){
+//            throw new NotAuthorizedException("Request authorization failed");
+//        }
+//        String link = AppConstants.USER_MATCH_TOKEN;
+//        Map<String,String> map = new HashMap<>();
+//        map.put("username", username);
+//        map.put("appSecret", appSecret);
+//        map.put("token", token);
+//        Response r = this.postSecuredRequest(link, map, header);
+//        if(r.getStatus() != 200){
+//            throw new NotAuthorizedException("Request authorization failed");
+//        }
     }
 
 
 
     // retrieves app object from app secret
     private void validateSecret(String secret) throws NotAuthorizedException {
-        // verify web app secret
-        String sql = "select b from WebApp b where b.appSecret = :value0 and b.active = :value1";
-        WebApp webApp = dao.findJPQLParams(WebApp.class, sql, secret, true);
-        if (webApp == null) {
-            throw new NotAuthorizedException("Request authorization failed");
-        }
-    }
-
-    public <T> Response postSecuredRequest(String link, T t, String authHeader) {
-        Builder b = ClientBuilder.newClient().target(link).request();
-        b.header(HttpHeaders.AUTHORIZATION, authHeader);
-        Response r = b.post(Entity.entity(t, "application/json"));// not secured
-        return r;
+//        // verify web app secret
+//        String sql = "select b from WebApp b where b.appSecret = :value0 and b.active = :value1";
+//        WebApp webApp = dao.findJPQLParams(WebApp.class, sql, secret, true);
+//        if (webApp == null) {
+//            throw new NotAuthorizedException("Request authorization failed");
+//        }
     }
 }

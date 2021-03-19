@@ -40,7 +40,7 @@ public class SysProps {
         try{
             return prop.get(key).toString();
         }catch (NullPointerException ex){
-            System.out.println("Null pointer exception");
+            System.out.println("Customer service : Null pointer exception " + key);
             return "";
         }
         catch (Exception ex){

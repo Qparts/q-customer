@@ -52,37 +52,37 @@ public class SecuredAgent implements ContainerRequestFilter {
     }
 
     private void matchToken(String token, String username, String appSecret, String type, String header) throws NotAuthorizedException{
-        validateSecret(appSecret);
-        String link;
-        if(type.equals("C")){
-            WebApp webApp = getWebAppFromSecret(appSecret);
-            String sql = "select b from AccessToken b where b.customerId = :value0 and b.webApp = :value1 " +
-                    "and b.status =:value2 and b.token =:value3 and b.expire > :value4";
-            List<AccessToken> accessTokenList = dao.getJPQLParams(AccessToken.class, sql, Long.parseLong(username), webApp, 'A', token, new Date());
-            if(accessTokenList.isEmpty()){
-                throw new NotAuthorizedException("Request authorization failed");
-            }
-        }
-        else if(type.equals("U")){
-            Map<String,String> map = new HashMap<>();
-            map.put("username", username);
-            map.put("appSecret", appSecret);
-            map.put("token", token);
-            Response r = this.postSecuredRequest(AppConstants.USER_MATCH_TOKEN, map, header);
-            if(r.getStatus() != 200){
-                throw new NotAuthorizedException("Request authorization failed");
-            }
-        }
-        else {
-            throw new NotAuthorizedException("Request authorization failed");
-        }
+//        validateSecret(appSecret);
+//        String link;
+//        if(type.equals("C")){
+//            WebApp webApp = getWebAppFromSecret(appSecret);
+//            String sql = "select b from AccessToken b where b.customerId = :value0 and b.webApp = :value1 " +
+//                    "and b.status =:value2 and b.token =:value3 and b.expire > :value4";
+//            List<AccessToken> accessTokenList = dao.getJPQLParams(AccessToken.class, sql, Long.parseLong(username), webApp, 'A', token, new Date());
+//            if(accessTokenList.isEmpty()){
+//                throw new NotAuthorizedException("Request authorization failed");
+//            }
+//        }
+//        else if(type.equals("U")){
+//            Map<String,String> map = new HashMap<>();
+//            map.put("username", username);
+//            map.put("appSecret", appSecret);
+//            map.put("token", token);
+//            Response r = this.postSecuredRequest(AppConstants.USER_MATCH_TOKEN, map, header);
+//            if(r.getStatus() != 200){
+//                throw new NotAuthorizedException("Request authorization failed");
+//            }
+//        }
+//        else {
+//            throw new NotAuthorizedException("Request authorization failed");
+//        }
     }
 
 
     private void matchToken(String token, String username, String appSecret, String type) throws NotAuthorizedException{
-        if(!type.equals("C")){
-            throw new NotAuthorizedException("Request authorization failed");
-        }
+//        if(!type.equals("C")){
+//            throw new NotAuthorizedException("Request authorization failed");
+//        }
     }
 
 

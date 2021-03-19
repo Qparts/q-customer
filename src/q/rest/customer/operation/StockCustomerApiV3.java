@@ -2,16 +2,21 @@ package q.rest.customer.operation;
 
 import q.rest.customer.dao.DAO;
 import q.rest.customer.filter.annotation.SubscriberJwt;
+import q.rest.customer.helper.AppConstants;
 import q.rest.customer.helper.Helper;
 import q.rest.customer.model.entity.stock.StockCustomer;
 import q.rest.customer.model.entity.stock.StockSupplier;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -119,16 +124,35 @@ public class StockCustomerApiV3 {
     @Path("customer")
     public Response createCustomer(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, StockCustomer customer){
         int companyId = Helper.getCompanyFromJWT(header);
-        String sql = "select b from StockCustomer b where b.companyId = :value0 and (b.phone = :value1 or b.email =:value2)";
-        List<StockCustomer> check = dao.getJPQLParams(StockCustomer.class, sql, companyId, customer.getPhone(), customer.getEmail());
-        if(!check.isEmpty()) return Response.status(409).build();
+        String sql = "select b from StockCustomer b where b.companyId = :value0 and b.code =:value1";
+        List<StockCustomer> check = dao.getJPQLParams(StockCustomer.class, sql, companyId, customer.getCode());
+        if(!check.isEmpty())
+            return Response.status(409).build();
         customer.setCompanyId(Helper.getCompanyFromJWT(header));
         customer.setCreated(new Date());
         customer.setEmail(customer.getEmail().toLowerCase());
         customer.setStatus('A');
         dao.persist(customer);
-        return Response.status(201).build();
+        List<StockCustomer> customers = dao.getCondition(StockCustomer.class, "companyId", companyId);
+        if(customers.size() == 1) {
+            Map<String,Integer> map = new HashMap<>();
+            map.put("customerId", customer.getId());
+            Response r = this.postSecuredRequest(AppConstants.POST_DEFAULT_CUSTOMER, map, header);
+            r.close();
+        }
+        return Response.status(200).build();
     }
+
+
+    public <T> Response postSecuredRequest(String link, T t, String authHeader) {
+        Invocation.Builder b = ClientBuilder.newClient().target(link).request();
+        b.header(HttpHeaders.AUTHORIZATION, authHeader);
+        Response r = b.post(Entity.entity(t, "application/json"));// not secured
+        return r;
+    }
+
+
+
 
     @SubscriberJwt
     @POST
