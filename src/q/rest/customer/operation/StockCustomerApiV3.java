@@ -1,6 +1,7 @@
 package q.rest.customer.operation;
 
 import q.rest.customer.dao.DAO;
+import q.rest.customer.filter.annotation.InternalApp;
 import q.rest.customer.filter.annotation.SubscriberJwt;
 import q.rest.customer.helper.AppConstants;
 import q.rest.customer.helper.Helper;
@@ -79,7 +80,6 @@ public class StockCustomerApiV3 {
         return Response.status(200).entity(customer).build();
     }
 
-
     @GET
     @Path("customers/{ids}")
     @SubscriberJwt
@@ -108,7 +108,6 @@ public class StockCustomerApiV3 {
         return Response.status(200).entity(suppliers).build();
     }
 
-
     @SubscriberJwt
     @GET
     @Path("supplier/{id}")
@@ -117,7 +116,6 @@ public class StockCustomerApiV3 {
         StockSupplier supplier = dao.findTwoConditions(StockSupplier.class,"companyId", "id", companyId, id);
         return Response.status(200).entity(supplier).build();
     }
-
 
     @SubscriberJwt
     @POST
@@ -143,17 +141,6 @@ public class StockCustomerApiV3 {
         return Response.status(200).build();
     }
 
-
-    public <T> Response postSecuredRequest(String link, T t, String authHeader) {
-        Invocation.Builder b = ClientBuilder.newClient().target(link).request();
-        b.header(HttpHeaders.AUTHORIZATION, authHeader);
-        Response r = b.post(Entity.entity(t, "application/json"));// not secured
-        return r;
-    }
-
-
-
-
     @SubscriberJwt
     @POST
     @Path("supplier")
@@ -169,6 +156,34 @@ public class StockCustomerApiV3 {
         dao.persist(supplier);
         return Response.status(201).build();
     }
+
+    @InternalApp
+    @POST
+    @Path("default-cash-customer")
+    public Response createDefaultCustomer(Map<String,Integer> map){
+        int companyId = map.get("companyId");
+        StockCustomer customer  = new StockCustomer();
+        customer.setStatus('A');
+        customer.setCreated(new Date());
+        customer.setCompanyId(companyId);
+        customer.setCode("1");
+        customer.setName("Cash Customer");
+        dao.persist(customer);
+        Map<String,Integer> mp2 = new HashMap<>();
+        mp2.put("customerId", customer.getId());
+        return Response.status(200).entity(mp2).build();
+    }
+
+
+
+
+    public <T> Response postSecuredRequest(String link, T t, String authHeader) {
+        Invocation.Builder b = ClientBuilder.newClient().target(link).request();
+        b.header(HttpHeaders.AUTHORIZATION, authHeader);
+        Response r = b.post(Entity.entity(t, "application/json"));// not secured
+        return r;
+    }
+
 
 
 }

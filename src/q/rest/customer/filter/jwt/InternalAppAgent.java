@@ -2,6 +2,7 @@ package q.rest.customer.filter.jwt;
 
 import q.rest.customer.dao.DAO;
 import q.rest.customer.filter.annotation.InternalApp;
+import q.rest.customer.helper.AppConstants;
 
 import javax.annotation.Priority;
 import javax.ejb.EJB;
@@ -18,9 +19,6 @@ import java.io.IOException;
 @Priority(Priorities.AUTHENTICATION)
 public class InternalAppAgent implements ContainerRequestFilter {
 
-    @EJB
-    private DAO dao;
-
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
         try{
@@ -32,12 +30,10 @@ public class InternalAppAgent implements ContainerRequestFilter {
         }
     }
 
-
-    // retrieves app object from app secret
     private void validateSecret(String secret) throws Exception {
-        // verify web app secret
-        if (!"MORNI".equals(secret)) {
+        if (!secret.equals(AppConstants.INTERNAL_APP_SECRET)){
             throw new Exception();
         }
+
     }
 }

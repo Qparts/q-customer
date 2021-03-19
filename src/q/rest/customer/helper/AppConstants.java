@@ -11,6 +11,7 @@ public class AppConstants {
 //    private final static String LOCATION_SERVICE = SysProps.getValue("locationService");
     private final static String SUBSCRIBER_SERVICE = SysProps.getValue("subscriberService").replace("/v1/", "/v2/");
 
+    public final static String INTERNAL_APP_SECRET = "INTERNAL_APP";
     public final static String POST_DEFAULT_CUSTOMER = SUBSCRIBER_SERVICE + "default-customer";
 
 
