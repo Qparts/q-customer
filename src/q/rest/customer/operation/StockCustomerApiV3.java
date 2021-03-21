@@ -162,11 +162,13 @@ public class StockCustomerApiV3 {
     @Path("default-cash-customer")
     public Response createDefaultCustomer(Map<String,Integer> map){
         int companyId = map.get("companyId");
+        int countryId = map.get("countryId");
         StockCustomer customer  = new StockCustomer();
         customer.setStatus('A');
         customer.setCreated(new Date());
         customer.setCompanyId(companyId);
         customer.setCode("1");
+        customer.setCountryId(countryId);
         customer.setName("Cash Customer");
         dao.persist(customer);
         Map<String,Integer> mp2 = new HashMap<>();
