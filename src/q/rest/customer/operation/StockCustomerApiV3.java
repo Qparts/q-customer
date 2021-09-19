@@ -122,10 +122,17 @@ public class StockCustomerApiV3 {
     @Path("customer")
     public Response createCustomer(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, StockCustomer customer){
         int companyId = Helper.getCompanyFromJWT(header);
-        String sql = "select b from StockCustomer b where b.companyId = :value0 and b.code =:value1";
-        List<StockCustomer> check = dao.getJPQLParams(StockCustomer.class, sql, companyId, customer.getCode());
+        String sql = "select b from StockCustomer b where b.companyId = :value0 and b.phone = :value1";
+        List<StockCustomer> check = dao.getJPQLParams(StockCustomer.class, sql, companyId, customer.getPhone());
         if(!check.isEmpty())
             return Response.status(409).build();
+
+        sql = "select b from StockCustomer b where b.companyId = :value0 order by id desc";
+        List<StockCustomer> lastList = dao.getJPQLParamsOffsetMax(StockCustomer.class, sql, 0, 1, companyId);
+        int code = 1000;
+        if(!lastList.isEmpty())
+            code = lastList.get(0).getCode() + 1;
+        customer.setCode(code);
         customer.setCompanyId(Helper.getCompanyFromJWT(header));
         customer.setCreated(new Date());
         customer.setEmail(customer.getEmail().toLowerCase());
@@ -146,13 +153,19 @@ public class StockCustomerApiV3 {
     @Path("supplier")
     public Response createSupplier(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, StockSupplier supplier){
         int companyId = Helper.getCompanyFromJWT(header);
-        String sql = "select b from StockSupplier b where b.companyId = :value0 and (b.phone = :value1 or b.email =:value2)";
-        List<StockSupplier> check = dao.getJPQLParams(StockSupplier.class, sql, companyId, supplier.getPhone(), supplier.getEmail());
+        String sql = "select b from StockSupplier b where b.companyId = :value0 and b.phone = :value1";
+        List<StockSupplier> check = dao.getJPQLParams(StockSupplier.class, sql, companyId, supplier.getPhone());
         if(!check.isEmpty()) return Response.status(409).build();
+        sql = "select b from StockSupplier b where b.companyId = :value0 order by id desc";
+        List<StockSupplier> lastList = dao.getJPQLParamsOffsetMax(StockSupplier.class, sql, 0, 1, companyId);
+        int code = 1001;
+        if(!lastList.isEmpty())
+            code = lastList.get(0).getCode() + 1;
         supplier.setCompanyId(Helper.getCompanyFromJWT(header));
         supplier.setCreated(new Date());
         supplier.setEmail(supplier.getEmail().toLowerCase());
         supplier.setStatus('A');
+        supplier.setCode(code);
         dao.persist(supplier);
         return Response.status(201).build();
     }
@@ -167,7 +180,7 @@ public class StockCustomerApiV3 {
         customer.setStatus('A');
         customer.setCreated(new Date());
         customer.setCompanyId(companyId);
-        customer.setCode("1");
+        customer.setCode(1000);
         customer.setCountryId(countryId);
         customer.setName("Cash Customer");
         dao.persist(customer);

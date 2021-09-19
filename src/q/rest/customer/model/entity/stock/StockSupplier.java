@@ -26,13 +26,13 @@ public class StockSupplier implements Serializable {
     private String phone;
     private String address;
     private String note;
-    private String code;
+    private Integer code;
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
