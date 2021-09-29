@@ -118,6 +118,47 @@ public class StockCustomerApiV3 {
     }
 
     @SubscriberJwt
+    @PUT
+    @Path("customer")
+    public Response updateCustomer(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, StockCustomer customer){
+        int companyId = Helper.getCompanyFromJWT(header);
+        String sql = "select b from StockCustomer b where b.companyId = :value0 and b.id = :value1";
+        StockCustomer original = dao.findJPQLParams(StockCustomer.class, sql, companyId, customer.getId());
+        if(original == null)
+            return Response.status(409).build();
+
+        original.setName(customer.getName());
+        original.setEmail(customer.getEmail());
+        original.setCountryId(customer.getCountryId());
+        original.setPhone(customer.getPhone());
+        original.setAddress(customer.getAddress());
+        original.setName(customer.getNote());
+        dao.update(original);
+        return Response.status(200).entity(original).build();
+    }
+
+
+    @SubscriberJwt
+    @PUT
+    @Path("supplier")
+    public Response updateSupplier(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, StockSupplier supplier){
+        int companyId = Helper.getCompanyFromJWT(header);
+        String sql = "select b from StockSupplier b where b.companyId = :value0 and b.id = :value1";
+        StockSupplier original = dao.findJPQLParams(StockSupplier.class, sql, companyId, supplier.getId());
+        if(original == null)
+            return Response.status(409).build();
+
+        original.setName(supplier.getName());
+        original.setEmail(supplier.getEmail());
+        original.setCountryId(supplier.getCountryId());
+        original.setPhone(supplier.getPhone());
+        original.setAddress(supplier.getAddress());
+        original.setName(supplier.getNote());
+        dao.update(original);
+        return Response.status(200).entity(original).build();
+    }
+
+    @SubscriberJwt
     @POST
     @Path("customer")
     public Response createCustomer(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, StockCustomer customer){
