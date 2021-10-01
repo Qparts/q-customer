@@ -42,6 +42,17 @@ public class StockCustomerApiV3 {
 
     @SubscriberJwt
     @POST
+    @Path("search-customer-ids")
+    public Response searchCustomerIds(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, Map<String,String> map){
+        String nameLike = "%"+map.get("query").toLowerCase() + "%";
+        int id = Helper.convertToInteger(map.get("query"));
+        String sql = "select b.id from StockCustomer b where b.companyId = :value0 and (b.id =:value1 or lower(b.name) like :value2 or b.email like :value2 or b.phone like :value2)";
+        List<Integer> customerIds = dao.getJPQLParams(Integer.class, sql, Helper.getCompanyFromJWT(header), id, nameLike);
+        return Response.status(200).entity(customerIds).build();
+    }
+
+    @SubscriberJwt
+    @POST
     @Path("search-supplier")
     public Response searchSupplier(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, Map<String,String> map){
         String nameLike = "%"+map.get("query").toLowerCase() + "%";
@@ -49,6 +60,17 @@ public class StockCustomerApiV3 {
         String sql = "select b from StockSupplier b where b.companyId = :value0 and (b.id = :value1 or lower(b.name) like :value2 or b.email like :value2 or b.phone like :value2)";
         List<StockSupplier> suppliers = dao.getJPQLParams(StockSupplier.class, sql, Helper.getCompanyFromJWT(header), id,  nameLike);
         return Response.status(200).entity(suppliers).build();
+    }
+
+    @SubscriberJwt
+    @POST
+    @Path("search-supplier-ids")
+    public Response searchSupplierIds(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, Map<String,String> map){
+        String nameLike = "%"+map.get("query").toLowerCase() + "%";
+        int id = Helper.convertToInteger(map.get("query"));
+        String sql = "select b.ids from StockSupplier b where b.companyId = :value0 and (b.id = :value1 or lower(b.name) like :value2 or b.email like :value2 or b.phone like :value2)";
+        List<Integer> suppliersIds = dao.getJPQLParams(Integer.class, sql, Helper.getCompanyFromJWT(header), id,  nameLike);
+        return Response.status(200).entity(suppliersIds).build();
     }
 
     @SubscriberJwt
