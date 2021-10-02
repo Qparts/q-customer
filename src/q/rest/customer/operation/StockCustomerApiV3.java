@@ -35,7 +35,14 @@ public class StockCustomerApiV3 {
     public Response searchCustomer(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, Map<String,String> map){
         String nameLike = "%"+map.get("query").toLowerCase() + "%";
         int id = Helper.convertToInteger(map.get("query"));
-        String sql = "select b from StockCustomer b where b.companyId = :value0 and (b.id =:value1 or lower(b.name) like :value2 or b.email like :value2 or b.phone like :value2)";
+        String sql = "select b from StockCustomer b " +
+                " where b.companyId = :value0 " +
+                " and (" +
+                " b.id =:value1 " +
+                " or lower(b.name) like :value2 " +
+                " or b.email like :value2 " +
+                " or b.phone like :value2 " +
+                " or b.code = :value1)";
         List<StockCustomer> customers = dao.getJPQLParams(StockCustomer.class, sql, Helper.getCompanyFromJWT(header), id, nameLike);
         return Response.status(200).entity(customers).build();
     }
@@ -46,9 +53,18 @@ public class StockCustomerApiV3 {
     public Response searchCustomerIds(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, Map<String,String> map){
         String nameLike = "%"+map.get("query").toLowerCase() + "%";
         int id = Helper.convertToInteger(map.get("query"));
-        String sql = "select b.id from StockCustomer b where b.companyId = :value0 and (b.id =:value1 or lower(b.name) like :value2 or b.email like :value2 or b.phone like :value2)";
+        String sql = "select b.id from StockCustomer b " +
+                " where b.companyId = :value0" +
+                " and (" +
+                " b.id =:value1" +
+                " or lower(b.name) like :value2" +
+                " or b.email like :value2" +
+                " or b.phone like :value2" +
+                " or b.code =:value1)";
         List<Integer> customerIds = dao.getJPQLParams(Integer.class, sql, Helper.getCompanyFromJWT(header), id, nameLike);
-        return Response.status(200).entity(customerIds).build();
+        Map<String,Object> newMap = new HashMap<>();
+        newMap.put("customerIds", customerIds);
+        return Response.status(200).entity(newMap).build();
     }
 
     @SubscriberJwt
@@ -57,7 +73,15 @@ public class StockCustomerApiV3 {
     public Response searchSupplier(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, Map<String,String> map){
         String nameLike = "%"+map.get("query").toLowerCase() + "%";
         int id = Helper.convertToInteger(map.get("query"));
-        String sql = "select b from StockSupplier b where b.companyId = :value0 and (b.id = :value1 or lower(b.name) like :value2 or b.email like :value2 or b.phone like :value2)";
+        //to search code
+        String sql = "select b from StockSupplier b " +
+                " where b.companyId = :value0 " +
+                " and (" +
+                " b.id = :value1 " +
+                " or lower(b.name) like :value2 " +
+                " or b.email like :value2 " +
+                " or b.phone like :value2 " +
+                " or b.code =:value1)";
         List<StockSupplier> suppliers = dao.getJPQLParams(StockSupplier.class, sql, Helper.getCompanyFromJWT(header), id,  nameLike);
         return Response.status(200).entity(suppliers).build();
     }
@@ -68,9 +92,18 @@ public class StockCustomerApiV3 {
     public Response searchSupplierIds(@HeaderParam(HttpHeaders.AUTHORIZATION) String header, Map<String,String> map){
         String nameLike = "%"+map.get("query").toLowerCase() + "%";
         int id = Helper.convertToInteger(map.get("query"));
-        String sql = "select b.ids from StockSupplier b where b.companyId = :value0 and (b.id = :value1 or lower(b.name) like :value2 or b.email like :value2 or b.phone like :value2)";
+        String sql = "select b.id from StockSupplier b " +
+                " where b.companyId = :value0" +
+                " and (" +
+                " b.id = :value1" +
+                " or lower(b.name) like :value2" +
+                " or b.email like :value2" +
+                " or b.phone like :value2" +
+                " or b.code = :value1)";
         List<Integer> suppliersIds = dao.getJPQLParams(Integer.class, sql, Helper.getCompanyFromJWT(header), id,  nameLike);
-        return Response.status(200).entity(suppliersIds).build();
+        Map<String,Object> newMap = new HashMap<>();
+        newMap.put("supplierIds", suppliersIds);
+        return Response.status(200).entity(newMap).build();
     }
 
     @SubscriberJwt
