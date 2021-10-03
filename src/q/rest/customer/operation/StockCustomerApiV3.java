@@ -184,10 +184,9 @@ public class StockCustomerApiV3 {
 
         original.setName(customer.getName());
         original.setEmail(customer.getEmail());
-        original.setCountryId(customer.getCountryId());
         original.setPhone(customer.getPhone());
         original.setAddress(customer.getAddress());
-        original.setName(customer.getNote());
+        original.setNote(customer.getNote());
         dao.update(original);
         return Response.status(200).entity(original).build();
     }
@@ -205,10 +204,9 @@ public class StockCustomerApiV3 {
 
         original.setName(supplier.getName());
         original.setEmail(supplier.getEmail());
-        original.setCountryId(supplier.getCountryId());
         original.setPhone(supplier.getPhone());
         original.setAddress(supplier.getAddress());
-        original.setName(supplier.getNote());
+        original.setNote(supplier.getNote());
         dao.update(original);
         return Response.status(200).entity(original).build();
     }
